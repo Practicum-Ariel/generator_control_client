@@ -29,6 +29,11 @@ body {
   --checkbox-sensor2-color: #ef5484;
   --checkbox-sensor3-color: #a4c420;
 
+  /* h1*/
+  --h1-font-size: 32px;
+  --h1-font-weight: 500;
+  --h1-font-color: #498fcc;
+
   /* h3 */
   --h3-font-size: 20px;
   --h3-font-color: #000000;
