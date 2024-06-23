@@ -1,0 +1,27 @@
+.main_nav{  
+background: #1C376F;
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+ }
+
+ .main_nav > ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+ }
+
+ .main_nav > image{
+    width: 100%;
+    height: auto;
+ }
+
+ .main_nav > span {
+    width: 100%;
+    text-align: center;
+ }
+ .main_nav > span >svg {
+    font-size: 2rem;
+    color: #ffffff;
+ }

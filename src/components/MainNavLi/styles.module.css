@@ -1,0 +1,39 @@
+.main_nav_li {
+  color: #ffffff;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-inline-start: 2px solid transparent;
+  border-inline-end: 2px solid transparent;
+}
+
+.main_nav_li:hover {
+  border-inline-end: 2px solid #ffffff;
+}
+
+.main_nav_li > svg {
+  font-size: 2rem;
+}
+.tooltiptext {
+  visibility: hidden;
+  position: absolute;
+  width: max-content;
+  border: 1px solid #ffffff;
+  background: #1c376f;
+  padding: 0.3rem 0.4rem;
+  translate: -60% 50%;
+  -webkit-box-shadow: 5px 4px 7px -4px rgba(0, 0, 0, 0.64);
+  -moz-box-shadow: 5px 4px 7px -4px rgba(0, 0, 0, 0.64);
+  box-shadow: 5px 4px 7px -4px rgb(59 59 59);
+  border-radius: 0.3rem;
+}
+.main_nav_li:hover .tooltiptext {
+  visibility: visible;
+}
+
+.active {
+  border-inline-end: 2px solid #ffffff;
+}
