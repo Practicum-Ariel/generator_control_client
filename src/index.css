@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap");
+
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Heebo", sans-serif;
 }
 
 a {
@@ -15,6 +18,57 @@ body {
 
 /* vars */
 
-:root{
-  --example: 3px;
+:root {
+  --options-button-text-color: rgb(255, 255, 255);
+  --options-button-background-color: #ffffff;
+  --main-color: rgb(0, 0, 0);
+
+  /* checkbox */
+  --checkbox-average-color: #824ea8;
+  --checkbox-sensor1-color: #00bdd0;
+  --checkbox-sensor2-color: #ef5484;
+  --checkbox-sensor3-color: #a4c420;
+
+  /* h3 */
+  --h3-font-size: 20px;
+  --h3-font-color: #000000;
+  --h3-font-weight: 400;
+
+  /* h2 */
+  --h2-font-size: 20px;
+  --h2-font-weight: 700;
+  --h2-font-color: #062b59;
+
+  /* date */
+  --date-font-size: 14px;
+  --background-color: #000000;
+
+  /* technician */
+  --technician-name-color: rgba(0, 0, 0, 0.7); /* 70% opacity */
+  --technician-name-font-weight: 500;
+
+  /* sensor */
+  --sensor-font-weight: 400;
+  --sensor-name-color: #000000;
+
+  /* inputs and selectors */
+  --input-background-color: #ffffff;
+  --input-border: 1.5px solid #498fcc;
+  --input-border-radius: 8px;
+
+  /* active button */
+  --active-button-text-color: #000000;
+  --active-button-text-background-color: #ffffff;
+  --active-button-border-radius: 8px;
+  --active-button-border: none;
+  --active-button-box-shadow: 0px 8px 10px -9px rgb(0, 0, 0);
+
+  /* button not active */
+  --button-not-active-text-color: rgba(0, 0, 0, 0.7);
+  --button-not-active-background-color: #ffffff;
+  --button-not-active-border: #ffffff;
+}
+
+svg {
+  font-size: 20px;
 }
