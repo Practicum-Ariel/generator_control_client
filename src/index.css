@@ -67,6 +67,11 @@ body {
   --button-not-active-text-color: rgba(0, 0, 0, 0.7);
   --button-not-active-background-color: #ffffff;
   --button-not-active-border: #ffffff;
+
+  /* error */
+  --error-background-color: rgba(233, 27, 27, 0.3);
+  /* graphs-background-color */
+  --graphs-background-color: rgba(178, 178, 178, 0.2);
 }
 
 svg {

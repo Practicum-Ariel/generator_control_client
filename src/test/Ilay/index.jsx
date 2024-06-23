@@ -21,7 +21,16 @@ export default function Ilay() {
         Ilay test
       </button>
 
-      <input type="text" placeholder="Ilay test" value={"this is a test of imput"}/>
+      <input
+        type="text"
+        placeholder="Ilay test"
+        value={"this is a test of imput"}
+      />
+
+      <input type="checkbox"></input>
+
+      <div className={styles.errorContainer}>error lorem 8</div>
+      <div className={styles.graphsContainer}>graph</div>
     </div>
   );
 }

@@ -36,3 +36,21 @@ h2 {
   font-weight: var(--h2-font-weight);
   color: var(--h2-font-color);
 }
+
+input[type="checkbox"] {
+  color: var(--checkbox-average-color);
+
+  accent-color: rgb(19, 161, 255);
+}
+
+.errorContainer {
+  background-color: var(--error-background-color);
+  height: 100px;
+  width: 100px;
+}
+
+.graphsContainer {
+  background-color: var(--graphs-background-color);
+  width: 100px;
+  height: 100px;
+}
