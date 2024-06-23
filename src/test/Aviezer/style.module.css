@@ -1,0 +1,14 @@
+
+.Aviezer{
+    border: 2px solid  red  ;
+    height: 50vh;
+    width: 20%;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20% ;
+    border-radius: 10px;
+}
