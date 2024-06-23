@@ -13,12 +13,12 @@ const routes = [
   {
     element: <MainLayout />,
     children: [
-      { path: 'AllGenerators', element: <AllGenerators /> },
-      { path: 'AddGenerator', element: <AddGenerator /> },
-      { path: 'SingleGenerator', element: <AddGenerator /> },
-      { path: 'TechCheckForm', element: <TechnicianCheckForm /> },
-      { path: 'Notifications', element: <Notifications /> },
-      { path: 'LoginPage', element: <LoginPage /> },
+      { path: 'all-generators', element: <AllGenerators /> },
+      { path: 'add-generator', element: <AddGenerator /> },
+      { path: 'single-generator', element: <AddGenerator /> },
+      { path: 'tech-checkform', element: <TechnicianCheckForm /> },
+      { path: 'notifications', element: <Notifications /> },
+      { path: 'login-page', element: <LoginPage /> },
     ],
   },
   { path: 'test', children: testRoutes },

@@ -15,29 +15,29 @@ function MainNavigator() {
     {
       id: 1,
       title: 'הוספת גנרטור',
-      href: '/AddGenerator',
+      href: '/add-Generator',
       icon: <GiGreenPower />,
     },
     {
       id: 2,
       title: 'כלל הגנרטורים',
-      href: '/AllGenerators',
+      href: '/all-Generators',
       icon: <GiPowerGenerator />,
     },
     {
       id: 3,
       title: 'גנרטור בודד',
-      href: '/SingleGenerator',
+      href: '/single-generator',
       icon: <MdOutlineGeneratingTokens />,
     },
     {
       id: 4,
       title: 'טופס טכנאי',
-      href: '/TechCheckForm',
+      href: '/tech-checkform',
       icon: <GiAutoRepair />,
     },
-    { id: 5, title: 'התראות', href: '/Notifications', icon: <MdCrisisAlert /> },
-    { id: 6, title: 'התחברות', href: '/LoginPage', icon: <MdOutlineLogin /> },
+    { id: 5, title: 'התראות', href: '/notifications', icon: <MdCrisisAlert /> },
+    { id: 6, title: 'התחברות', href: '/login-page', icon: <MdOutlineLogin /> },
   ];
 
   return (
