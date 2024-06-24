@@ -1,16 +1,16 @@
-import { useState } from "react";
 import styles from "./style.module.css";
 import { PopupContext } from "./Context/Popup/PopupContext";
-import TestPopupContent from "./Context/Popup/TestPopup";
-import Form from "./Form";
+import { useState } from "react";
 import Popup from "./Context/Popup";
+import Form from "./Form";
+import TestPopupContent from "./TestPopup";
 
-export default function Ilay() {
+
+export default function Ilay({}) {
   const [popupContent, setPopupContent] = useState(null);
 
   return (
     <>
-      Ilay
       <PopupContext.Provider
         value={{
           popupContent,
