@@ -1,0 +1,25 @@
+.checkBox{
+    display: flex;
+    gap: 10px;
+    
+    
+}
+.checkBox label{
+    display: flex;
+    align-items: center;
+    line-height: 1.25rem;
+    justify-content: center;
+   
+}
+
+.checkBox input {
+    height: 1.25rem;
+    width: 1.25rem;
+    accent-color: currentColor;	
+}
+.checkBox input:not(:checked) {
+   appearance: none;
+    outline: 2px solid currentColor;
+    scale: 0.8;
+	
+}
