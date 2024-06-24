@@ -24,13 +24,32 @@ ChartJS.register(
 
 const options = {
   responsive: true,
+  plugins: {
+    title: {
+      display: true,
+      text: 'חיישני טמפרטורה על ציר זמן',
+    },
+    legend: {
+      display: false, // Hide the legend
+    },
+  },
   scales: {
     x: {
       type: "linear",
+      // labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      grid: {
+        display: false,
+      },
+      // ticks: {
+      //   stepSize: 1,
+      //   font: {
+      //     size: 12,
+      //   },
+      // },
       min: 0,
       max: 100,
       ticks: {
-        stepSize: 10,
+        stepSize: 1,
       },
     },
     y: {
@@ -39,6 +58,9 @@ const options = {
       max: 100,
       ticks: {
         stepSize: 20,
+      },
+      grid: {
+        display: false,
       },
     },
   },
@@ -52,6 +74,8 @@ const LineGraph = ({ data }) => {
       label: sens.name,
       data: sens.points,
       borderColor: sens.color,
+      borderWidth: 2, // Thin lines
+      pointRadius: 4, // Hide points
       tension: 0.4,
       fill: true,
       yAxisID: "y",

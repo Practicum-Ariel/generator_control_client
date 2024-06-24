@@ -33,18 +33,27 @@ export const options = {
   plugins: {
     title: {
       display: true,
-      text: 'Chart.js Scatter Chart',
+      text: 'חריגות טמפרטורה',
+    },
+    legend: {
+      display: false, // Hide the legend
     },
   },
   scales: {
     x: {
       type: 'linear',
       position: 'bottom',
+      grid: {
+        display: false, 
+      },
     },
     y: {
       type: 'linear',
       display: true,
       position: 'left',
+      grid: {
+        display: false, 
+      },
     },
     y1: {
       type: 'linear',

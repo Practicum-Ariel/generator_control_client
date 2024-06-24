@@ -33,11 +33,18 @@ const Sivan = () => {
     },
     {
       name: "חיישן 2",
-      points: [],
+      points: [
+        { x: 80, y: 20 },
+        { x: 90, y: 0 },
+        { x: 100, y: 20 },],
     },
     {
       name: "חיישן 3",
-      points: [],
+      points: [
+        { x: 80, y: 20 },
+        { x: 90, y: 0 },
+        { x: 100, y: 20 },
+      ],
     },
   ];
 
@@ -54,6 +61,7 @@ const Sivan = () => {
     <div className={styles.chartContainer}>
       <div className={styles.canvasContainer}>
         <LineGraph data={data.filter((sens) => sensor[sens.name])} />
+        <PointsGraph />
         <PointsGraph />
       </div>
       <SensorCheckBox setSensor={setSensor} />
