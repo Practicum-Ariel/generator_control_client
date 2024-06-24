@@ -1,4 +1,6 @@
 import styles from './style.module.css'
+import InputPassword from '../../components/InputPassword'
+import Input from '../../components/Input'
 
 
 // creator: Aviezer
@@ -6,7 +8,8 @@ import styles from './style.module.css'
 export default function Aviezer() {
   return (
      <div className={styles.Aviezer}>
-        Aviezer
+        <InputPassword />
+        <Input placeholder={"שם פרטי"} />
     </div>
   )
 }
