@@ -1,12 +1,31 @@
-import styles from './style.module.css'
+import { useState } from "react";
+import styles from "./style.module.css";
+import { PopupContext } from "./Context/Popup/PopupContext";
+import TestPopupContent from "./Context/Popup/TestPopup";
+import Form from "./Form";
+import Popup from "./Context/Popup";
 
-
-// creator: Ilay
-// props: { title: string }
 export default function Ilay() {
+  const [popupContent, setPopupContent] = useState(null);
+
   return (
-     <div className={styles.Ilay}>
-        Ilay
-    </div>
-  )
+    <>
+      Ilay
+      <PopupContext.Provider
+        value={{
+          popupContent,
+          setPopupContent,
+        }}
+      >
+        <div className={styles.Ilay}>
+          {popupContent && <Popup> {popupContent} </Popup>}
+          <div>Your Popup Content Here</div>
+          <button onClick={() => setPopupContent(<Form />)}>2</button>
+          <button onClick={() => setPopupContent(<TestPopupContent />)}>
+            1
+          </button>
+        </div>
+      </PopupContext.Provider>
+    </>
+  );
 }
