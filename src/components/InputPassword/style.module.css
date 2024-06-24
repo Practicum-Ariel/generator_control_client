@@ -1,25 +1,20 @@
 .inputPassword {
     position: relative;
-    display: inline-block;
-    /* border: 2px solid chocolate; */
-}
-
-.inputPassword > h1{
-    margin-top: 40px;
+    /* display: inline-block; */
 }
 
 .password {
     padding-right: 30px;
-    width: 85%;
+    width: 100%;
     height: 50px;
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 20px;
     margin-top: 30px;
 }
 
 .eye {
     position: absolute;
-    left: 40px;
+    left: 20px;
     top: 75%;
     transform: translateY(-50%);
     cursor: pointer;
