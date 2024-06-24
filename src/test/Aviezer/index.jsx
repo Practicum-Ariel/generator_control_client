@@ -1,6 +1,4 @@
 import styles from './style.module.css'
-import InputPassword from '../../components/InputPassword'
-import Input from '../../components/Input'
 import TechnicianLogin from '../../components/TechnicianLogin'
 
 

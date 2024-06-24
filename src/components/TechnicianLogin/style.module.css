@@ -13,16 +13,6 @@
     box-shadow: 0px 0px 10px black;
 }
 
-.Air_force_logo_wrapper{
-    /* border: 2px solid red; */
-    width: 250px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-}
-
 .Air_force_logo{
     height: 100px;
     width: 100px;
@@ -42,13 +32,6 @@
 }
 
 .loginButton:hover{cursor: pointer;}
-
-.midLevelWrapper{
-    /* border: 2px solid lawngreen; */
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 
 .midLevel{
     /* border: 2px solid blue; */

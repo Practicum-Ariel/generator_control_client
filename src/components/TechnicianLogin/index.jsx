@@ -1,6 +1,6 @@
+import styles from './style.module.css'
 import Input from '../Input'
 import InputPassword from '../InputPassword'
-import styles from './style.module.css'
 import { Link } from "react-router-dom";
 
 
@@ -9,7 +9,7 @@ export default function TechnicianLogin() {
 
     return (
         <div className={styles.container}>
-            <img src="/images/Air_force_logo.png" alt="Air_force_logo" className={styles.Air_force_logo} />
+            <img className={styles.Air_force_logo} src="/images/Air_force_logo.png" alt="Air_force_logo" />
             <h1 className={styles.loginText}>כניסה למערכת</h1>
             <div className={styles.username}>
                 <label htmlFor='nameInput'>שם משתמש</label>
@@ -27,8 +27,3 @@ export default function TechnicianLogin() {
         </div>
     )
 }
-
-// <div className={styles.Air_force_logo_wrapper}>
-// </div>
-// <div className={styles.midLevelWrapper}>
-// </div>
