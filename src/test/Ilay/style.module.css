@@ -1,4 +1,4 @@
-button {
+/* button {
   color: var(--button-not-active-text-color);
   background-color: var(--button-not-active-background-color);
   border: var(--active-button-box-shadow);
@@ -53,4 +53,4 @@ input[type="checkbox"] {
   background-color: var(--graphs-background-color);
   width: 100px;
   height: 100px;
-}
+} */
