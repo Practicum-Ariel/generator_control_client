@@ -1,0 +1,37 @@
+.main {
+    border: 2px solid rgb(254, 221, 5);
+    border-radius: 10px;
+
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.but {
+    margin: 0;
+    /* background-color: n; */
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+.warning{
+    border-color:rgb(228, 199, 10);
+    background-color: rgb(254, 221, 5);
+}
+
+.succcess{
+    border-color:#14AC07;
+    background-color:#1adf08;
+}
+
+.danger{
+    border-color:#de0064;
+    background-color: #FF0073;
+}
+/* 
+warning: {border: "rgb(228, 199, 10)", bac: "rgb(254, 221, 5)"},
+    danger: {border: " #de0064", bac: "#FF0073"},
+    succcess: {border: "#14AC07", bac: "#1adf08"}, */
