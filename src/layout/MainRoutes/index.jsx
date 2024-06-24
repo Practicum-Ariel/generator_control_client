@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Example from "../../pages/Example";
 import { testRoutes } from "../../test";
+import PopupProvider from "../Popup/PopupProvider";
 
 const routes = [
   { path: "example", element: <Example /> },
@@ -10,5 +11,9 @@ const routes = [
 const router = createBrowserRouter(routes);
 
 export default function MainRoutes() {
-  return <RouterProvider router={router} />;
+  return (
+    <PopupProvider>
+      <RouterProvider router={router} />;
+    </PopupProvider>
+  );
 }

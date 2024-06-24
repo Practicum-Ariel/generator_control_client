@@ -1,5 +1,6 @@
+import { PopupContext } from "../../context/index";
 import { useState } from "react";
-import Popup from "./Context/Popup";
+import Popup from "./index";
 
 /**
  * @description popup provider component takes other components as children and display them as the as popup content
@@ -7,12 +8,21 @@ import Popup from "./Context/Popup";
  * @example <button onClick={() => setPopupContent(<userComponent/>)}></button>
  * @returns
  */
-export default function PopupProvider() {
+
+export default function PopupProvider({ children }) {
   const [popupContent, setPopupContent] = useState(null);
 
   return (
     <>
-      <div>{popupContent && <Popup> {popupContent} </Popup>}</div>
+      <PopupContext.Provider
+        value={{
+          popupContent,
+          setPopupContent,
+        }}
+      >
+        {children}
+        <div>{popupContent && <Popup> {popupContent} </Popup>}</div>
+      </PopupContext.Provider>
     </>
   );
 }
