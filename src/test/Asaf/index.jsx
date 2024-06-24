@@ -14,8 +14,25 @@ export default function Asaf() {
           context={"פרטי אזהרה ראשונית."}
           handleClick={"handleClick"}
         />
-        <TiArrowSortedDown />
-        <MdOutlineArrowLeft />
+
+
+
+        <AlertComponent
+          status={"succcess"}
+          title={"חישן לא תקן"}
+          context={
+              "אזהרה: נא להימנע מהשימוש במכונות כבדות בזמן פעולה. יש להשתמש בהן בזהירות רבה ולהימנע ממגע עם חלקים חמים או חדים. כל שימוש לא תקין עשוי לגרום לפציעות קשות."
+            }
+           
+          handleClick={"handleClick"}
+        />
+        
+        <AlertComponent
+          status={"danger"}
+          title={"חישן לא תקן"}
+          context={"פרטי אזהרה ראשונית."}
+          handleClick={"handleClick"}
+        />
       </div>
     </>
   );
