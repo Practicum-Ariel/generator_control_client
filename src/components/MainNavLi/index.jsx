@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles.module.css';
 import { NavLink } from 'react-router-dom';
 
-function MainNavLi({ liData }) {
+function MainNavLi({ liData, expand }) {
   console.log(liData.href);
   return (
     <NavLink
@@ -12,9 +12,14 @@ function MainNavLi({ liData }) {
           ? `${styles.main_nav_li} ${styles.active}`
           : `${styles.main_nav_li}`
       }>
-      {liData.icon}
+      <li>
+        {liData.icon}
+        <div className={expand ? styles.fadeIn : ''}>
+          {expand ? liData.title : ''}
+        </div>
 
-      <span class={styles.tooltiptext}>{liData.title}</span>
+        <span class={styles.tooltiptext}>{liData.title}</span>
+      </li>
     </NavLink>
   );
 }
