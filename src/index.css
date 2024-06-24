@@ -18,3 +18,8 @@ body {
 :root{
   --example: 3px;
 }
+
+
+.n {
+  padding: var(--example);
+}
