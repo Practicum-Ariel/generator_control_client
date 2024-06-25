@@ -6,6 +6,7 @@ import {
   MdOutlineGeneratingTokens,
   MdAddChart,
 } from 'react-icons/md';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { CgProfile } from 'react-icons/cg';
 import MainNavLi from '../MainNavLi';
@@ -53,7 +54,13 @@ function MainNavigator() {
     <>
       <nav className={`${styles.main_nav} ${expand ? styles.expand : ''}`}>
         <img src='/images/air-force-logo.svg' alt='' />
-        <GiHamburgerMenu onClick={handleExpand} />
+        <span className={styles.burger}>
+          {expand ? (
+            <FaChevronRight onClick={handleExpand} />
+          ) : (
+            <FaChevronLeft onClick={handleExpand} />
+          )}
+        </span>
         <ul>
           {links &&
             links.map((li) => (

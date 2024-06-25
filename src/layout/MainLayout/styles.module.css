@@ -1,5 +1,5 @@
 .main_layout{
         display: grid;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: auto 1fr;
     height: 100vh;
 }

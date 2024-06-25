@@ -18,23 +18,15 @@
   align-items: center;
   gap: .5rem;
   padding: 0rem .5rem;
+     
 }
 
-.main_nav_li > li > div{
-  text-wrap: nowrap;
-}
-.main_nav_li > li > div.fadeIn{
-animation: fadeIn 1.5s;
-}
 
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
 
 .main_nav_li> li > svg {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
+
 .tooltiptext {
   visibility: hidden;
   position: absolute;
@@ -55,4 +47,17 @@ animation: fadeIn 1.5s;
 .active {
   border-inline-end: 2px solid #498fcc;
   
+}
+
+
+.main_nav_li > li > div{
+  text-wrap: nowrap;
+}
+.main_nav_li > li > div.fadeIn{
+animation: fadeIn 1.5s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
