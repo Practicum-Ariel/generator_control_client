@@ -17,14 +17,14 @@ export default function index({title, inputArr = []}) {
           {inputArr.map((v) => {
             return (
               <div className={style.test}>
-                <label className={style.label} htmlFor="">
+                <label for={v.label} className={style.label} htmlFor="">
                   {v.label}
                 </label>
                 <p className={style.p}>{v.guidelines}</p>
                 <div className={style.fin}>
                   {v.typ == "checkbox" ? (
                     <div className={style.checkbox}>
-                      <input type="checkbox" /> <p>בוצע</p>
+                      <input type="checkbox"  name={v.label} /> <p>בוצע</p>
                     </div>
                   ) : (
                     <input

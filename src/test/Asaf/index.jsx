@@ -16,7 +16,7 @@ export default function Asaf() {
               label: "blaa",
             },
             {typ: "text", guidelines: "sjdbvkjlsb sajvdbbol", label: "blaa"},
-            {typ: "number", guidelines: "sjdbvkjlsb sajvdbbol", label: "blaa"},
+            // {typ: "number", guidelines: "sjdbvkjlsb sajvdbbol", label: "blaa"},
           ]}
           title={"בדיקת טכנאי."}
         />
