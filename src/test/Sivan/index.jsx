@@ -5,7 +5,7 @@ import SensorCheckBox from "../../components/SensorCheckbox";
 
 import styles from "./style.module.css";
 
-const Sivan = () => {
+const sivan = () => {
   const data = [
     {
       name: "ממוצע",
@@ -69,4 +69,4 @@ const Sivan = () => {
   );
 };
 
-export default Sivan;
+export default sivan;
