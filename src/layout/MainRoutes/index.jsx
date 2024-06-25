@@ -1,13 +1,14 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Example from '../../pages/Example'
-import { testRoutes } from '../../test'
-import MainLayout from '../MainLayout';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AddGenerator from '../../pages/AddGenerator';
 import AllGenerators from '../../pages/AllGenerators';
+import Example from '../../pages/Example';
 import LoginPage from '../../pages/LoginPage';
 import Notifications from '../../pages/Notifications';
-import TechnicianCheckForm from '../../pages/TechnicianCheckForm';
 import SingleGenerator from '../../pages/SingleGenerator';
+import TechnicianCheckForm from '../../pages/TechnicianCheckForm';
+import { testRoutes } from '../../test';
+import MainLayout from '../MainLayout';
+import PopupProvider from "../Popup/PopupProvider";
 
 const routes = [
   { path: 'example', element: <Example /> },
@@ -27,9 +28,13 @@ const routes = [
 
 
 
-const router = createBrowserRouter(routes)
+
+const router = createBrowserRouter(routes);
 
 export default function MainRoutes() {
-
-   return (<RouterProvider router={router} />)
+  return (
+    <PopupProvider>
+      <RouterProvider router={router} />;
+    </PopupProvider>
+  );
 }
