@@ -1,14 +1,18 @@
 import React from "react";
 import style from "./style.module.css";
 
-
 // TODO // לאסוף את הINPUT ולייצר בקשה לשרת
 export default function index({title, inputArr = []}) {
   console.log(inputArr);
+  const handlesubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    console.log(formData);
+  };
   return (
     <div className={style.main}>
       <h1 className={style.h1}>{title}</h1>
-      <form className={style.form} action="">
+      <form onSubmit={handlesubmit} className={style.form} action="">
         <div className={style.inputs}>
           {inputArr.map((v) => {
             return (
