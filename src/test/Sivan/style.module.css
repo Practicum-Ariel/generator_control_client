@@ -1,4 +1,4 @@
-.canvasContainer{
+/* .canvasContainer{
      display: flex;
     flex-direction: row; 
      justify-content: space-between;
@@ -8,8 +8,11 @@
     
     margin: 0 auto;   
 }
-
   .canvasContainer {
     position: relative;
     /* margin-top: 20px; Adjust spacing */
-  }
+/* } */
+
+.canvasContainer {
+  width: 300px;
+}
