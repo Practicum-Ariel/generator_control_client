@@ -27,7 +27,7 @@ export default function TechCheck({ fullName, date, check, avatar, content }) {
         <ul className={styles.technician}>
             <li className={styles.details}>
                 <div className={styles.right}>
-                    <img src={avatar}></img>
+                    <img className={styles.img} src={avatar}/>
                     <h3>{fullName}</h3>
                     <div className={styles.date}>
                         <p>{date1}</p>
