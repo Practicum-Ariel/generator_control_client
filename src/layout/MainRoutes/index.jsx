@@ -34,7 +34,7 @@ const router = createBrowserRouter(routes);
 export default function MainRoutes() {
   return (
     <PopupProvider>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </PopupProvider>
   );
 }
