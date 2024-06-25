@@ -1,3 +1,4 @@
+import { elements } from "chart.js";
 import Aviad from "./Aviad";
 import Aviezer from "./Aviezer";
 import Eti from "./Eti";
@@ -13,6 +14,7 @@ import Sivan from "./Sivan";
 import Tavor from "./Tavor";
 import Yosef from "./Yosef";
 import Asaf from "./Asaf";
+import Natan from "./Natan";
 
 export const testRoutes = [
    { path: 'eti', element: <Eti /> },
@@ -30,4 +32,5 @@ export const testRoutes = [
    { path: 'shani', element: <Shani /> },
    { path: 'hodaya', element: <Hodaya /> },
    { path: 'asaf', element: <Asaf /> },
+   { path: 'natan', element: <Natan /> }
 ]
