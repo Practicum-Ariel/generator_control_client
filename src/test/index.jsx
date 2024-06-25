@@ -12,6 +12,7 @@ import Shmuel from "./Shmuel";
 import Sivan from "./Sivan";
 import Tavor from "./Tavor";
 import Yosef from "./Yosef";
+import Asaf from "./Asaf";
 
 export const testRoutes = [
    { path: 'eti', element: <Eti /> },
@@ -28,4 +29,5 @@ export const testRoutes = [
    { path: 'inbar', element: <Inbar /> },
    { path: 'shani', element: <Shani /> },
    { path: 'hodaya', element: <Hodaya /> },
+   { path: 'asaf', element: <Asaf /> },
 ]
