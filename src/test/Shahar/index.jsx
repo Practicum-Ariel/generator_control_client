@@ -1,70 +1,31 @@
+import { useParams } from 'react-router-dom';
 import styles from './style.module.css'
-import { Link } from 'react-router-dom'
-import useApi from '../../hooks/useApi'
-import Loader from '../../components/Loader'
-import { useState } from 'react'
+
 
 
 // creator: Shahar
 // props: { title: string }
 export default function Shahar() {
-  let data = [{
-    _id: '6678464e815884d6e23a4542',
-    name: 'gen300',
-    location: 'באר שבע',
-    status: 'פעיל'
-  },
-  {
-    _id: '667a89dde30b38c5dad90560',
-    name: 'gen102',
-    location: 'תל אביב',
-    status: 'פעיל'
-  },
-  {
-    _id: '667a8c00e30b38c5dad90562',
-    name: 'gen103',
-    location: 'ירושלים',
-    status: 'בתיקון'
-  }]
-  // const { data, loading, error } = useApi('generator/all-gen')
-  const loading = false
 
-  const getColor = (status) => {
-    let color = ''
-    status === 'פעיל' ? color = 'green' :
-      status === 'בתיקון' ? color = 'orange' : color = 'red'
-    return color
-  }
+  let { id } = useParams();
 
-  const [checked, setChecked] = useState([]);
-
-  const handleChange = (id) => {
-    if (checked.includes(id))
-      setChecked(checked.filter(v => v != id)); // remove id from array
-    else if (checked.length < 2)
-      setChecked([...checked, id])
-  };
-
-
-  if (loading) return <Loader />
-  // if(error) return error
-
-  return (
-    <div className={styles.Shahar}>
-      <div className={styles.button}>
-        {checked.length == 2 ? <Link to={`/generator/compare?ids=${checked[0]},${checked[1]}`} className={styles.compare}>בצע השוואה</Link> : ''}
+  return (<>
+    <div className={styles.grid_container}>
+      <div className={styles.gen_details}>
+        <h2>גנרטור gen700</h2>
+        <div>ירוחם מרכז</div>
+        <div>מזהה: 1234</div>
+        <div>
+          <div>גנרטור</div>
+          <select name="chooseGen" id="chooseGen">
+            {genList.map(gen => <option value={gen}>{gen}</option>)}
+          </select>
+        </div>
       </div>
-      <div className={styles.genList}>
-        {data.map(gen => <div className={styles.gen}>
-          <input type="checkbox" checked={checked.includes(gen._id)} onChange={() => handleChange(gen._id)} />
-          <Link to={`/generator/${gen._id}`} className={styles.link}>
-            <h2>{gen.name}</h2>
-            <h4>{gen.location}</h4>
-            <h5 className={styles.status} style={{ color: getColor(gen.status) }}>{gen.status}</h5>
-            <img src='/public/images/Indicator_clock.jpg' alt="Indicator_clock" />
-          </Link>
-        </div>)}
-      </div>
+      <div className={styles.insights}>תובנות AI</div>
+      <div className={styles.charts}>גרפים</div>
+      <div className={styles.live_info}>מידע בזמן אמת</div>
     </div>
+  </>
   )
 }

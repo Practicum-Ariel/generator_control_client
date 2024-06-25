@@ -1,0 +1,29 @@
+.gen_details {
+    grid-area: gen-details;
+}
+
+.insights {
+    grid-area: insights;
+}
+
+.charts {
+    grid-area: charts;
+}
+
+.live_info {
+    grid-area: live-info;
+}
+
+.grid_container {
+    display: grid;
+    grid-template-areas:
+        'gen-details gen-details gen-details insights insights insights'
+        'charts charts charts charts charts charts'
+        'live-info live-info live-info live-info live-info live-info';
+    gap: 1rem;
+}
+
+.grid_container>div {
+    text-align: center;
+    padding: 20px 0;
+}

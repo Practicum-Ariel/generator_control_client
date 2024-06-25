@@ -57,7 +57,7 @@ function AllGenerators() {
       <div className={styles.genList}>
         {data.map(gen => <div className={styles.gen}>
           <input type="checkbox" checked={checked.includes(gen._id)} onChange={() => handleChange(gen._id)} />
-          <Link to={`/generator/${gen._id}`} className={styles.link}>
+          <Link to={`/generator/${gen.name}`} className={styles.link}>
             <h2>{gen.name}</h2>
             <h4>{gen.location}</h4>
             <h5 className={styles.status} style={{ color: getColor(gen.status) }}>{gen.status}</h5>
