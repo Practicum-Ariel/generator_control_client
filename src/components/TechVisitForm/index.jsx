@@ -1,6 +1,8 @@
 import React from "react";
 import style from "./style.module.css";
 
+
+// TODO // לאסוף את הINPUT ולייצר בקשה לשרת
 export default function index({title, inputArr = []}) {
   console.log(inputArr);
   return (
