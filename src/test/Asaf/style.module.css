@@ -1,8 +1,8 @@
 .main {
-    margin: auto;
-    width: 70vw;
-    height: 60vh;
-    background-color: rgb(244, 223, 223);
+    margin:2rem  auto;
+    width: 40vw;
+    height: 80vh;
+    background-color: rgb(183, 221, 250);
     display: flex;
     flex-direction: column;
     gap: .5rem;
