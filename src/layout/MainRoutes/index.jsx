@@ -13,3 +13,4 @@ export default function MainRoutes() {
 
    return (<RouterProvider router={router} />)
 }
+
