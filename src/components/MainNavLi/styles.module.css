@@ -1,22 +1,32 @@
 .main_nav_li {
-  color: #ffffff;
-  width: 100%;
-  text-align: center;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-inline-start: 2px solid transparent;
-  border-inline-end: 2px solid transparent;
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-inline-start: 2px solid transparent;
+    border-inline-end: 2px solid transparent;
+    justify-content: center;
 }
 
 .main_nav_li:hover {
   border-inline-end: 2px solid #ffffff;
 }
 
-.main_nav_li > svg {
-  font-size: 2rem;
+.main_nav_li > li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: 0rem .5rem;
+     
 }
+
+
+
+.main_nav_li> li > svg {
+  font-size: 2.5rem;
+}
+
 .tooltiptext {
   visibility: hidden;
   position: absolute;
@@ -35,5 +45,19 @@
 }
 
 .active {
-  border-inline-end: 2px solid #ffffff;
+  border-inline-end: 2px solid #498fcc;
+  
+}
+
+
+.main_nav_li > li > div{
+  text-wrap: nowrap;
+}
+.main_nav_li > li > div.fadeIn{
+animation: fadeIn 1.5s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }

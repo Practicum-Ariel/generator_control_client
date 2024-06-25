@@ -6,7 +6,7 @@ const apiClient = axios.create({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${!localStorage.token? " " : localStorage.token}`
     },
-    timeout: 5000, 
+    // timeout: 5000, 
   });
 
 // פונקציה גנרית לביצוע בקשות

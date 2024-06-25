@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GiPowerGenerator, GiGreenPower, GiAutoRepair } from 'react-icons/gi';
 import {
   MdOutlineLogin,
@@ -6,46 +6,66 @@ import {
   MdOutlineGeneratingTokens,
   MdAddChart,
 } from 'react-icons/md';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import { CgProfile } from 'react-icons/cg';
 import MainNavLi from '../MainNavLi';
 import styles from './styles.module.css';
 
 function MainNavigator() {
+  const [expand, setExpand] = useState(false);
+
   const links = [
     {
       id: 1,
       title: 'הוספת גנרטור',
-      href: '/AddGenerator',
+      href: '/generators/all',
       icon: <GiGreenPower />,
     },
     {
       id: 2,
       title: 'כלל הגנרטורים',
-      href: '/AllGenerators',
+      href: '/generator/new',
       icon: <GiPowerGenerator />,
     },
     {
       id: 3,
       title: 'גנרטור בודד',
-      href: '/SingleGenerator',
+      href: '/generator/:id',
       icon: <MdOutlineGeneratingTokens />,
     },
     {
       id: 4,
       title: 'טופס טכנאי',
-      href: '/TechCheckForm',
+      href: '/tech-check/form',
       icon: <GiAutoRepair />,
     },
-    { id: 5, title: 'התראות', href: '/Notifications', icon: <MdCrisisAlert /> },
-    { id: 6, title: 'התחברות', href: '/LoginPage', icon: <MdOutlineLogin /> },
+    { id: 5, title: 'התראות', href: '/notifications', icon: <MdCrisisAlert /> },
+    { id: 6, title: 'התחברות', href: '/login', icon: <MdOutlineLogin /> },
   ];
+
+  const handleExpand = () => {
+    // expand = !expand;
+    setExpand(!expand);
+    console.log(expand);
+  };
 
   return (
     <>
-      <nav className={styles.main_nav}>
+      <nav className={`${styles.main_nav} ${expand ? styles.expand : ''}`}>
         <img src='/images/air-force-logo.svg' alt='' />
+        <span className={styles.burger}>
+          {expand ? (
+            <FaChevronRight onClick={handleExpand} />
+          ) : (
+            <FaChevronLeft onClick={handleExpand} />
+          )}
+        </span>
         <ul>
-          {links && links.map((li) => <MainNavLi key={li.id} liData={li} />)}
+          {links &&
+            links.map((li) => (
+              <MainNavLi expand={expand} key={li.id} liData={li} />
+            ))}
         </ul>
         <span>
           <CgProfile />

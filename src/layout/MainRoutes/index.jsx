@@ -7,18 +7,19 @@ import AllGenerators from '../../pages/AllGenerators';
 import LoginPage from '../../pages/LoginPage';
 import Notifications from '../../pages/Notifications';
 import TechnicianCheckForm from '../../pages/TechnicianCheckForm';
+import SingleGenerator from '../../pages/SingleGenerator';
 
 const routes = [
   { path: 'example', element: <Example /> },
   {
     element: <MainLayout />,
     children: [
-      { path: 'AllGenerators', element: <AllGenerators /> },
-      { path: 'AddGenerator', element: <AddGenerator /> },
-      { path: 'SingleGenerator', element: <AddGenerator /> },
-      { path: 'TechCheckForm', element: <TechnicianCheckForm /> },
-      { path: 'Notifications', element: <Notifications /> },
-      { path: 'LoginPage', element: <LoginPage /> },
+      { path: 'generators/all', element: <AllGenerators /> },
+      { path: 'generator/new', element: <AddGenerator /> },
+      { path: 'generator/:id', element: <SingleGenerator /> },
+      { path: 'tech-check/form', element: <TechnicianCheckForm /> },
+      { path: 'notifications', element: <Notifications /> },
+      { path: 'login', element: <LoginPage /> },
     ],
   },
   { path: 'test', children: testRoutes },

@@ -12,10 +12,12 @@ export default function InputPassword({ name, ...props }) {
 
     return (
         <div className={styles.inputPassword} >
+
             <input className={styles.password}
                 type={showPassword ? 'text' : 'password'}
                 placeholder="סיסמה"
                 {...props}
+                name={name}
             />
 
             <span className={styles.eye} onClick={togglePasswordVisibility} >
