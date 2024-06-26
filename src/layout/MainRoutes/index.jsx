@@ -1,35 +1,53 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Example from '../../pages/Example'
-import { testRoutes } from '../../test'
-import MainLayout from '../MainLayout';
-import AddGenerator from '../../pages/AddGenerator';
-import AllGenerators from '../../pages/AllGenerators';
-import LoginPage from '../../pages/LoginPage';
-import Notifications from '../../pages/Notifications';
-import TechnicianCheckForm from '../../pages/TechnicianCheckForm';
-import SingleGenerator from '../../pages/SingleGenerator';
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import AddGenerator from "../../pages/AddGenerator";
+import AllGenerators from "../../pages/AllGenerators";
+import Example from "../../pages/Example";
+import LoginPage from "../../pages/LoginPage";
+import Notifications from "../../pages/Notifications";
+import SingleGenerator from "../../pages/SingleGenerator";
+import TechnicianCheckForm from "../../pages/TechnicianCheckForm";
+import {testRoutes} from "../../test";
+import MainLayout from "../MainLayout";
+import PopupProvider from "../Popup/PopupProvider";
+import ComparePage from "../../components/ComparePage";
+import {createContext, useState} from "react";
 
 const routes = [
-  { path: 'example', element: <Example /> },
+  {path: "example", element: <Example />},
   {
     element: <MainLayout />,
     children: [
-      { path: 'generators/all', element: <AllGenerators /> },
-      { path: 'generator/new', element: <AddGenerator /> },
-      { path: 'generator/:id', element: <SingleGenerator /> },
-      { path: 'tech-check/form', element: <TechnicianCheckForm /> },
-      { path: 'notifications', element: <Notifications /> },
-      { path: 'login', element: <LoginPage /> },
+      {path: "generators/all", element: <AllGenerators />},
+      {path: "generator/new", element: <AddGenerator />},
+      {path: "generator/:id", element: <SingleGenerator />},
+      {path: "tech-check/form", element: <TechnicianCheckForm />},
+      {path: "notifications", element: <Notifications />},
+
+      {path: "generators/compare", element: <ComparePage />},
+      {path: "login", element: <LoginPage />},
     ],
   },
-  { path: 'test', children: testRoutes },
+  {path: "test", children: testRoutes},
 ];
 
+// export default function PopupProvider({}) {
 
-
-const router = createBrowserRouter(routes)
+const router = createBrowserRouter(routes);
+export const toastify = createContext('');
 
 export default function MainRoutes() {
 
-  return (<RouterProvider router={router} />)
+  const [toshow, setToshow] = useState(true);
+  return (
+      <toastify.Provider
+        value={{
+          toshow,
+          setToshow,
+        }}
+      >
+    <PopupProvider>
+      <RouterProvider router={router} />
+    </PopupProvider>
+      </toastify.Provider>
+  );
 }

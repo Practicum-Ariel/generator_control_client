@@ -22,6 +22,9 @@ body {
   --options-button-text-color: rgb(255, 255, 255);
   --options-button-background-color: #ffffff;
   --main-color: rgb(0, 0, 0);
+  --secondary-color-dark: #1C376F;
+  --secondary-color-light: #498FCC;
+
 
   /* checkbox */
   --checkbox-average-color: #824ea8;
@@ -49,7 +52,7 @@ body {
   --background-color: #000000;
 
   /* technician */
-  --technician-name-color: rgba(0, 0, 0, 0.7); /* 70% opacity */
+  --technician-name-color: rgba(0, 0, 0, 0.5); /* 50% opacity */
   --technician-name-font-weight: 500;
 
   /* sensor */
@@ -66,7 +69,8 @@ body {
   --active-button-text-background-color: #ffffff;
   --active-button-border-radius: 8px;
   --active-button-border: none;
-  --active-button-box-shadow: 0px 8px 10px -9px rgb(0, 0, 0);
+  --active-button-box-shadow: 0px 4px 4px 0px #00000040;
+
 
   /* button not active */
   --button-not-active-text-color: rgba(0, 0, 0, 0.7);
@@ -77,8 +81,16 @@ body {
   --error-background-color: rgba(233, 27, 27, 0.3);
   /* graphs-background-color */
   --graphs-background-color: rgba(178, 178, 178, 0.2);
+
+  /* navBar */
+  --navBar-background-color: #062B59;
 }
 
 svg {
   font-size: 20px;
+}
+
+
+.n {
+  padding: var(--example);
 }

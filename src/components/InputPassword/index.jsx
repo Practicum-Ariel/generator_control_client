@@ -17,6 +17,7 @@ export default function InputPassword({ name, ...props }) {
                 type={showPassword ? 'text' : 'password'}
                 placeholder="סיסמה"
                 {...props}
+                name={name}
             />
 
             <span className={styles.eye} onClick={togglePasswordVisibility} >
