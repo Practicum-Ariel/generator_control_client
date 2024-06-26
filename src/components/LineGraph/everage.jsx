@@ -13,12 +13,12 @@ export default function everage({ data, pointsInInterval = 24 }) {
       Math.floor(numPointsInitial / pointsInInterval) || 1;
     for (let i = 0; i < numPointsInitial; i += numPointsPerInterval) {
       const pointsSlice = sensor.points.slice(i, i + numPointsPerInterval);
-      console.log({
-        p: pointsSlice[0],
-        numPointsInitial,
-        i,
-        numPointsPerInterval,
-      });
+      // console.log({
+      //   p: pointsSlice[0],
+      //   numPointsInitial,
+      //   i,
+      //   numPointsPerInterval,
+      // });
       const avgY = calculateAverage(pointsSlice);
       averagedPoints.push({ x: pointsSlice[0]?.x, y: avgY });
     }

@@ -20,8 +20,8 @@ const Sivan = () => {
     <div className={styles.chartContainer}>
       <div className={styles.canvasContainer}>
         <LineGraph data={data.filter((sens) => sensor[sens.name])} />
-        {/* <PointsGraph /> */}
-        {/* <PointsGraph /> */}
+        {/* <PointsGraph /> 
+         <PointsGraph /> */}
       </div>
       <SensorCheckBox sensor={sensor} setSensor={setSensor} />
     </div>
