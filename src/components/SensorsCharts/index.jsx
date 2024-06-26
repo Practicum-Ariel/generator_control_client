@@ -17,8 +17,7 @@ export default function SensorsCharts() {
   return (
      <div className={styles.SensorsCharts}>
       <BoxSensorType setSelected={setSelected} selected={selected} types={types}/>
-      {/* {loading?<Loader/:
-      >} */}
+      {loading?<Loader/>: error? <div>Error</div> : <div>Data </div>}
       
     </div>
   )

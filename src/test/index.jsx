@@ -14,6 +14,7 @@ import Sivan from "./Sivan";
 import Tavor from "./Tavor";
 import Yosef from "./Yosef";
 import Asaf from "./Asaf";
+import ShmuelA from "./ShmuelA";
 import Natan from "./Natan";
 
 export const testRoutes = [
@@ -32,5 +33,6 @@ export const testRoutes = [
    { path: 'shani', element: <Shani /> },
    { path: 'hodaya', element: <Hodaya /> },
    { path: 'asaf', element: <Asaf /> },
+   { path: 'shmuelA', element: <ShmuelA /> },
    { path: 'natan', element: <Natan /> }
 ]

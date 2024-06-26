@@ -1,7 +1,7 @@
 import styles from './style.module.css';
 import React from 'react';
 
-export default function ScaleChart({ size =10, unit = "temp", rangeObject = {} }) {
+export default function ScaleChart({ size = 10, unit = "temp", rangeObject = {} }) {
 
   // const rangeObjectTemp = 
   // {
@@ -13,9 +13,9 @@ export default function ScaleChart({ size =10, unit = "temp", rangeObject = {} }
   //   moderateMax:110,
   //   severe:110
   // }
-  
+
   const findDeg = (temp) => {
-    const onGraph = (temp / rangeObject.severe+10) * 100
+    const onGraph = (temp / (rangeObject.severe + 10)) * 100
     return (onGraph / 100) * 180 - 90
   }
 
@@ -26,12 +26,12 @@ export default function ScaleChart({ size =10, unit = "temp", rangeObject = {} }
     //make the percent for the cssGradient
     const max = arrRange[arrRange.length - 1]
     const cssGradient = arrRange.map(num => (num / max) * 100);
-    console.log({ cssGradient })
+    // console.log({ cssGradient })
     return cssGradient
   }
 
   const rangeForCSS = cssGradient(rangeObject);
-
+  // console.log(findDeg(size));
   return (
     <div className={styles.scaleChart}>
       <div className={styles.circle}>
@@ -51,7 +51,7 @@ export default function ScaleChart({ size =10, unit = "temp", rangeObject = {} }
           <div className={styles.point}></div>
         </div>
       </div>
-      <span>{size + " "+unit}</span>
+      <span>{size + " " + unit}</span>
     </div>
 
   );
