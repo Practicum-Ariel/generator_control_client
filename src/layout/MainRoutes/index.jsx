@@ -9,6 +9,7 @@ import TechnicianCheckForm from '../../pages/TechnicianCheckForm';
 import { testRoutes } from '../../test';
 import MainLayout from '../MainLayout';
 import PopupProvider from "../Popup/PopupProvider";
+import {AuthContextProvider}  from '../../context/AuthContext';
 
 const routes = [
   { path: 'example', element: <Example /> },
@@ -20,9 +21,9 @@ const routes = [
       { path: 'generator/:id', element: <SingleGenerator /> },
       { path: 'tech-check/form', element: <TechnicianCheckForm /> },
       { path: 'notifications', element: <Notifications /> },
-      { path: 'login', element: <LoginPage /> },
     ],
   },
+  { path: 'login', element: <LoginPage /> },
   { path: 'test', children: testRoutes },
 ];
 
@@ -33,8 +34,10 @@ const router = createBrowserRouter(routes);
 
 export default function MainRoutes() {
   return (
+    <AuthContextProvider>
     <PopupProvider>
       <RouterProvider router={router} />;
     </PopupProvider>
+    </AuthContextProvider>
   );
 }
