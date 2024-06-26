@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import useApi from '../../hooks/useApi'
 import Loader from '../../components/Loader'
 import { useState } from 'react'
+import Dots from '../../components/Dots';
 
 // creator: Shahar
 
@@ -29,6 +30,8 @@ function AllGenerators() {
   // }]
 
   const { data, loading, error } = useApi('/generator/all-gen')
+
+  
 
   const getColor = (status) => {
     let color = ''
@@ -56,7 +59,8 @@ function AllGenerators() {
         {checked.length == 2 ? <Link to={`/generator/compare?ids=${checked[0]},${checked[1]}`} className={styles.compare_button}>בצע השוואה</Link> : ''}
       </div>
       <div className={styles.genList}>
-        {data?.map(gen => <div className={styles.gen}>
+        {data?.map(gen => <div key={gen._id} className={styles.gen}>
+          <Dots/>
           <input type="checkbox" checked={checked.includes(gen._id)} onChange={() => handleChange(gen._id)} />
           <Link to={`/generator/${gen.name}`} className={styles.link}>
             <h2>{gen.name}</h2>
@@ -65,6 +69,19 @@ function AllGenerators() {
             <img src='/public/images/Indicator_clock.jpg' alt="Indicator_clock" />
           </Link>
         </div>)}
+
+
+        {data?.map(gen => <div key={gen._id} className={styles.gen}>
+          <Dots/>
+          <input type="checkbox" checked={checked.includes(gen._id)} onChange={() => handleChange(gen._id)} />
+          <Link to={`/generator/${gen.name}`} className={styles.link}>
+            <h2>{gen.name}</h2>
+            <h4>{gen.location}</h4>
+            <h5 className={styles.status} style={{ color: getColor(gen.status) }}>{gen.status}</h5>
+            <img src='/public/images/Indicator_clock.jpg' alt="Indicator_clock" />
+          </Link>
+        </div>)}
+        
       </div>
     </div>
   )

@@ -1,0 +1,35 @@
+.optionsContainer{
+    position: relative;
+}
+
+.optionsContainer button{
+    height: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+}
+
+.optionsBox{
+    position: absolute;
+
+
+    height: 300px;
+    width: 100px;
+    background-color: red;
+}
+
+.optionsBox.positionLeft{
+    right: 0;
+}
+
+.optionsBox.positionRight{
+    left: 0;
+}
+
+.optionsBox.positionUp{
+    bottom: 0;
+}
+
+.optionsBox.positionDown{
+    top: 20px;
+}
