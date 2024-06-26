@@ -3,11 +3,15 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styles from './styles.module.css'
 import useApi from '../../hooks/useApi';
 import Loader from '../../components/Loader';
+import AlertComponent from '../../components/AlertComponent';
+
+// creator: Shahar
 
 function SingleGenerator() {
   let { id } = useParams();
   let nav = useNavigate()
 
+  // fake data
   // let allGen = [{
   //   _id: '6678464e815884d6e23a4542',
   //   name: 'gen300',
@@ -34,31 +38,42 @@ function SingleGenerator() {
 
   // const { data, loading, error } = useApi(`generator/${genName}`)
   const { data, loading, error } = useApi('/generator/all-gen')
-  // let allGen = [];
-  // if(data) allGen = data
-  console.log('allGen, data', data);
 
   if (loading) return <Loader />
-  if(error) return error
+  if (error) return error
 
   let currentGen = data?.find(gen => gen.name == id)
 
   return (<>
     <div className={styles.grid_container}>
       <div className={styles.gen_details}>
-        <h2>גנרטור {id}</h2>
+        <h3>גנרטור {id}</h3>
         <div>{currentGen?.location}</div>
         <div>מזהה : {id}</div>
-        <div>
+        <div className={styles.select}>
           <div>גנרטור</div>
-          <select name="chooseGen" id="chooseGen"  defaultValue={id} onChange={handleChange}>
+          <select name="chooseGen" id="chooseGen" defaultValue={id} onChange={handleChange}>
             {data?.map(g => <option value={g.name}>{g.name}</option>)}
           </select>
         </div>
       </div>
-      <div className={styles.insights}>תובנות AI</div>
-      <div className={styles.charts}>גרפים</div>
-      <div className={styles.live_info}>מידע בזמן אמת</div>
+      <div className={styles.insights}>
+        <h3>תובנות Ai</h3>
+        <div className={styles.all_insights}>
+          <AlertComponent status={'danger'} title={'קריטי'} context={'הקירור בחריגות דלק, יש להחליף סנן ראשי במנוע. הקירור בחריגות דלק, יש להחליף סנן ראשי במנוע. הקירור בחריגות דלק, יש להחליף'} />
+          <AlertComponent status={'succcess'} title={'הערה'} context={'האיזור חם'} />
+          <AlertComponent status={'warning'} title={'לשים לב'} context={'הגנרטור מתחמם'} />
+          <AlertComponent status={'danger'} title={'קריטי'} context={'הקירור בחריגות דלק, יש להחליף סנן ראשי במנוע'} />
+          <AlertComponent status={'warning'} title={'לשים לב'} context={'רעידות מתחזקות'} />
+          <AlertComponent status={'succcess'} title={'אזהרה'} context={''} />
+        </div>
+      </div>
+      <div className={styles.charts}>
+        <h3>גרפים</h3>
+      </div>
+      <div className={styles.live_info}>
+        <h3>מידע בזמן אמת</h3>
+      </div>
     </div>
   </>
   )
