@@ -13,6 +13,7 @@ import Sivan from "./Sivan";
 import Tavor from "./Tavor";
 import Yosef from "./Yosef";
 import Asaf from "./Asaf";
+import ShmuelA from "./ShmuelA";
 
 export const testRoutes = [
    { path: 'eti', element: <Eti /> },
@@ -30,4 +31,5 @@ export const testRoutes = [
    { path: 'shani', element: <Shani /> },
    { path: 'hodaya', element: <Hodaya /> },
    { path: 'asaf', element: <Asaf /> },
+   { path: 'shmuelA', element: <ShmuelA /> },
 ]

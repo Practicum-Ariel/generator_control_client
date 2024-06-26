@@ -31,5 +31,5 @@ const router = createBrowserRouter(routes)
 
 export default function MainRoutes() {
 
-   return (<RouterProvider router={router} />)
+  return (<RouterProvider router={router} />)
 }
