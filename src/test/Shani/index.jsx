@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import styles from './style.module.css'
 import { apiReq } from '../../helpers/apiReq'
+import { TechnicianTable } from '../../components/TechnicianTable'
 
 
 // creator: Shani
@@ -23,6 +24,7 @@ export default function Shani() {
   return (
     <div className={styles.Shani}>
       Shani
+      <TechnicianTable />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useApi } from '../hook/useApi';
 
 function TechnicianTable() {
   const [technicians, setTechnicians] = useState([])
@@ -12,22 +12,13 @@ function TechnicianTable() {
     fetchTechnicians();
   }, []);
 
-// מבצעת בקשה לשרת כדי לקבל נתונים עדכניים של הטכנאי
-  const fetchTechnicians = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/api/technician/by-filter', {
-        params: {
-          searchIn,
-          searchBy,
-          sortBy,
-          sortDir,
-        },
-      });
-      setTechnicians(response.data);
-    } catch (err) {
-      console.error('Error fetching technicians:', err);
-    }
-  };
+  const { data: fetchTechnicians, loading, error } = useApi(
+    'http://localhost:3000/api/technician/by-filter',
+    'GET',
+    null,
+    { searchIn, searchBy, sortBy, sortDir }
+  );
+
 // כאשר המשתמש לוחץ על הכפתור חיפוש הפונקציה מונעת את השליחה המקורית ומבצעת בקשה חדשה לשרת ע"מ להביא את הנתונים העדכניים
   const handleSearch = (e) => {
     e.preventDefault();
