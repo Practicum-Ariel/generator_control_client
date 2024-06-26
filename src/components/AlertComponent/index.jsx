@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import styles from "./style.module.css";
 import { MdOutlineArrowLeft } from "react-icons/md";
 import { TiArrowSortedDown } from "react-icons/ti";
+import TechVisitForm from "../TechVisitForm";
+import { useNavigate } from "react-router-dom";
 
-export default function index({ status, title, description, context, treatments, handlleClick }) {
+export default function index({ status, title, description, context, treatments, reasons }) {
   const [isClose, setIsClose] = useState(true);
+  let nav = useNavigate()
   return (
     // statuses[status] ?
     <div
@@ -20,10 +23,10 @@ export default function index({ status, title, description, context, treatments,
         <>
           <div className="">{context}</div>
           <div className={styles.treatments}>
-            <h5>דרכי טיפול:</h5>
-            {treatments.map(t => <li>{t}</li>)}
+            <h5>סיבות אפשריות לתקלה:</h5>
+            {reasons?.map(t => <li>{t}</li>)}
           </div>
-          <button onClick={() => handleClick} className={styles.but}>
+          <button onClick={() => nav('/tech-check/form', { state: { key: "value" } })} className={styles.but}>
             לפתיחת טיפול
           </button>
         </>
