@@ -1,15 +1,11 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styles from './styles.module.css'
 import useApi from '../../hooks/useApi';
 
 function SingleGenerator() {
   let { id } = useParams();
-
-  let gen = {
-    name : 'gen300',
-    location : 'באר שבע'
-  };
+  let nav = useNavigate()
 
   let genList = [{
     _id: '6678464e815884d6e23a4542',
@@ -30,20 +26,27 @@ function SingleGenerator() {
     status: 'בתיקון'
   }]
 
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    nav(`/generator/${e.target.value}`)
+  }
+
   // const { data, loading, error } = useApi(`generator/${genName}`)
 
   // if (loading) return <Loader />
   // if(error) return error
 
+  let currentGen = genList.find(gen => gen.name == id)
+
   return (<>
     <div className={styles.grid_container}>
       <div className={styles.gen_details}>
         <h2>גנרטור {id}</h2>
-        <div>{gen.location}</div>
+        <div>{currentGen.location}</div>
         <div>מזהה : {id}</div>
         <div>
           <div>גנרטור</div>
-          <select name="chooseGen" id="chooseGen">
+          <select name="chooseGen" id="chooseGen" onChange={handleChange}>
             {genList.map(g => <option value={g.name}>{g.name}</option>)}
           </select>
         </div>
