@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import style from "./style.module.css";
 import {useParams, useSearchParams} from "react-router-dom";
 export default function index() {
@@ -69,19 +69,49 @@ export default function index() {
     setSearchParams({filter: "jgcdktu-khfuy"});
   }, []);
   const value = searchParams.get("filter");
-const genertors = value.split('-')
-  console.log(genertors);
+  const genertors = value.split("-");
+  
+  const [selectors, setSelectors] = useState({time: "", senser: ""});
+  console.log(selectors);
+  useEffect(() => {
+// לבצע את הבקשה לסינון מהשרת
+console.log(`?time=${selectors.time}&senser=${selectors.senser}&`);
+
+}, [selectors]);
+//  TO DO // STRINGRFY //ַַַַ&QWERY
   return (
     <div className={style.main}>
+        <h1>השוואת גנרטורים</h1>
+      <div className={style.selectors}>
+        <select
+          onChange={(e) => setSelectors({...selectors, senser: e.target.value})}
+        >
+          <option>הכל</option>
+          {fakeData.map((v) => (
+            <option>{v.sensorsName}</option>
+          ))}
+        </select>
+        <select
+          onChange={(e) => setSelectors({...selectors, time: e.target.value})}
+        >
+          <option>ראשון</option>
+          <option>שני</option>
+          <option>שלישי</option>
+          <option>רביעי</option>
+          <option>חמישי</option>
+          <option>שישי</option>
+          <option>שבת</option>
+        </select>
+      </div>
       <table>
         <thead>
           <tr>
             <th className={style.sensors}>שמות הגנרטורים</th>
             <th className={`${style.compare} ${style.sensorscolor}`}>
-           {genertors[0]}
+              {genertors[0]}
             </th>
             <th className={`${style.compare} ${style.sensorscolor}`}>
-            {genertors[1]}
+              {genertors[1]}
             </th>
           </tr>
         </thead>
