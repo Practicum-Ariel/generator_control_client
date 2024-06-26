@@ -1,5 +1,5 @@
-import styles from './style.module.css';
-import React from 'react';
+import styles from "./style.module.css";
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,9 +9,8 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Scatter } from 'react-chartjs-2';
-
+} from "chart.js";
+import { Scatter } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -22,7 +21,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
 
 const points = [
   { x: 0, y: 242 },
@@ -48,64 +46,55 @@ const points = [
 ];
 
 
-const x = [
-  {
-    name: "ממוצע",
-    points: [
-      { x: "00:00", y: 76 },
-      { x: "00:20", y: 39 },
-      { x: "00:40", y: 71 },
-      { x: "01:00", y: 53 },
-      { x: "01:20", y: 8 },
-      { x: "01:40", y: 25 },
-      { x: "02:00", y: 89 },
-      { x: "02:20", y: 18 },
-      { x: "02:40", y: 77 },
-    ],
-  }]
-export default function PointsGraph({data}) {
-  console.log("datadat",data);
-   const options = {
+export default function PointsGraph({ data }) {
+  console.log("datadat", data);
+  const options = {
     responsive: true,
     interaction: {
-      mode: 'index',
+      mode: "index",
       intersect: false,
     },
     stacked: false,
     plugins: {
+      legend: {
+        display: false, // Hide the legend
+      },
       title: {
         display: true,
-        text: 'Chart.js Scatter Chart',
+        text: 'חריגות טמפטורה', // Set your title here
       },
     },
     scales: {
       x: {
-        type: 'category',
-        position: 'bottom',
+        type: "category",
+        position: "bottom",
+        grid: {
+          display: false,
+        },
+        title: {
+          display: false, // Hide the x-axis title
+        },
       },
       y: {
-        type: 'linear',
+        type: "linear",
         display: true,
-        position: 'left',
-      },
-      y1: {
-        type: 'linear',
-        display: true,
-        position: 'right',
         grid: {
-          drawOnChartArea: false,
+          display: false,
+        },
+        position: "left",
+        title: {
+          display: false, // Hide the y-axis title
         },
       },
     },
   };
-   const graph = {
+  const graph = {
     datasets: [
       {
-        
         data: points,
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        yAxisID: 'y',
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        yAxisID: "y",
       },
     ],
   };
@@ -120,7 +109,5 @@ export default function PointsGraph({data}) {
       yAxisID: "y",
     })),
   };
-  return (
-    <Scatter options={options} data={formattedData} />
-  );
+  return <Scatter options={options} data={formattedData} />;
 }

@@ -17,20 +17,20 @@ import Asaf from "./Asaf";
 import Natan from "./Natan";
 
 export const testRoutes = [
-   { path: 'eti', element: <Eti /> },
-   { path: 'sagi', element: <Sagi /> },
-   { path: 'shahar', element: <Shahar /> },
-   { path: 'yosef', element: <Yosef /> },
-   { path: 'aviad', element: <Aviad /> },
-   { path: 'shmuel', element: <Shmuel /> },
-   { path: 'sivan', element: <Sivan /> },
-   { path: 'ilay', element: <Ilay /> },
-   { path: 'tavor', element: <Tavor /> },
-   { path: 'reuven', element: <Reuven /> },
-   { path: 'aviezer', element: <Aviezer /> },
-   { path: 'inbar', element: <Inbar /> },
-   { path: 'shani', element: <Shani /> },
-   { path: 'hodaya', element: <Hodaya /> },
-   { path: 'asaf', element: <Asaf /> },
-   { path: 'natan', element: <Natan /> }
-]
+  { path: "eti", element: <Eti /> },
+  { path: "sagi", element: <Sagi /> },
+  { path: "shahar", element: <Shahar /> },
+  { path: "yosef", element: <Yosef /> },
+  { path: "aviad", element: <Aviad /> },
+  { path: "shmuel", element: <Shmuel /> },
+  { path: "sivan", element: <Sivan /> },
+  { path: "ilay", element: <Ilay /> },
+  { path: "tavor", element: <Tavor /> },
+  { path: "reuven", element: <Reuven /> },
+  { path: "aviezer", element: <Aviezer /> },
+  { path: "inbar", element: <Inbar /> },
+  { path: "shani", element: <Shani /> },
+  { path: "hodaya", element: <Hodaya /> },
+  { path: "asaf", element: <Asaf /> },
+  { path: "natan", element: <Natan /> },
+];

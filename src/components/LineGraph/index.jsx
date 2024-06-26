@@ -95,6 +95,7 @@ const LineGraph = ({ data }) => {
         },
       },
     },
+    
     scales: {
       x: {
         type: "category",
