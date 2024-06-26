@@ -14,19 +14,21 @@
     grid-area: charts;
 }
 
-.live_info {
-    grid-area: live-info;
+.switch_box {
+    grid-area: switch-box;
+    display: flex;
+    justify-content: center;
 }
 
 .grid_container {
     display: grid;
     grid-template-areas:
         'gen-details gen-details insights insights'
-        'charts charts charts charts'
-        'live-info live-info live-info live-info';
+        'switch-box switch-box switch-box switch-box'
+        'charts charts charts charts';
     gap: 1rem;
     padding: 20px 20px;
-    grid-template-rows: 300px 50px 1fr;
+    grid-template-rows: 220px 30px 1fr;
     grid-template-columns: 23% 23% 23% 1fr;
 }
 

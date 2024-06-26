@@ -5,6 +5,8 @@ import useApi from '../../hooks/useApi';
 import Loader from '../../components/Loader';
 import AlertComponent from '../../components/AlertComponent';
 import BoxSensorType from '../../components/BoxSensorType';
+import SensorsCharts from '../../components/SensorsCharts';
+import ScaleLive from '../ScaleLive'
 
 // creator: Shahar
 
@@ -12,7 +14,7 @@ function SingleGenerator() {
   let nav = useNavigate()
   let { id } = useParams();
   const [insightBoxType, setInsightBoxType] = useState('all')
-  const [graphsBoxType, setGraphsBoxType] = useState('live')
+  const [graphsBoxType, setGraphsBoxType] = useState('history')
 
   let statuses = ['success', 'warning', 'danger']
 
@@ -71,16 +73,14 @@ function SingleGenerator() {
     nav(`/generator/${e.target.value}`)
   }
 
-  // const { data, loading, error } = useApi(`generator/${genName}`)
-  // const { data, loading, error } = useApi('/generator/all-gen')
-  const { data, loading, error } = useApi('/aiapiserver')
-  
+  const { data, loading, error } = useApi('/generator/all-gen')
+  const { data: insights, loading: loadingInsightes } = useApi('/aiapiserver')
+
   if (loading) return <Loader />
+  if (loadingInsightes) return <Loader />
   if (error) return error
-  
+
   let currentGen = data?.find(gen => gen.name == id)
-  let insights = [];
-  if (data) insights = data
 
   return (<>
     <div className={styles.grid_container}>
@@ -107,14 +107,16 @@ function SingleGenerator() {
           <AlertComponent status={'danger'} title={'קריטי'} context={'הקירור בחריגות דלק, יש להחליף סנן ראשי במנוע'} />
           <AlertComponent status={'warning'} title={'לשים לב'} context={'רעידות מתחזקות'} />
           <AlertComponent status={'succcess'} title={'אזהרה'} context={''} /> */}
-          {insights?.map(ins => <AlertComponent status={statuses[ins.level_risk-1]} title={ins.fault_name} description={ins.fault_description} context={ins.insight} treatments={ins.treatments} reasons={ins.based_on_data} />)}
+          {insights?.map(ins => <AlertComponent id={ins._id} status={statuses[ins.level_risk - 1]} title={ins.fault_name} description={ins.fault_description} context={ins.insight} treatments={ins.treatments} reasons={ins.based_on_data} />)}
         </div>
       </div>
-      <div className={styles.box_button}>
-        <BoxSensorType setSelected={setGraphsBoxType} types={graphsTypes} selected={graphsBoxType} />
+      <div className={styles.switch_box}>
+        <div className={styles.box_button}>
+          <BoxSensorType setSelected={setGraphsBoxType} types={graphsTypes} selected={graphsBoxType} />
+        </div>
       </div>
       <div className={styles.charts}>
-
+        {graphsBoxType == 'live' ? <ScaleLive /> : <SensorsCharts />}
       </div>
     </div>
   </>

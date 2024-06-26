@@ -5,7 +5,7 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import TechVisitForm from "../TechVisitForm";
 import { useNavigate } from "react-router-dom";
 
-export default function index({ status, title, description, context, treatments, reasons }) {
+export default function index({ id, status, title, description, context, treatments, reasons }) {
   const [isClose, setIsClose] = useState(true);
   let nav = useNavigate()
   return (
@@ -24,9 +24,9 @@ export default function index({ status, title, description, context, treatments,
           <div className="">{context}</div>
           <div className={styles.treatments}>
             <h5>סיבות אפשריות לתקלה:</h5>
-            {reasons?.map(t => <li>{t}</li>)}
+            {/* {reasons.map(t => <li>{t}</li>)} */}
           </div>
-          <button onClick={() => nav('/tech-check/form', { state: { key: "value" } })} className={styles.but}>
+          <button onClick={() => nav('/tech-check/form', { state: { treatments: treatments, insightId : id } })} className={styles.but}>
             לפתיחת טיפול
           </button>
         </>
