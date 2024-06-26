@@ -6,6 +6,7 @@ const calculateAverage = (dataPoints) => {
 // const max = Math.max(...data.map(d=> d.points.length));
 
 export default function everage({ data, pointsInInterval = 24 }) {
+  console.log("data",data);
   const newData = data.map((sensor) => {
     const averagedPoints = [];
     const numPointsInitial = sensor.points.length;
