@@ -51,7 +51,7 @@
     align-items: center;
 }
 
-.warning{
+/*.warning{
     background-color:magenta;
     color: white;
     height: 45px;
@@ -60,7 +60,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+}*/
 
 .img{
   height: 70px;  

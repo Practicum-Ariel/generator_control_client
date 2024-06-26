@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ProfileIcon from '../ProfileIcon';
 import { GiPowerGenerator, GiGreenPower, GiAutoRepair } from 'react-icons/gi';
 import {
   MdOutlineLogin,
@@ -14,6 +15,10 @@ import styles from './styles.module.css';
 
 function MainNavigator() {
   const [expand, setExpand] = useState(false);
+
+
+
+
 
   const links = [
     {
@@ -68,7 +73,9 @@ function MainNavigator() {
             ))}
         </ul>
         <span>
-          <CgProfile />
+          {/* <CgProfile />*/}
+          <ProfileIcon />
+
         </span>
       </nav>
     </>

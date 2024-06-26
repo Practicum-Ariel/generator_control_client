@@ -1,0 +1,37 @@
+
+
+
+
+
+.image{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+   
+    
+   
+}
+
+.details{
+    list-style-type: none;
+    position: relative;
+    bottom:100px;
+    right: 45px;
+    opacity:0;
+    height: 80px;
+    width: 80px;
+    border-style: solid;
+    border-color: lightgrey;
+    background-color:mediumblue;
+    padding: 10px;
+    
+   
+}
+
+.link{
+  color:darkgray;
+}
+
+.btn{
+    color: darkgray;
+}
