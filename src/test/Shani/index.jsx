@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import styles from './style.module.css'
 import { apiReq } from '../../helpers/apiReq'
-import { TechnicianTable } from '../../components/TechnicianTable'
+import TechnicianTable from "../../components/TechnicianTable"
 
 
 // creator: Shani

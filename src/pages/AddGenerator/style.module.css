@@ -1,0 +1,22 @@
+.newGenForm{
+    width: 100%;
+    height: calc(100vh - 20px);
+    background-color: #eee;
+}
+
+.formRow{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.selectedRow{
+    display: flex;
+    
+}
+
+.selected{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}

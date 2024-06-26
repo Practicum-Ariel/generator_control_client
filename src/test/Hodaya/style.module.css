@@ -1,0 +1,30 @@
+.live {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 30px;
+}
+
+
+.live .sensorByType {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    /* border: 1px blanchedalmond solid; */
+    background-color: rgb(235, 234, 255);
+}
+
+.live .sensorByType .scaleChart {
+    background-color: white;
+    padding: 10px;
+    border-radius: 18px;
+    /* opacity: 0.5; */
+}
+
+.live h2 {
+    align-items:center ;
+}
