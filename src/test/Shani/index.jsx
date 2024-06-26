@@ -11,9 +11,9 @@ export default function Shani() {
     const fetchData = async () => {
       try {
         const responseData = await apiReq({ url: '/test' });
-        console.log('Response data:', responseData); // כאן אני מטפלת בתשובה של הבקשה במקרה של הצלחה
+        console.log('Response data:', responseData);
       } catch (error) {
-        console.error('Error fetching data:', error.message); //  כאן אני מטפלת בשגיאה במקרה של כישלון הבקשה
+        console.error('Error fetching data:', error.message);
       }
     };
 
