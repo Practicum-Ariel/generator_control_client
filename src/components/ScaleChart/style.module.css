@@ -1,0 +1,68 @@
+.circle .semiCircle {
+
+    /* transform: translate(-50%, -50%); */
+    height: 100px;
+    width: 200px;
+    border-radius: 150px 150px 0 0;
+    z-index: -1;
+
+
+}
+
+
+.circle .semiCircleFrame {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    border-radius: 150px;
+    background: white;
+    scale: 0.9 0.9;
+    /* transform: rotate(60deg); */
+
+}
+
+.circle .line {
+    position: absolute;
+    height: 100px;
+    width: 2px;
+    top: 50px;
+    left: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(42, 42, 39, 1) 45%, rgba(254, 254, 254, 1) 45%);
+}
+
+.circle .point {
+    /* position: absolute; */
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    top: 94px;
+    left: 98px;
+    margin-bottom: 10px;
+    background-color: black;
+
+}
+
+
+.circle {
+    position: relative;
+    /* border: 3px solid black; */
+    width: fit-content;
+    overflow: hidden;
+
+}
+
+span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scaleChart {
+    width: fit-content;
+
+}
