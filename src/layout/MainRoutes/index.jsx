@@ -9,6 +9,7 @@ import TechnicianCheckForm from '../../pages/TechnicianCheckForm';
 import { testRoutes } from '../../test';
 import MainLayout from '../MainLayout';
 import PopupProvider from "../Popup/PopupProvider";
+import ComparePage from "../../components/ComparePage";
 
 const routes = [
   { path: 'example', element: <Example /> },
@@ -20,6 +21,8 @@ const routes = [
       { path: 'generator/:id', element: <SingleGenerator /> },
       { path: 'tech-check/form', element: <TechnicianCheckForm /> },
       { path: 'notifications', element: <Notifications /> },
+      
+      { path: 'generators/compare', element: <ComparePage /> },
       { path: 'login', element: <LoginPage /> },
     ],
   },
@@ -38,3 +41,4 @@ export default function MainRoutes() {
     </PopupProvider>
   );
 }
+
