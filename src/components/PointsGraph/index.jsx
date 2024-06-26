@@ -1,5 +1,5 @@
-import styles from './style.module.css';
-import React from 'react';
+import styles from "./style.module.css";
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,9 +9,8 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Scatter } from 'react-chartjs-2';
-
+} from "chart.js";
+import { Scatter } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -22,40 +21,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
-export const options = {
-  responsive: true,
-  interaction: {
-    mode: 'index',
-    intersect: false,
-  },
-  stacked: false,
-  plugins: {
-    title: {
-      display: true,
-      text: 'Chart.js Scatter Chart',
-    },
-  },
-  scales: {
-    x: {
-      type: 'linear',
-      position: 'bottom',
-    },
-    y: {
-      type: 'linear',
-      display: true,
-      position: 'left',
-    },
-    y1: {
-      type: 'linear',
-      display: true,
-      position: 'right',
-      grid: {
-        drawOnChartArea: false,
-      },
-    },
-  },
-};
 
 const points = [
   { x: 0, y: 242 },
@@ -80,20 +45,69 @@ const points = [
   { x: 190, y: 345 },
 ];
 
-export const data = {
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: points,
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      yAxisID: 'y',
-    },
-  ],
-};
 
-export default function PointsGraph() {
-  return (
-    <Scatter options={options} data={data} />
-  );
+export default function PointsGraph({ data }) {
+  console.log("datadat", data);
+  const options = {
+    responsive: true,
+    interaction: {
+      mode: "index",
+      intersect: false,
+    },
+    stacked: false,
+    plugins: {
+      legend: {
+        display: false, // Hide the legend
+      },
+      title: {
+        display: true,
+        text: 'חריגות טמפטורה', // Set your title here
+      },
+    },
+    scales: {
+      x: {
+        type: "category",
+        position: "bottom",
+        grid: {
+          display: false,
+        },
+        title: {
+          display: false, // Hide the x-axis title
+        },
+      },
+      y: {
+        type: "linear",
+        display: true,
+        grid: {
+          display: false,
+        },
+        position: "left",
+        title: {
+          display: false, // Hide the y-axis title
+        },
+      },
+    },
+  };
+  const graph = {
+    datasets: [
+      {
+        data: points,
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        yAxisID: "y",
+      },
+    ],
+  };
+  const formattedData = {
+    datasets: data.map((sens) => ({
+      data: sens.points,
+      borderColor: sens.color,
+      borderWidth: 2, // Thin lines
+      pointRadius: 4, // Hide points
+      tension: 0.4,
+      fill: true,
+      yAxisID: "y",
+    })),
+  };
+  return <Scatter options={options} data={formattedData} />;
 }
