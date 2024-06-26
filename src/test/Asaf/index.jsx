@@ -9,7 +9,7 @@ export default function Asaf() {
   // TODO // כפתור גדול // גאפ לטקסט האפור
   return (
     <div className={style.main}>
-      <Toastify/>
+      <Toastify text={'kvik'} status={'warning'}/>
  
     </div>
   );
