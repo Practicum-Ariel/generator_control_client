@@ -1,39 +1,17 @@
-.live{
-    padding: 15px;
+ul {
 
-}
-
-.types {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    height:fit-content;
-    /* padding: 20px; */
-}
-
-
-.types .sensorByType {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 20px;
-    /* border: 1px blanchedalmond solid; */
-    background-color: rgb(235, 234, 255);
-    border-radius: 18px;
-}
-
-.types .sensorByType .scaleChart {
-    background-color: white;
-    padding: 10px;
-    border-radius: 18px;
-    /* opacity: 0.5; */
-}
-
-h2, h1{
-    display: flex;
-    justify-content: center;
-    color: VAR(--h2-font-color);
-    /* background-color: rgb(235, 234, 255); */
-}
+  }
+  
+  li {
+    margin: 10px 0;
+  }
+  
+  h1 {
+    font-size: 1.5em;
+    margin: 0;
+  }
+  
+  span {
+    font-size: 1em;
+  }
+  
