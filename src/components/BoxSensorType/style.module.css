@@ -1,20 +1,26 @@
 .box{
     border: 1px solid rgba(160, 160, 160, 0.756);
-    width: fit-content;
+    /* width: fit-content; */
     padding: 8px;
+    width: 100%;
     border-radius: 5px;
-    
 }
-.box menu{
+
+.box menu {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
 }
-.selected{
+
+.selected {
     box-shadow: var(--active-button-box-shadow);
 }
-.box menu button{
+
+.box menu button {
+    cursor: pointer;
+    width: 100%;
     padding: 7px 7px;
     border: none;
     background-color: transparent;
