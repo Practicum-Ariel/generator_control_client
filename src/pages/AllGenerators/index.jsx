@@ -53,7 +53,7 @@ function AllGenerators() {
   return (
     <div className={styles.allGen}>
       <div className={styles.compare}>
-        {checked.length == 2 ? <Link to={`/generator/compare?ids=${checked[0]},${checked[1]}`} className={styles.compare_button}>בצע השוואה</Link> : ''}
+        {checked.length == 2 ? <Link to={`/generators/compare?filter=${checked[0]}-${checked[1]}`} className={styles.compare_button}>בצע השוואה</Link> : ''}
       </div>
       <div className={styles.genList}>
         {data?.map(gen => <div className={styles.gen}>
