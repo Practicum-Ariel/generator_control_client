@@ -8,18 +8,15 @@ import { da } from '@faker-js/faker';
 
 //props{items contains :fullName, date, check, avatar, content}
 export default function TechCheckList({ genId }) {
-    //   const [items, setItems] = useState("")
-    const GenId = '6667a8c00e30b38c5dad90562'
+
+    //   const GenId = '6667a8c00e30b38c5dad90562'
 
 
-    const { loading, error, data } = useApi(`http://localhost:3000/api/visit?${GenId}&limit=5`)
+    const { loading, error, data } = useApi(`http://localhost:3000/api/visit?${genId}&limit=5`)
 
 
     if (loading) return <Loader />
     else if (error) return <>error</>
-
-
-
 
 
     return (
