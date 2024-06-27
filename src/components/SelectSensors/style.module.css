@@ -1,0 +1,69 @@
+.mainContainer {
+    position: relative;
+}
+
+.container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-top: 5px;
+    width: 150px;
+    border: #D0B1A3 solid 1px;
+    border-radius: 12px;
+    box-shadow: var(--active-button-box-shadow)
+}
+
+.selectAll {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    border-bottom: #D0B1A3 solid 1px;
+    padding: 10px;
+}
+
+.containerCheckBox {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+
+}
+
+.CheckBox {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    padding-left: 10px;
+}
+
+.name {
+    width: 100%;
+    display: flex;
+    color: #D0B1A3;
+    padding-left: 10px;
+}
+
+.selectAllContainer>h3 {
+    padding-right: 7px;
+    text-align: start;
+}
+
+.btn {
+    background-color: white;
+    border: none;
+    border: #D0B1A3 solid 1px;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.direction {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.selectAllContainer {
+    display: flex;
+
+}
