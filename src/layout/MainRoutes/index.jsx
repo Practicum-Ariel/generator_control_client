@@ -14,7 +14,7 @@ import {createContext, useState} from "react";
 import WelcomePage from "../../pages/WelcomePage";
 
 const routes = [
-  {path: "example", element: <Example />},
+  { path: 'example', element: <Example /> },
   {
     element: <MainLayout />,
     children: [
@@ -25,11 +25,11 @@ const routes = [
       {path: "tech-check/form", element: <TechnicianCheckForm />},
       {path: "notifications", element: <Notifications />},
 
-      {path: "generators/compare", element: <ComparePage />},
-      {path: "login", element: <LoginPage />},
+      { path: 'generators/compare', element: <ComparePage /> },
+      { path: 'login', element: <LoginPage /> },
     ],
   },
-  {path: "test", children: testRoutes},
+  { path: 'test', children: testRoutes },
 ];
 
 // export default function PopupProvider({}) {

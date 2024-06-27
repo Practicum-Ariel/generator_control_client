@@ -9,7 +9,7 @@
 }
 
 .main_nav_li:hover {
-  border-inline-end: 2px solid #ffffff;
+  border-inline-end: 3px solid #498fcc;
 }
 
 .main_nav_li > li {
@@ -21,43 +21,49 @@
      
 }
 
-
-
 .main_nav_li> li > svg {
   font-size: 2.5rem;
 }
 
-.tooltiptext {
+.tooltip_show {
   visibility: hidden;
   position: absolute;
   width: max-content;
   border: 1px solid #ffffff;
   background: #1c376f;
   padding: 0.3rem 0.4rem;
-  translate: -60% 50%;
+  translate: -40% 40%;
   -webkit-box-shadow: 5px 4px 7px -4px rgba(0, 0, 0, 0.64);
   -moz-box-shadow: 5px 4px 7px -4px rgba(0, 0, 0, 0.64);
   box-shadow: 5px 4px 7px -4px rgb(59 59 59);
   border-radius: 0.3rem;
 }
-.main_nav_li:hover .tooltiptext {
+.main_nav_li:hover .tooltip_show {
+  visibility: visible;
+}
+.main_nav_li:hover .tooltip_hidden {
   visibility: visible;
 }
 
 .active {
-  border-inline-end: 2px solid #498fcc;
+  border-inline-end: 3px solid #498fcc;
   
 }
-
 
 .main_nav_li > li > div{
   text-wrap: nowrap;
 }
+
 .main_nav_li > li > div.fadeIn{
 animation: fadeIn 1.5s;
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% { opacity: 0;  }
+  100% { opacity: 1;}
+}
+
+
+.main_nav_li:hover .hidden {
+  visibility: none;
 }

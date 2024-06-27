@@ -1,0 +1,78 @@
+.container {
+    height: 100%;
+    direction: rtl;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    margin: auto;
+    width: 100%;
+    box-shadow: var(--active-button-box-shadow);
+}
+
+.row {
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 20px;
+    width: 500px;
+}
+
+
+.box {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box>label {
+    width: 100px;
+    margin-right: 15px;
+}
+
+.btnContainer {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding-left: 90px;
+}
+
+.btn {
+    border: none;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    align-items: center;
+    width: 70px;
+    height: 25px;
+    background-color: #23649C;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.emptyCircle {
+    width: 10px;
+    height: 10px;
+    background-color: #D0B1A3;
+    border-radius: 50%;
+
+}
+
+.fullCircle {
+    width: 10px;
+    height: 10px;
+    background-color: blue;
+    border-radius: 50%;
+    margin-left: 20px;
+
+}
+
+.circleBox {
+    width: 65%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+}

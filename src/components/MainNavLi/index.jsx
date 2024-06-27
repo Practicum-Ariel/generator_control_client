@@ -3,6 +3,7 @@ import styles from './styles.module.css';
 import { NavLink } from 'react-router-dom';
 
 function MainNavLi({ liData, expand }) {
+  console.log(expand);
   console.log(liData.href);
   return (
     <NavLink
@@ -17,8 +18,14 @@ function MainNavLi({ liData, expand }) {
         <div className={expand ? styles.fadeIn : ''}>
           {expand ? liData.title : ''}
         </div>
-
-        <span className={styles.tooltiptext}>{liData.title}</span>
+        {!expand ? (
+          <span
+            class={`${expand ? styles.tooltip_hidden : styles.tooltip_show}`}>
+            {liData.title}
+          </span>
+        ) : (
+          ''
+        )}
       </li>
     </NavLink>
   );
