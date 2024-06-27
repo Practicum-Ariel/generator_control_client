@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import style from "./style.module.css";
 import LineGraph from "../LineGraph";
 
-export default function index() {
+export default function index({textOnGraph}) {
 //   const fakeData = [];
     const fakeData = [{graphTyp: [], senerioId: ""},2,2];
   const data = [
@@ -59,6 +59,7 @@ export default function index() {
             return (
               <div className={style.graph}>
                 <LineGraph data={data} />
+                <p>{textOnGraph}</p>
               </div>
             );
           })}

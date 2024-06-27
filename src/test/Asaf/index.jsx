@@ -9,7 +9,7 @@ export default function Asaf() {
   // TODO // כפתור גדול // גאפ לטקסט האפור
   return (
     <div className={style.main}>
-      <AddTestGraph />
+      <AddTestGraph textOnGraph={'bla bla bla'} />
  
     </div>
   );
