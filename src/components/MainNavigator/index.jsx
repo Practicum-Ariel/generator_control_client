@@ -19,13 +19,13 @@ function MainNavigator() {
     {
       id: 1,
       title: 'הוספת גנרטור',
-      href: '/generators/all',
+      href: '/generator/new',
       icon: <GiGreenPower />,
     },
     {
       id: 2,
       title: 'כלל הגנרטורים',
-      href: '/generator/new',
+      href: '/generators/all',
       icon: <GiPowerGenerator />,
     },
     {
