@@ -23,7 +23,6 @@ const routes = [
       {
         path: 'generators/all',
         element: <AllGenerators />,
-        children: [{ index: true, element: <GenLayout /> }],
       },
       { path: 'generator/new', element: <AddGenerator /> },
       { path: 'generator/:id', element: <SingleGenerator /> },
