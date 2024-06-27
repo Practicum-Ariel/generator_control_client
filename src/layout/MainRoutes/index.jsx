@@ -12,18 +12,23 @@ import PopupProvider from "../Popup/PopupProvider";
 import ComparePage from "../../components/ComparePage";
 import {createContext, useState} from "react";
 import WelcomePage from "../../pages/WelcomePage";
+import GenLayout from '../GenLayout';
 
 const routes = [
   { path: 'example', element: <Example /> },
   {
     element: <MainLayout />,
     children: [
-    {index:true, element: <WelcomePage />},
-      {path: "generators/all", element: <AllGenerators />},
-      {path: "generator/new", element: <AddGenerator />},
-      {path: "generator/:id", element: <SingleGenerator />},
-      {path: "tech-check/form", element: <TechnicianCheckForm />},
-      {path: "notifications", element: <Notifications />},
+      { index: true, element: <WelcomePage /> },
+      {
+        path: 'generators/all',
+        element: <AllGenerators />,
+        children: [{ index: true, element: <GenLayout /> }],
+      },
+      { path: 'generator/new', element: <AddGenerator /> },
+      { path: 'generator/:id', element: <SingleGenerator /> },
+      { path: 'tech-check/form', element: <TechnicianCheckForm /> },
+      { path: 'notifications', element: <Notifications /> },
 
       { path: 'generators/compare', element: <ComparePage /> },
       { path: 'login', element: <LoginPage /> },
