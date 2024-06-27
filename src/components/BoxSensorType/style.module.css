@@ -1,20 +1,27 @@
-.box{
+.box {
+
     border: 2px solid blue;
-    width: fit-content;
+    width: 100%;
     padding: 3px;
     border-radius: 5px;
-    
+
 }
-.box menu{
+
+.box menu {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
 }
-.selected{
+
+.selected {
     box-shadow: var(--active-button-box-shadow);
 }
-.box menu button{
+
+.box menu button {
+    cursor: pointer;
+    width: 100%;
     padding: 2px 7px;
     border: none;
     background-color: transparent;
