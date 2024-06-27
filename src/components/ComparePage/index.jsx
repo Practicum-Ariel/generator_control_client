@@ -9,63 +9,63 @@ export default function index() {
   const fakeData = [
     {
       compareName: "טמפ'-ממוצע- נורמלי",
-      generator1: { value: "89", status: "warning" },
-      generator2: { value: "70", status: "succcess" },
+      generator1: { value: "75", status: "warning" },
+      generator2: { value: "70", status: "danger" },
     },
     {
-      compareName: "טמפ'-ממוצע- קל",
-      generator1: { value: "80", status: "succcess" },
-      generator2: { value: "87", status: "danger" },
+      compareName: "טמפ'-ממוצע- חריגה קלה",
+      generator1: { value: "93", status: "succcess" },
+      generator2: { value: "110", status: "danger" },
     },
     {
-      compareName: "bla bla",
-      generator1: { value: "12", status: "danger" },
-      generator2: { value: "12", status: "succcess" },
+      compareName: "טמפ'-ממוצע- חריגה בינונית",
+      generator1: { value: "120", status: "danger" },
+      generator2: { value: "102", status: "succcess" },
     },
     {
-      compareName: "bla bla",
-      generator1: { value: "12", status: "warning" },
-      generator2: { value: "12", status: "warning" },
+      compareName: "טמפ'-ממוצע- חריגה חמורה",
+      generator1: { value: "120", status: "succcess" },
+      generator2: { value: "160", status: "danger" },
     },
     {
-      compareName: "bla bla",
-      generator1: { value: "12", status: "succcess" },
-      generator2: { value: "12", status: "warning" },
+      compareName: "קול-ממוצע- נורמלי",
+      generator1: { value: "62", status: "succcess" },
+      generator2: { value: "72", status: "danger" },
     },
     {
-      compareName: "bla bla",
-      generator1: { value: "12", status: "danger" },
+      compareName: "קול-ממוצע- חריגה קלה",
+      generator1: { value: "82", status: "danger" },
+      generator2: { value: "72", status: "succcess" },
+    },
+    {
+      compareName: "קול-ממוצע- חריגה בינונית",
+      generator1: { value: "75", status: "succcess" },
+      generator2: { value: "89", status: "danger" },
+    },
+    {
+      compareName: "קול-ממוצע חריגה חמורה",
+      generator1: { value: "102", status: "danger" },
+      generator2: { value: "82", status: "succcess" },
+    },
+    {
+      compareName: "ויברציה-ממוצע- נורמלי",
+      generator1: { value: "2", status: "succcess" },
       generator2: { value: "12", status: "danger" },
     },
     {
-      compareName: "bla bla",
+      compareName: "ויברציה-ממוצע- חריגה קלה",
       generator1: { value: "12", status: "succcess" },
-      generator2: { value: "12", status: "succcess" },
+      generator2: { value: "19", status: "danger" },
     },
     {
-      compareName: "bla bla",
-      generator1: { value: "12", status: "danger" },
-      generator2: { value: "12", status: "succcess" },
+      compareName: "ויברציה-ממוצע- חריגה בינונית",
+      generator1: { value: "18", status: "succcess" },
+      generator2: { value: "24", status: "danger" },
     },
     {
-      compareName: "bla bla",
-      generator1: { value: "12", status: "succcess" },
-      generator2: { value: "12", status: "warning" },
-    },
-    {
-      compareName: "bla bla",
-      generator1: { value: "12", status: "succcess" },
-      generator2: { value: "12", status: "warning" },
-    },
-    {
-      compareName: "bla bla",
-      generator1: { value: "12", status: "succcess" },
-      generator2: { value: "12", status: "warning" },
-    },
-    {
-      compareName: "bla bla",
-      generator1: { value: "12", status: "danger" },
-      generator2: { value: "12", status: "succcess" },
+      compareName: "ויברציה-ממוצע- חריגה חמורה",
+      generator1: { value: "34", status: "danger" },
+      generator2: { value: "22", status: "succcess" },
     },
   ];
 
@@ -118,7 +118,7 @@ export default function index() {
                 <td
                   className={`${style.compare} ${style[v.generator1.status]}`}
                 >
-                  {v.generator1.value}
+                  <p>{v.generator1.value}</p>
                 </td>
                 <td
                   className={`${style.compare} ${style[v.generator2.status]}`}
