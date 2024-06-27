@@ -8,8 +8,8 @@ export default function TechnicianLogin() {
     const handleSubmit = (e)=> {
         e.preventDefault(); //מרענן את הדף. מונע את זה.
         const formData = new FormData(e.target);
-        const userName = formData.get("userName")
-        const password = formData.get("password")
+        const userName = formData.get("userName")   //name
+        const password = formData.get("password")   //name
 
         const credetials = {userName , password}
         console.log(credetials);

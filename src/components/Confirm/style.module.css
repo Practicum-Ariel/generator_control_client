@@ -1,0 +1,29 @@
+.container{
+    /* border: 2px solid slateblue; */
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+}
+
+.msgType{
+    /* border: 2px solid green; */
+    display: flex;
+    justify-content: center;
+    align-items:start;
+}
+
+.buttons{
+    /* border: 2px solid darkorange; */
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+}
+
+.btn{
+    /* height: 70px; */
+    width: 130px;
+    border-radius: 5px;
+}
