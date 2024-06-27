@@ -2,24 +2,24 @@
   margin: 20px;
 }
 
-form {
+.container form {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-label {
+.container label {
   display: block;
   margin-bottom: 5px;
 }
 
-input[type="text"],
+.container input[type="text"],
 select {
   padding: 8px;
   font-size: 14px;
 }
 
-button {
+.container button {
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
@@ -27,17 +27,17 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.container button:hover {
   background-color: #0056b3;
 }
 
-table {
+.container table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
-th, td {
+.container th, td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
@@ -46,7 +46,7 @@ th, td {
 th {
   background-color: #f2f2f2;
 }
-.profileImage {
+.container .profileImage {
   width: 30px;
   height: 30px;
   border-radius: 50%;

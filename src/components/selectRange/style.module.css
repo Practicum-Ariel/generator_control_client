@@ -17,7 +17,7 @@
     justify-content: center;
 
     color: var(--button-not-active-text-color);
-    background-color: var(--button-not-active-background-color);
+    /* background-color: var(--button-not-active-background-color); */
     border: var(--button-not-active-border);
 }
 
@@ -48,6 +48,10 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    background-color: white;
+    border-radius: 13px;
+    overflow: hidden;
+    box-shadow: var(--active-button-box-shadow);
 }
 
 .selectOptions button{
@@ -63,9 +67,6 @@
 }
 
 .selectOptions button:hover{
-    color: var(--active-button-text-color);
-    background-color: var(--active-button-text-background-color);
-    border: var(--active-button-border);
-    border-radius: var(--active-button-border-radius);
-    box-shadow: var(--active-button-box-shadow);   
+    background-color: #eeeeee;
+    
 }
