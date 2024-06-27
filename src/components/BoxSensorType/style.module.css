@@ -1,7 +1,7 @@
 .box{
-    border: 2px solid rgb(75, 75, 237);
+    border: 1px solid rgba(160, 160, 160, 0.756);
     width: fit-content;
-    padding: 3px;
+    padding: 8px;
     border-radius: 5px;
     
 }
