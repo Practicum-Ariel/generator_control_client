@@ -13,21 +13,21 @@ import ComparePage from "../../components/ComparePage";
 import {createContext, useState} from "react";
 
 const routes = [
-  {path: "example", element: <Example />},
+  { path: 'example', element: <Example /> },
   {
     element: <MainLayout />,
     children: [
-      {path: "generators/all", element: <AllGenerators />},
-      {path: "generator/new", element: <AddGenerator />},
-      {path: "generator/:id", element: <SingleGenerator />},
-      {path: "tech-check/form", element: <TechnicianCheckForm />},
-      {path: "notifications", element: <Notifications />},
+      { path: 'generators/all', element: <AllGenerators /> },
+      { path: 'generator/new', element: <AddGenerator /> },
+      { path: 'generator/:id', element: <SingleGenerator /> },
+      { path: 'tech-check/form', element: <TechnicianCheckForm /> },
+      { path: 'notifications', element: <Notifications /> },
 
-      {path: "generators/compare", element: <ComparePage />},
-      {path: "login", element: <LoginPage />},
+      { path: 'generators/compare', element: <ComparePage /> },
+      { path: 'login', element: <LoginPage /> },
     ],
   },
-  {path: "test", children: testRoutes},
+  { path: 'test', children: testRoutes },
 ];
 
 // export default function PopupProvider({}) {
