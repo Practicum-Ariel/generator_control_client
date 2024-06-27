@@ -1,20 +1,10 @@
 import styles from './style.module.css';
 import React from 'react';
 
-export default function ScaleChart({ size = 10, unit = "temp", rangeObject = {} }) {
-
-  // const rangeObjectTemp = 
-  // {
-  //   normalMin:70,
-  //   normlMax:90,
-  //   mildMin:90,
-  //   mildMax:100,
-  //   moderateMin:100,
-  //   moderateMax:110,
-  //   severe:110
-  // }
+export default function ScaleChart({ size, unit, rangeObject, name}) {
 
   const findDeg = (temp) => {
+    if(temp > rangeObject.severe) {temp = rangeObject.severe +10}
     const onGraph = (temp / (rangeObject.severe + 10)) * 100
     return (onGraph / 100) * 180 - 90
   }
@@ -34,6 +24,7 @@ export default function ScaleChart({ size = 10, unit = "temp", rangeObject = {} 
   // console.log(findDeg(size));
   return (
     <div className={styles.scaleChart}>
+      <h2>{name}</h2>
       <div className={styles.circle}>
         <div className={styles.semiCircleFrame}></div>
         <div className={styles.semiCircle} style={{
@@ -51,7 +42,7 @@ export default function ScaleChart({ size = 10, unit = "temp", rangeObject = {} 
           <div className={styles.point}></div>
         </div>
       </div>
-      <span>{size + " " + unit}</span>
+      <span>{size + unit}</span>
     </div>
 
   );
@@ -59,12 +50,3 @@ export default function ScaleChart({ size = 10, unit = "temp", rangeObject = {} 
 
 
 
-
-// background: linear-gradient(90deg,
-//   rgba(241, 0, 0, 1) 0%,
-//   rgba(233, 82, 17, 1) 20%,
-//   rgba(23, 167, 9, 1) 58%, /*normal range*/
-//   rgba(187, 232, 57, 1) 75%, /*mild anomaly*/
-//   rgba(240, 167, 8, 1) 83%, /*moderat anomaly*/
-//   rgba(191, 68, 3, 1) 91%, /*severe anomaly*/
-//   rgba(240, 8, 8, 1) 100%); 

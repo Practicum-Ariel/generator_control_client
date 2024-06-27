@@ -1,0 +1,24 @@
+.canvasContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-direction: row;
+  /* justify-content: space-evenly; */
+  gap: 0 1rem;
+
+  /* margin: 0 auto;    */
+}
+
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.changegraphbutton {
+    background: none; 
+    border: none; /* הסרת הגבול */
+    padding: 0; /* הסרת המרווח הפנימי */
+    font: inherit; /* שמירת הפונט המקורי */
+    color: inherit; /* שמירת הצבע המקורי של הטקסט */
+    cursor: pointer; /* שינוי סמן העכבר לכפתור לחיץ */
+    outline: none; /* הסרת ההדגשה כאשר הכפתור בפוקוס */
+  }
