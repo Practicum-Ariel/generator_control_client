@@ -4,13 +4,6 @@ import { Link } from 'react-router-dom'
 import useApi from '../../hooks/useApi'
 import Loader from '../../components/Loader'
 import { useState } from 'react'
-import OpenOptions from '../../components/OpenOptions';
-
-//temp from here
-import { HiOutlineDotsHorizontal } from "react-icons/hi";
-import { MdOutlineExpandMore } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
-//to here
 
 
 
