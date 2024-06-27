@@ -5,8 +5,8 @@ import { FaCheck } from "react-icons/fa";
 import { FaExclamation } from "react-icons/fa";
 
 //props{fullName, date, check, avatar, content}
-export default function TechCheck({ fullName, date, check, avatar, content }) {
-
+export default function TechCheck({ fullName = 'Bob', date, content }) {
+    const avatar = 'https://avataaars.io/'
     //extract date and time from  the date props.
 
     let date1 = new Date(date).toLocaleDateString('pt-PT')
@@ -27,7 +27,7 @@ export default function TechCheck({ fullName, date, check, avatar, content }) {
         <ul className={styles.technician}>
             <li className={styles.details}>
                 <div className={styles.right}>
-                    <img className={styles.img} src={avatar}/>
+                    <img className={styles.img} src={avatar} />
                     <h3>{fullName}</h3>
                     <div className={styles.date}>
                         <p>{date1}</p>
@@ -35,7 +35,7 @@ export default function TechCheck({ fullName, date, check, avatar, content }) {
                     </div>
                 </div>
                 <div className={styles.left}>
-                    {check ? <div className={styles.checkBox}><FaCheck /></div> : <div className={styles.warning}><FaExclamation /></div>}
+                    <div className={styles.checkBox}><FaCheck /></div>
                     <div onClick={clicked}> <IoIosArrowDown /></div>
                 </div>
             </li>

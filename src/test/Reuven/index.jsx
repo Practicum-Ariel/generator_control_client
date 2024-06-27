@@ -37,7 +37,7 @@ export default function Reuven() {
 
   return (
     <div className={styles.Reuven}>
-      <TechCheckList items={items} />
+      <TechCheckList />
 
     </div>
   )
