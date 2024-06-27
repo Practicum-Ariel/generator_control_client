@@ -2,6 +2,8 @@ import styles from './style.module.css'
 import useApi from '../../hooks/useApi'
 import Loader from '../../components/Loader'
 import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { NavLink } from 'react-router-dom'
 import { FaRegEye, FaRegTrashAlt, FaRegEdit } from 'react-icons/fa'
 
 // Instructions to use GenericTable:
@@ -25,15 +27,15 @@ import { FaRegEye, FaRegTrashAlt, FaRegEdit } from 'react-icons/fa'
 // example below: 
 
 export default function MotherComponent() { // the component that call GenericTable
-  const { data = [], loading, error } = useApi('/technician')
+  const { data = [], loading, error } = useApi('/visit')
   const [columns, setColumns] = useState([])
   const [rows, setRows] = useState([])
   const [tableName, setTableName] = useState('')
 
   useEffect(() => {
-    setTableName('טכנאים')
+    setTableName('היסטוריית בדיקות')
 
-    const columns = [{ header: 'מזהה', accessor: 'index' }, { header: 'שם', accessor: 'fullName' }, { header: 'טלפון', accessor: 'phoneNumber' },]
+    const columns = [{ header: 'מזהה', accessor: 'index' }, { header: 'תאריך', accessor: 'date' }, {header: 'הערה', accessor: 'text'}, { header: 'שם טכנאי', accessor: 'techId.fullName' }, { header: 'נייד', accessor: 'techId.phoneNumber' }, { header: 'תזמון', accessor: 'type' }]
 
     setColumns(columns)
 
@@ -64,7 +66,18 @@ export default function MotherComponent() { // the component that call GenericTa
 }
 
 // creator: Eti
+// props: { title: string }
 function GenericTable({ tableName, columns, rows, onEdit, onDetails, onDelete }) {
+  const handleTd = (row, col) => {
+    if (col.accessor.includes('.')) {
+      const first = col.accessor.split('.')[0]
+      if (!row[first]) return ''
+      const second = col.accessor.split('.')[1]
+      return row[first][second]
+    }
+    return row[col.accessor]
+  }
+  
   return (
     <section className={styles.genericTable}>
       <h1>{tableName}</h1>
@@ -82,7 +95,7 @@ function GenericTable({ tableName, columns, rows, onEdit, onDetails, onDelete })
             <tr key={row._id}>
               {columns?.map((col) =>
                 <td key={col.accessor}>
-                  {row[col.accessor]}
+                  {handleTd(row, col)}
                 </td>
               )}
               <td>
