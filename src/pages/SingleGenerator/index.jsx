@@ -14,7 +14,7 @@ function SingleGenerator() {
   let nav = useNavigate()
   let { id } = useParams();
   const [insightBoxType, setInsightBoxType] = useState('all')
-  const [graphsBoxType, setGraphsBoxType] = useState('history')
+  const [graphsBoxType, setGraphsBoxType] = useState('live')
 
   let statuses = ['success', 'warning', 'danger']
 
@@ -63,10 +63,8 @@ function SingleGenerator() {
   //   based_on_data: ['Normal temperature range is 70-90°C.', 'The temperature readings were 75, 90, 80, and 81°C, which are within the normal range.', 'Proper thermal conditions indicate good cooling system performance and adequate ventilation.']
   // }]
 
-  const insightTypes = [{ text: "הכל", value: 'all' }, { text: "קל", value: 'succcess' }, { text: "בינוני", value: 'warning' }, { text: "קריטי", value: 'danger' }];
+  const insightTypes = [{ text: "הכל", value: 'all' }, { text: "קל", value: 'success' }, { text: "בינוני", value: 'warning' }, { text: "קריטי", value: 'danger' }];
   const graphsTypes = [{ text: "מידע בזמן אמת", value: 'live' }, { text: "היסטוריה", value: 'history' }];
-
-  // #### finish fake data ####
 
   const handleChange = (e) => {
     console.log(e.target.value);
@@ -101,13 +99,11 @@ function SingleGenerator() {
           <BoxSensorType setSelected={setInsightBoxType} types={insightTypes} selected={insightBoxType} />
         </div>
         <div className={styles.all_insights}>
-          {/* <AlertComponent status={'danger'} title={'קריטי'} context={'הקירור בחריגות דלק, יש להחליף סנן ראשי במנוע. הקירור בחריגות דלק, יש להחליף סנן ראשי במנוע. הקירור בחריגות דלק, יש להחליף'} />
-          <AlertComponent status={'succcess'} title={'הערה'} context={'האיזור חם'} />
-          <AlertComponent status={'warning'} title={'לשים לב'} context={'הגנרטור מתחמם'} />
-          <AlertComponent status={'danger'} title={'קריטי'} context={'הקירור בחריגות דלק, יש להחליף סנן ראשי במנוע'} />
-          <AlertComponent status={'warning'} title={'לשים לב'} context={'רעידות מתחזקות'} />
-          <AlertComponent status={'succcess'} title={'אזהרה'} context={''} /> */}
-          {insights?.map(ins => <AlertComponent id={ins._id} status={statuses[ins.level_risk - 1]} title={ins.fault_name} description={ins.fault_description} context={ins.insight} treatments={ins.treatments} reasons={ins.based_on_data} />)}
+          {insightBoxType == 'all' ?
+            insights?.map(ins => <AlertComponent {...ins} status={statuses[ins.level_risk - 1]} key={ins._id}/>)
+            :
+            insights?.filter(ins => insightBoxType == statuses[ins.level_risk - 1]).map(ins => <AlertComponent {...ins} status={statuses[ins.level_risk - 1]} key={ins._id}/>)}
+          <button className={styles.all_insights_but} >לכל התובנות</button>
         </div>
       </div>
       <div className={styles.switch_box}>

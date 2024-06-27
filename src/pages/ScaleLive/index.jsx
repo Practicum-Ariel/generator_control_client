@@ -60,35 +60,33 @@ export default function ScaleLive({ generatorId = "6678464e815884d6e23a4542" }) 
 
   if (loading) return (<Loader />)
   return (
-    <div className={styles.live}>
-      <div className={styles.types}>
-        {sensors.map((s, i) => {
-          return (
-            <div key={i}>
-              <div className={styles.sensorByType}>
-                <h2 className={styles.title}>{dict[Object.keys(s)]}</h2>
-                {s[Object.keys(s)].map((n, index) => {
-                  const {
-                    normalAnomalyMin: normalMin,
-                    normalAnomalyMax: normalMax,
-                    mildAnomalyMin: mildMin,
-                    mildAnomalyMax: mildMax,
-                    moderateAnomalyMin: moderateMin,
-                    moderateAnomalyMax: moderateMax,
-                    severeAnomalyMin: severe
-                  } = n;
-                  return (
-                    <div key={index} className={styles.scaleChart}>
-                      <ScaleChart key={index} size={genSensorsData[n.name] ? genSensorsData[n.name] : 50} unit={n.unitOfMeasure} name={n.name} rangeObject={{ normalMin, normalMax, mildMin, mildMax, moderateMin, moderateMax, severe }} />
-                    </div>
-                  )
-                }
-                )}
-              </div>
+    <div className={styles.types}>
+      {sensors.map((s, i) => {
+        return (
+          <div key={i}>
+            <div className={styles.sensorByType}>
+              <h2 className={styles.title}>{dict[Object.keys(s)]}</h2>
+              {s[Object.keys(s)].map((n, index) => {
+                const {
+                  normalAnomalyMin: normalMin,
+                  normalAnomalyMax: normalMax,
+                  mildAnomalyMin: mildMin,
+                  mildAnomalyMax: mildMax,
+                  moderateAnomalyMin: moderateMin,
+                  moderateAnomalyMax: moderateMax,
+                  severeAnomalyMin: severe
+                } = n;
+                return (
+                  <div key={index} className={styles.scaleChart}>
+                    <ScaleChart key={index} size={genSensorsData[n.name] ? genSensorsData[n.name] : 50} unit={n.unitOfMeasure} name={n.name} rangeObject={{ normalMin, normalMax, mildMin, mildMax, moderateMin, moderateMax, severe }} />
+                  </div>
+                )
+              }
+              )}
             </div>
-          )
-        })}
-      </div>
+          </div>
+        )
+      })}
     </div>
   )
 }

@@ -6,13 +6,16 @@
     gap: 1rem;
 }
 
-.compare {
+.buttons {
+    display: flex;
+    gap: 1rem;
     height: 30px;
+    width: 60%;
     padding: 0 30px;
+    justify-content: space-between;
 }
 
 .compare_button {
-    width: 80px;
     background-color: var(--secondary-color-dark);
     color: var(--options-button-text-color);
     text-align: center;
