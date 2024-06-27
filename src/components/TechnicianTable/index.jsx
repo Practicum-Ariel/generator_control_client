@@ -27,11 +27,9 @@ function TechnicianTable() {
 
   return (
     <div>
-      {/* <img src="/images/profile_1.jpg" alt="/profile_1" /> */}
-
       <form onSubmit={handleSearch}>
         <label>
-          Search In:
+          חיפוש ב:
           <input
             type="text"
             value={searchIn}
@@ -39,7 +37,7 @@ function TechnicianTable() {
           />
         </label>
         <label>
-          Search By:
+          חיפוש לפי:
           <input
             type="text"
             value={searchBy}
@@ -47,7 +45,7 @@ function TechnicianTable() {
           />
         </label>
         <label>
-          Sort By:
+          מיין לפי:
           <input
             type="text"
             value={sortBy}
@@ -55,27 +53,27 @@ function TechnicianTable() {
           />
         </label>
         <label>
-          Sort Direction:
+          כיוון מיון:
           <select
             value={sortDir}
             onChange={(e) => setSortDir(e.target.value.trim())}
           >
-            <option value="">Select</option>
+            <option value="">חיפוש</option>
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
           </select>
         </label>
-        <button type="submit">Search</button>
+        <button type="submit">חיפוש</button>
       </form>
 
       <table>
         <thead>
           <tr>
-            <th>ID Number</th>
-            <th>Full Name</th>
-            <th>Treatments ID</th>
-            <th>Phone Number</th>
-            <th>image</th>
+            <th>תעודת זהות</th>
+            <th>שם מלא</th>
+            <th>מזהה טיפול</th>
+            <th>מספר טלפון</th>
+            <th>תמונת פרופיל</th>
           </tr>
         </thead>
         <tbody>
