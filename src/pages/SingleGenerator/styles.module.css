@@ -4,26 +4,50 @@
 
 .insights {
     grid-area: insights;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .charts {
     grid-area: charts;
 }
 
-.live_info {
-    grid-area: live-info;
+.switch_box {
+    grid-area: switch-box;
+    display: flex;
+    justify-content: center;
 }
 
 .grid_container {
     display: grid;
     grid-template-areas:
-        'gen-details gen-details gen-details insights insights insights'
-        'charts charts charts charts charts charts'
-        'live-info live-info live-info live-info live-info live-info';
+        'gen-details gen-details insights insights'
+        'switch-box switch-box switch-box switch-box'
+        'charts charts charts charts';
     gap: 1rem;
+    padding: 20px 20px;
+    grid-template-rows: 220px 30px 1fr;
+    grid-template-columns: 23% 23% 23% 1fr;
 }
 
-.grid_container>div {
+.grid_container >div > h3 {
     text-align: center;
-    padding: 20px 0;
+}
+
+.select {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.box_button {
+    align-self: center;
+}
+
+.all_insights {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    overflow-y: auto;
 }
