@@ -6,10 +6,10 @@
     gap: 1rem;
 }
 
-.buttons {
+.compare {
     display: flex;
     gap: 1rem;
-    height: 30px;
+    height: 40px;
     width: 100%;
     padding: 0 30px;
     justify-content: center;
@@ -21,6 +21,8 @@
     text-align: center;
     border-radius: 5px;
     padding: 2px;
+    height: 30px;
+    align-self: center;
 }
 
 .genList {
