@@ -11,6 +11,7 @@ import {
   Legend,
 } from "chart.js";
 import { Scatter } from "react-chartjs-2";
+import { GrPowerReset } from "react-icons/gr";
 
 ChartJS.register(
   CategoryScale,
@@ -47,7 +48,46 @@ const points = [
 
 
 export default function PointsGraph({ data }) {
-  console.log("datadat", data);
+  // console.log("datadat", data);
+  const handleResetZoom = () => {
+    if (chartRef.current) {
+      chartRef.current.resetZoom();
+    }
+    
+  };
+  const handleManualZoomOut = () => {
+    
+    if (chartRef.current.getZoomLevel() ==1){
+      setTempdata (everage({data}))
+    }
+    if (chartRef.current) {
+      try {
+        chartRef.current.zoom(0.9); // Zoom in by 10%
+      } catch (error) {
+        console.error("Zoom In Error:", error);
+      }
+    } else {
+      console.warn("Chart instance is not available for zooming in.");
+    }
+  };
+
+  function handleManualZoomIn() {
+    if (chartRef.current.getZoomLevel() ==1){
+      setTempdata(data);
+    }
+    
+    setTempdata(data);
+  
+    if (chartRef.current) {
+      try {
+        chartRef.current.zoom(1.1); // Zoom in by 10%
+      } catch (error) {
+        console.error("Zoom In Error:", error);
+      }
+    } else {
+      console.warn("Chart instance is not available for zooming in.");
+    }
+  }
   const options = {
     responsive: true,
     interaction: {
@@ -109,5 +149,10 @@ export default function PointsGraph({ data }) {
       yAxisID: "y",
     })),
   };
-  return <Scatter options={options} data={formattedData} />;
+  return <div className={styles.chartContainer}>
+  <Scatter options={options} data={formattedData} />
+  <button className={styles.resetButton} onClick={handleResetZoom}><GrPowerReset /></button>
+  <button className={styles.plusButton} onClick={handleManualZoomIn}>+</button>
+  <button className={styles.minusButton} onClick={handleManualZoomOut}>-</button>
+</div>
 }

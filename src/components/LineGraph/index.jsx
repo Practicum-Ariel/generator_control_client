@@ -13,6 +13,7 @@ import {
 import zoomPlugin from "chartjs-plugin-zoom";
 import { Line } from "react-chartjs-2";
 import everage from "./everage";
+import { GrPowerReset } from "react-icons/gr";
 
 ChartJS.register(
   CategoryScale,
@@ -133,9 +134,9 @@ const LineGraph = ({ data }) => {
   return (
     <div className={styles.chartContainer}>
       <Line ref={chartRef} data={formattedData} options={options} />
-      <button onClick={handleResetZoom}>איפוס זום</button>
-      <button onClick={handleManualZoomIn}>+</button>
-      <button onClick={handleManualZoomOut}>-</button>
+      <button className={styles.resetButton} onClick={handleResetZoom}><GrPowerReset /></button>
+      <button className={styles.plusButton} onClick={handleManualZoomIn}>+</button>
+      <button className={styles.minusButton} onClick={handleManualZoomOut}>-</button>
     </div>
   );
 };

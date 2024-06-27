@@ -1,0 +1,33 @@
+.plusButton{
+    background: none;
+    border: none; 
+      
+    font: inherit; 
+    color: inherit; 
+    cursor: pointer; 
+    outline: none; 
+    height: 30px;
+    width: 30px;
+}
+.minusButton{
+    background: none;
+    border: none; 
+      
+    font: inherit; 
+    color: inherit; 
+    cursor: pointer; 
+    outline: none; 
+    height: 30px;
+    width: 30px;
+}
+.resetButton{
+    background: none;
+    border: none; 
+      
+    font: inherit; 
+    color: inherit; 
+    cursor: pointer; 
+    outline: none; 
+    height: 30px;
+    width: 30px;
+}
