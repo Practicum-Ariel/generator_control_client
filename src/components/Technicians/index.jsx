@@ -17,7 +17,6 @@ function Technicians() {
     function getTechniciansList() {
         apiReq({ url: "/technician", method: "GET" })
             .then(res => {
-                console.log("res: ", res);
                 setTechnicians(res)
             })
     }
@@ -28,7 +27,7 @@ function Technicians() {
 
 
     const addNewTechnician = () => {
-        setPopupContent(<TechnicianForm setTechnicians={setTechnicians} />)
+        setPopupContent(<TechnicianForm text={"הוסף טכנאי"} setTechnicians={setTechnicians} />)
     }
 
 

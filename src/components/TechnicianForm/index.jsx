@@ -6,7 +6,7 @@ import { PopupContext } from '../../context';
 
 
 
-function TechnicianForm({ technician, setTechnicians }) {
+function TechnicianForm({ text, technician, setTechnicians }) {
 
     const [edit, setEdit] = useState(false);
     const { setPopupContent } = useContext(PopupContext);
@@ -30,10 +30,7 @@ function TechnicianForm({ technician, setTechnicians }) {
             apiReq({
                 url: `/technician/${technician.idNum}`, method: "PUT",
                 data: { idNum: idNum, fullName: fullName, phoneNumber: phoneNumber }
-            }).then(res => {
-                console.log("res: ", res);
-                getTechniciansList();
-            })
+            }).then( () => { getTechniciansList(); })
         }
         else {
             apiReq({
@@ -48,7 +45,6 @@ function TechnicianForm({ technician, setTechnicians }) {
     function getTechniciansList() {
         apiReq({ url: "/technician", method: "GET" })
             .then(res => {
-                console.log("res: ", res);
                 setTechnicians(res)
             })
     }
@@ -58,6 +54,7 @@ function TechnicianForm({ technician, setTechnicians }) {
             <h3>Technician</h3>
 
             <form className={styles.container} onSubmit={handleSubmit}>
+                <h2>{text}</h2>
                 <div className={styles.fullName}>
                     <label htmlFor='fullName'>שם מלא</label>
                     <Input id='fullName' name="fullName" placeholder="שם מלא" value={technician?.fullName} />

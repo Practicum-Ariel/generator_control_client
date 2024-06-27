@@ -14,7 +14,7 @@ function TechnicianRow({ index, technician, setTechnicians }) {
     const { setPopupContent } = useContext(PopupContext);
 
     const editTechnician = () => {
-        setPopupContent(<TechnicianForm technician={technician} setTechnicians={setTechnicians}/>)
+        setPopupContent(<TechnicianForm text={"ערוך טכנאי"} technician={technician} setTechnicians={setTechnicians}/>)
     }
 
     const onCancel = () => {
