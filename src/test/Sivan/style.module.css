@@ -1,15 +1,19 @@
 .canvasContainer{
      display: flex;
     flex-direction: row; 
-     justify-content: space-between;
-    gap: 20px;
-     width: 300px;
-     height: 300px;
+     /* justify-content: space-evenly; */
+    gap: 0 1rem;
     
-    margin: 0 auto;   
+    
+    /* margin: 0 auto;    */
 }
-
-  .canvasContainer {
-    position: relative;
-    /* margin-top: 20px; Adjust spacing */
+ .graph1{
+  width: 20vw;
+  height: 40vh;
+ }
+  .chartContainer{
+    display: flex;
+    flex-direction: column;
+    gap:5px
   }
+

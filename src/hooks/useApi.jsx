@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { apiReq } from '../helpers/apiReq';
+import { useEffect, useState } from "react";
+import { apiReq } from "../helpers/apiReq";
 
 /**
  *  a custom hook to fetch data from any component in the DOM tree.
@@ -9,9 +9,9 @@ import { apiReq } from '../helpers/apiReq';
  * @param {Object | undefined} params the request params, default is empty object
  * @returns data, loading, error
  */
-function useApi(url, method = 'GET', body = null, params = {}) {
+function useApi(url, method = "GET", body = null, params = {}) {
   const [data, setData] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
   //  בניית אובייקט מהפרמטרים שמתקבלים,
@@ -27,9 +27,9 @@ function useApi(url, method = 'GET', body = null, params = {}) {
         setError(null);
       })
       .catch((error) => {
-        console.log('useApi error --> ', error.message);
+        console.log("useApi error --> ", error.message);
         setError(error);
-        setData('');
+        setData("");
       })
       .finally(() => {
         setLoading(false);

@@ -1,6 +1,5 @@
 .main {
-    /* margin:2rem  auto; */
-    width: 100vw;
+    width: 85vw;
     height: 100vh;
     background-color: rgb(183, 221, 250);
     display: flex;
