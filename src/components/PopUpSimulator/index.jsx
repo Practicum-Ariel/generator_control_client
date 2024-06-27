@@ -1,13 +1,13 @@
 import { useContext, useState } from 'react'
 import styles from './style.module.css'
 import BoxSensorType from '../BoxSensorType'
-import PopupProvider from '../../layout/Popup/PopupProvider';
+import GraphTypeSelector from '../GraphTypeSelector';
 import { apiReq } from '../../helpers/apiReq'
 import { PopupContext } from '../../context';
 
 
 
-export default function PopUpSimulator({ testGraphs, setTestGraph }) {
+export default function PopUpSimulator({ fakeData, setFakeData }) {
     const { setPopupContent } = useContext(PopupContext);
     const [scenario, setScenario] = useState({
         time: "",
@@ -27,8 +27,7 @@ export default function PopUpSimulator({ testGraphs, setTestGraph }) {
 
     const sendData = () => {
         if (!scenario.time || scenario.sound || !scenario.temperature || scenario.vibration)
-            console.log("")
-        setPopupContent(<NextComponent setTestGraph={setTestGraph} testGraphs={testGraphs} scenario={scenario} />)
+        setPopupContent(<GraphTypeSelector setFakeData={setFakeData} fakeData={fakeData} scenario={scenario} />)
     }
 
 
