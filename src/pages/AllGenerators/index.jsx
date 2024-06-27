@@ -38,7 +38,7 @@ function AllGenerators() {
 
   return (
     <div className={styles.allGen}>
-      <div className={styles.buttons}>
+      <div className={styles.buttons} style={{width:"400px"}}>
         {checked.length == 2 ? <Link to={`/generator/compare?ids=${checked[0]},${checked[1]}`} className={styles.compare_button}>בצע השוואה</Link> : ''}
         <BoxSensorType setSelected={setStatusBoxType} types={statuses} selected={statusBoxType} />
       </div>
