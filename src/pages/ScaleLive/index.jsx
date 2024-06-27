@@ -64,8 +64,8 @@ export default function ScaleLive({ generatorId = "6678464e815884d6e23a4542" }) 
       {sensors.map((s, i) => {
         return (
           <div key={i}>
+            <h3 className={styles.title}>{dict[Object.keys(s)]}</h3>
             <div className={styles.sensorByType}>
-              <h2 className={styles.title}>{dict[Object.keys(s)]}</h2>
               {s[Object.keys(s)].map((n, index) => {
                 const {
                   normalAnomalyMin: normalMin,

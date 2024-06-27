@@ -66,7 +66,7 @@ function AllGenerators() {
             <h3>{gen.name}</h3>
             <h4>{gen.location}</h4>
             <h5 className={styles.status} style={{ color: getColor(gen.status) }}>{gen.status}</h5>
-            {gen.status == 'available' ? <h5>temperature avg: {gen.tempAvg}</h5> : <h5>no more details</h5>}
+            {gen.status == 'available' ? <h5>temperature avg: {gen.tempAvg}</h5> : ''}
           </Link>
         </div>)}
       </div>

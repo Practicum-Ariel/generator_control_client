@@ -16,6 +16,7 @@
 
 .charts {
     grid-area: charts;
+    overflow: scroll;
 }
 
 .switch_box {
@@ -24,17 +25,23 @@
     justify-content: center;
 }
 
+.last_treatments {
+    grid-area: last-treatments;
+    overflow: scroll;
+}
+
 .grid_container {
     display: grid;
     grid-template-areas:
         'gen-details gen-details'
         'switch-box insights'
-        'charts insights';
+        'charts insights'
+        'charts last-treatments';
     gap: 1rem;
-    padding: 20px 20px;
+    padding: 20px 0;
     height: 100vh;
-    grid-template-rows: 30px 50px  1fr;
-    grid-template-columns: 58% 40%;
+    grid-template-rows: 30px 30px 300px 1fr;
+    grid-template-columns: 70% 29%;
 }
 
 .grid_container >div > h3 {

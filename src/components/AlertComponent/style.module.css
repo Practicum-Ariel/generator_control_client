@@ -29,7 +29,7 @@
 .context {
     font-weight: 500;
     display: inline-block;
-    width: 350px;
+    width: 180px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

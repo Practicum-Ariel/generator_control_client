@@ -6,6 +6,7 @@ import Loader from '../../components/Loader';
 import AlertComponent from '../../components/AlertComponent';
 import BoxSensorType from '../../components/BoxSensorType';
 import SensorsCharts from '../../components/SensorsCharts';
+import TechCheckList from '../../components/TechCheckList';
 import ScaleLive from '../ScaleLive'
 
 // creator: Shahar
@@ -71,14 +72,18 @@ function SingleGenerator() {
     nav(`/generator/${e.target.value}`)
   }
 
-  const { data, loading, error } = useApi('/generator/all-gen')
+  const { data, loading : loadingAll, error } = useApi('/generator/all-gen')
   const { data: insights, loading: loadingInsightes } = useApi('/aiapiserver')
 
-  if (loading) return <Loader />
-  if (loadingInsightes) return <Loader />
+  if (loadingAll || loadingInsightes) return <Loader />
+  console.log(data, insights);
+  // if (loadingInsightes) return <Loader />
   if (error) return error
-
+  
   let currentGen = data?.find(gen => gen.name == id)
+  // const { data : currentGen, loading} = useApi(`/generator/:${id}`)
+  console.log(currentGen);
+  // if (loading) return <Loader />
 
   return (<>
     <div className={styles.grid_container}>
@@ -113,6 +118,10 @@ function SingleGenerator() {
       </div>
       <div className={styles.charts}>
         {graphsBoxType == 'live' ? <ScaleLive /> : <SensorsCharts />}
+      </div>
+      <div className={styles.last_treatments}>
+      <h3>טיפולים אחרונים</h3>
+      {/* {<TechCheckList />} */}
       </div>
     </div>
   </>

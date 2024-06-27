@@ -10,9 +10,9 @@
     display: flex;
     gap: 1rem;
     height: 30px;
-    width: 60%;
+    width: 100%;
     padding: 0 30px;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .compare_button {
@@ -38,6 +38,10 @@
     /* gap: 1rem; */
     border-radius: 10px;
     padding: 0.5rem;
+}
+
+.gen h3 {
+    color: var(--options-button-text-color);
 }
 
 .gen input {
