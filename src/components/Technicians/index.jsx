@@ -37,7 +37,9 @@ function Technicians() {
                 {technicians.map((t, i) => <TechnicianRow key={t._id} index={i + 1}
                     technician={t} setTechnicians={setTechnicians} />)}
             </div>
-            <button className={styles.addTechButton} onClick={addNewTechnician}>הוסף טכנאי חדש</button>
+            <div className={styles.btn}>
+                <button className={styles.addTechButton} onClick={addNewTechnician}>הוסף טכנאי חדש</button>
+            </div>
         </div>
     )
 }
