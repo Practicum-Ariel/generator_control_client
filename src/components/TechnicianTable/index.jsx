@@ -1,72 +1,68 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import useApi from '../../hooks/useApi';
 import styles from './style.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faSort  } from '@fortawesome/free-solid-svg-icons';
 
 function TechnicianTable() {
-  const [searchIn, setSearchIn] = useState('')
-  const [searchBy, setSearchBy] = useState('')
-  const [sortBy, setSortBy] = useState('')
-  const [sortDir, setSortDir] = useState('')
-  const baseUrl = `/technician/by-filter`
-  const [url, setUrl] = useState(baseUrl)
+  const [searchIn, setSearchIn] = useState('');
+  const [searchBy, setSearchBy] = useState('');
+  const [sortBy, setSortBy] = useState('');
+  const [sortDir, setSortDir] = useState('');
+  const baseUrl = `/technician/by-filter`;
+  const [url, setUrl] = useState(baseUrl);
 
+  const { data: technicians, loading, error } = useApi(url, 'GET', null);
 
-  const { data: technicians, loading, error } = useApi(
-    url,
-    'GET',
-    null,
+  if (loading) return <div className={styles.loading}>loading...</div>;
+  if (error) return <div className={styles.error}>ERROR</div>;
 
-  );
-  if (loading) return <>loading...</>
-  if (error) return <>ERROR</>
-  // כאשר המשתמש לוחץ על הכפתור חיפוש הפונקציה מונעת את השליחה המקורית ומבצעת בקשה חדשה לשרת ע"מ להביא את הנתונים העדכניים
   const handleSearch = (e) => {
     e.preventDefault();
     setUrl(`/technician/by-filter?searchIn=${searchIn}&searchBy=${searchBy}&sortBy=${sortBy}&sortDir=${sortDir}`);
   };
 
   return (
-    <div>
-      <form onSubmit={handleSearch}>
-        <label>
-          חיפוש ב:
-          <input
-            type="text"
-            value={searchIn}
-            onChange={(e) => setSearchIn(e.target.value.trim())}
-          />
-        </label>
-        <label>
-          חיפוש לפי:
-          <input
-            type="text"
-            value={searchBy}
-            onChange={(e) => setSearchBy(e.target.value.trim())}
-          />
-        </label>
-        <label>
-          מיין לפי:
-          <input
-            type="text"
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value.trim())}
-          />
-        </label>
-        <label>
-          כיוון מיון:
-          <select
-            value={sortDir}
-            onChange={(e) => setSortDir(e.target.value.trim())}
-          >
-            <option value="">חיפוש</option>
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
-          </select>
-        </label>
-        <button type="submit">חיפוש</button>
+    <div className={styles.container}>
+      <form onSubmit={handleSearch} className={styles.form}>
+      <input
+  type="text"
+  value={searchIn}
+  placeholder="חיפוש ב:"
+  onChange={(e) => setSearchIn(e.target.value.trim())}
+  className={`${styles.input} ${styles.rounded} ${styles.inputWrapper}`}
+/>
+<input
+  type="text"
+  value={searchBy}
+  placeholder="חיפוש לפי:"
+  onChange={(e) => setSearchBy(e.target.value.trim())}
+  className={`${styles.input} ${styles.rounded} ${styles.inputWrapper}`}
+/>
+<input
+  type="text"
+  value={sortBy}
+  placeholder="מיין לפי:"
+  onChange={(e) => setSortBy(e.target.value.trim())}
+  className={`${styles.input} ${styles.rounded} ${styles.inputWrapper}`}
+/>
+<select
+  value={sortDir}
+  onChange={(e) => setSortDir(e.target.value.trim())}
+  className={`${styles.input} ${styles.rounded} ${styles.inputWrapper}`}
+>
+  <option value="" disabled>כיוון מיון:</option>
+  <option value="asc">א - ת</option>
+  <option value="desc">ת - א</option>
+</select>
+
+
+        <button type="submit" className={styles.button}>
+          <FontAwesomeIcon icon={faSearch} /> חיפוש
+        </button>
       </form>
 
-      <table>
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>תעודת זהות</th>

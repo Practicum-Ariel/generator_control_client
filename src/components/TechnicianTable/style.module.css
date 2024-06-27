@@ -1,56 +1,67 @@
 .container {
-  margin: 20px;
+  margin: 20px auto;
+  padding: 5px;
+  max-width: 800px;
 }
 
-form {
+.form {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  justify-content: space-between;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
+.form {
+  position: relative;
 }
 
-input[type="text"],
-select {
+.form input,
+.form select {
   padding: 8px;
   font-size: 14px;
+  width: 150px;
+  border-radius: 20px;
+  padding-left: 20px;
 }
 
-button {
+.input-wrapper select {
+  appearance: none;
+  padding-right: 30px;
+  background-image: url('/path/to/arrow-down-icon.png');
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+.button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: var(--main-color);
   color: white;
   border: none;
+  border-radius: 20px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #0056b3;
-}
 
-table {
+.table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #dddddd;
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 
 th {
   background-color: #f2f2f2;
 }
+
 .profileImage {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   object-fit: cover;
 }
-
-
