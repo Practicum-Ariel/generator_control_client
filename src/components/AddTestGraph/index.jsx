@@ -1,10 +1,14 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import style from "./style.module.css";
 import LineGraph from "../LineGraph";
+import PopUpSimulator from "../PopUpSimulator";
+import {PopupContext} from "../../context";
 
 export default function index() {
-//   const fakeData = [];
-    const [fakeData,setFakeData] = useState([{graphTyp: [], senerio:"bla"},2,2]);
+  const {setPopupContent} = useContext(PopupContext);
+
+  // {graphTyp: [], scenario: {time: "", temp: "", vibre: "", saound: ""}},
+  const [fakeData, setFakeData] = useState([]);
   const data = [
     {
       name: "ממוצע",
@@ -51,7 +55,14 @@ export default function index() {
     <>
       {/* {fakeData && } */}
       <div className={fakeData[0] ? style.main : style.emtyMain}>
-        <div className={`${style.addTestGraph} ${fakeData[0] && style.add}`}>
+        <div
+          onClick={() =>
+            setPopupContent(
+              <PopUpSimulator setFakeData={setFakeData} fakeData={fakeData} />
+            )
+          }
+          className={`${style.addTestGraph} ${fakeData[0] && style.add}`}
+        >
           ADD
         </div>
         {fakeData[0] &&
@@ -59,7 +70,7 @@ export default function index() {
             return (
               <div className={style.graph}>
                 <LineGraph data={data} />
-                <p>{v.senerio}</p>
+                <p>temperature: {v.scenario?.time}<br/> sound: {v.scenario?.sound}<br/> vibration: {v.scenario?.vibration}<br/> temperature:{v.scenario?.temperature}</p>
               </div>
             );
           })}

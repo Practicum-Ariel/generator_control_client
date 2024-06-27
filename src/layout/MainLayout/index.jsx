@@ -15,6 +15,7 @@ import { RiUserSettingsLine } from 'react-icons/ri';
 import { PiUsersThreeFill } from 'react-icons/pi';
 
 import { MdOutlineSettingsSuggest } from 'react-icons/md';
+import { BsGraphUpArrow } from 'react-icons/bs';
 
 function MainLayout() {
   const links = [
@@ -36,13 +37,13 @@ function MainLayout() {
     //   href: '/generator/:id',
     //   icon: <FaCog />,
     // },
-    // {
-    //   id: 4,
-    //   title: 'טופס טכנאי',
-    //   href: '/tech-check/form',
-    //   icon: <GiAutoRepair />,
-    // },
     { id: 5, title: 'התראות', href: '/notifications', icon: <MdCrisisAlert /> },
+    {
+      id: 6,
+      title: 'test graphs',
+      href: '/test/graph',
+      icon: <BsGraphUpArrow />,
+    },
     // { id: 6, title: 'התחברות', href: '/login', icon: <RiUserSettingsLine /> },
   ];
   return (

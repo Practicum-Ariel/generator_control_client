@@ -1,11 +1,13 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import style from "./style.module.css";
+import { PopupContext } from '../../context';
 
-export default function index({sanerio}) {
+
+export default function index({ fakeData, setFakeData, scenario}) {
   const graphTyp = [
     "https://cdn.corporatefinanceinstitute.com/assets/line-graph.jpg",
-    "https://cdn.corporatefinanceinstitute.com/assets/line-graph.jpg",
-    "https://cdn.corporatefinanceinstitute.com/assets/line-graph.jpg",
+    "https://media.istockphoto.com/id/1345793778/vector/bar-graph-growth-and-up-arrow.jpg?s=612x612&w=0&k=20&c=s3MbVY25Vrb8YcOpdwaRNYIzVR6aI35aY9dnMKQS46Q=",
+    "https://knowledge.hubspot.com/hs-fs/hubfs/column%20and%20line%20graph.png?width=544&height=401&name=column%20and%20line%20graph.png",
   ];
   const [theChosenGraphsTyp, setTheChosenGraphsTyp] = useState([]);
   //   console.log(theChosenGraphsTyp);
@@ -22,6 +24,7 @@ export default function index({sanerio}) {
     // const test = !theChosenGraphsTyp.includes(v);
     // test ? setHendaleStyle(style.theChosen) : setHendaleStyle("");
   };
+  const { setPopupContent } = useContext(PopupContext);
 
   return (
     <>
@@ -40,12 +43,15 @@ export default function index({sanerio}) {
                 onClick={() => hendaleClick(v)}
               >
                 <img className={style.img} src={v} alt="" />
-                <p>{sanerio}</p>
+                {/* <p>{scenario}</p> */}
               </div>
             );
           })}
         </div>
-      <button className={style.buttonAdd}>חזור</button>
+      <button className={style.buttonAdd} onClick={()=>{
+        setFakeData(([...fakeData,{graphTyp:graphTyp,scenario:scenario}]));
+        setPopupContent(null)
+      }}>הוסף</button>
 
       </div>
     </>

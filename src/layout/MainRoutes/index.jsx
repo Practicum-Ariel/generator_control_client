@@ -12,6 +12,7 @@ import PopupProvider from "../Popup/PopupProvider";
 import ComparePage from "../../components/ComparePage";
 import {createContext, useState} from "react";
 import WelcomePage from "../../pages/WelcomePage";
+import AddTestGraph from "../../components/AddTestGraph";
 
 const routes = [
   { path: 'example', element: <Example /> },
@@ -24,6 +25,7 @@ const routes = [
       {path: "generator/:id", element: <SingleGenerator />},
       {path: "tech-check/form", element: <TechnicianCheckForm />},
       {path: "notifications", element: <Notifications />},
+      {path: "test/graph", element: <AddTestGraph />},
 
       { path: 'generators/compare', element: <ComparePage /> },
       { path: 'login', element: <LoginPage /> },
