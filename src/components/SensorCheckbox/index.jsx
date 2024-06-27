@@ -3,8 +3,8 @@ import styles from "./style.module.css";
 import data from "../SensorCheckbox";
 // import data from './client\src\components\SensorCheckbox\index.jsx'
 
-export default function SensorCheckbox({ setSensor, sensor }) {
-  
+export default function SensorCheckbox({colorsensor, setSensor, sensor }) {
+ 
   const handleCheckboxChange = (sensorName) => {
     setSensor((prevState) => ({
       ...prevState,
@@ -16,13 +16,18 @@ export default function SensorCheckbox({ setSensor, sensor }) {
       {Object.keys(sensor).map((item, index) => {
         return (
           <label key={index}>
+            <div className={styles.cheakboxsquare}>
             <input
-              style={{ color: item.color }}
+             className={styles.customCheckbox}
+              style={{ color: colorsensor[item] }}
               type="checkbox"
               checked={sensor[item]}
               onChange={() => handleCheckboxChange(item)}
             />
-            {item}
+            <span style={{ color: colorsensor[item] }}>
+              {item}
+            </span>
+            </div>
           </label>
         );
       })}

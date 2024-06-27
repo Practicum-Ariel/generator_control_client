@@ -1,0 +1,71 @@
+.selectContainer{
+    position: relative;
+}
+
+.selectedRow{
+    display: flex;
+    align-items: center;
+    /* gap: 10px; */
+    width: 220px;
+}
+
+.selectedRow button{
+    height: 42px;
+    width: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--button-not-active-text-color);
+    background-color: var(--button-not-active-background-color);
+    border: var(--button-not-active-border);
+}
+
+.selectedRow button:hover{
+    color: var(--active-button-text-color);
+    background-color: var(--active-button-text-background-color);
+    border: var(--active-button-border);
+    border-radius: var(--active-button-border-radius);
+    box-shadow: var(--active-button-box-shadow);
+}
+
+.selectMsg{
+    flex-grow: 1;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    box-shadow: var(--active-button-box-shadow);
+}
+
+.selectOptions{
+    width: 294px;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.selectOptions button{
+    color: var(--button-not-active-text-color);
+    background-color: var(--button-not-active-background-color);
+    border: var(--active-button-box-shadow);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 42px;
+    align-items: center;
+}
+
+.selectOptions button:hover{
+    color: var(--active-button-text-color);
+    background-color: var(--active-button-text-background-color);
+    border: var(--active-button-border);
+    border-radius: var(--active-button-border-radius);
+    box-shadow: var(--active-button-box-shadow);   
+}
