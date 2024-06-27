@@ -9,3 +9,7 @@ thead {
     color: #fff;
     border-radius: 10px;
 }
+
+tr {
+    border-bottom: 1px solid lightgrey;
+}
