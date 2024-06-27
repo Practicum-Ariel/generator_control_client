@@ -2,6 +2,8 @@ import styles from './style.module.css'
 import useApi from '../../hooks/useApi'
 import Loader from '../../components/Loader'
 import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { NavLink } from 'react-router-dom'
 import { FaRegEye, FaRegTrashAlt, FaRegEdit } from 'react-icons/fa'
 
 // Instructions to use GenericTable:
@@ -33,7 +35,7 @@ export default function MotherComponent() { // the component that call GenericTa
   useEffect(() => {
     setTableName('היסטוריית בדיקות')
 
-    const columns = [{ header: 'מזהה', accessor: 'index' }, { header: 'שם טכנאי', accessor: 'techId.fullName' }, { header: 'נייד', accessor: 'techId.phoneNumber' }, { header: 'שם בדיקה', accessor: 'checklist.title' }, { header: 'תוצאת בדיקה', accessor: 'checklist.value' }]
+    const columns = [{ header: 'מזהה', accessor: 'index' }, { header: 'תאריך', accessor: 'date' }, {header: 'הערה', accessor: 'text'}, { header: 'שם טכנאי', accessor: 'techId.fullName' }, { header: 'נייד', accessor: 'techId.phoneNumber' }, { header: 'תזמון', accessor: 'type' }]
 
     setColumns(columns)
 
