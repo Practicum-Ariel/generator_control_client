@@ -1,5 +1,9 @@
 .gen_details {
     grid-area: gen-details;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .insights {
@@ -12,6 +16,7 @@
 
 .charts {
     grid-area: charts;
+    overflow: scroll;
 }
 
 .switch_box {
@@ -20,16 +25,23 @@
     justify-content: center;
 }
 
+.last_treatments {
+    grid-area: last-treatments;
+    overflow: scroll;
+}
+
 .grid_container {
     display: grid;
     grid-template-areas:
-        'gen-details gen-details insights insights'
-        'switch-box switch-box switch-box switch-box'
-        'charts charts charts charts';
+        'gen-details gen-details'
+        'switch-box insights'
+        'charts insights'
+        'charts last-treatments';
     gap: 1rem;
-    padding: 20px 20px;
-    grid-template-rows: 220px 30px 1fr;
-    grid-template-columns: 23% 23% 23% 1fr;
+    padding: 20px 0;
+    height: 100vh;
+    grid-template-rows: 30px 30px 300px 1fr;
+    grid-template-columns: 70% 29%;
 }
 
 .grid_container >div > h3 {
@@ -50,4 +62,15 @@
     flex-direction: column;
     gap: 0.3rem;
     overflow-y: auto;
+}
+
+.all_insights_but {
+    margin: 0;
+    background-color: var(--options-button-background-color);
+    padding: 5px 12px;
+    border-radius: 5px;
+    border: 2px;
+    cursor: pointer;
+    width: 100px;
+    align-self: center;
 }
