@@ -1,7 +1,7 @@
 import styles from './style.module.css'
 
 
-function Confirm({ text, onOK, onCancel, messageType }) {
+function Confirm({ messageType, text, onOK, onCancel }) {
 
 
     //

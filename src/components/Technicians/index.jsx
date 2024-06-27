@@ -28,7 +28,7 @@ function Technicians() {
 
 
     const addNewTechnician = () => {
-        setPopupContent(<TechnicianForm action={"addNew"} setTechnicians={setTechnicians}/>)
+        setPopupContent(<TechnicianForm setTechnicians={setTechnicians} />)
     }
 
 
@@ -36,11 +36,10 @@ function Technicians() {
         <div className={styles.container}>
             <h1>טכנאים</h1>
             <div className={styles.techniciansList}>
-                {technicians.map((t,i) => <TechnicianRow key={t._id} index={i+1} 
-                technician={t} setTechnicians={setTechnicians}/>)}
+                {technicians.map((t, i) => <TechnicianRow key={t._id} index={i + 1}
+                    technician={t} setTechnicians={setTechnicians} />)}
             </div>
             <button className={styles.addTechButton} onClick={addNewTechnician}>הוסף טכנאי חדש</button>
-
         </div>
     )
 }

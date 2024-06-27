@@ -6,14 +6,17 @@ import { PopupContext } from '../../context';
 
 
 
-function TechnicianForm({ action, setTechnicians }) {
+function TechnicianForm({ technician, setTechnicians }) {
 
-    const [isNew, setIsNew] = useState("");
+    const [edit, setEdit] = useState(false);
     const { setPopupContent } = useContext(PopupContext);
 
+
     useEffect(() => {
-        action === "addNew" ? setIsNew(true) : setIsNew(false);
-    },[])
+        if (technician) {
+            setEdit(true);
+        }
+    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault(); //זה מונע את ריענון הדף
@@ -23,12 +26,22 @@ function TechnicianForm({ action, setTechnicians }) {
         const phoneNumber = formData.get("phoneNumber"); //name
         // new --> post 
         // edit --> put
-        apiReq({
-            url: "/technician", method: "POST",
-            data: { idNum: idNum, fullName: fullName, phoneNumber: phoneNumber }
-        }).then( res => setTechnicians(prev => [...prev, res] ))
+        if (edit) {
+            apiReq({
+                url: `/technician/${technician.idNum}`, method: "PUT",
+                data: { idNum: idNum, fullName: fullName, phoneNumber: phoneNumber }
+            }).then(res => {
+                console.log("res: ", res);
+                getTechniciansList();
+            })
+        }
+        else {
+            apiReq({
+                url: "/technician", method: "POST",
+                data: { idNum: idNum, fullName: fullName, phoneNumber: phoneNumber }
+            }).then(res => setTechnicians(prev => [...prev, res]))
+        }
 
-        // getTechniciansList();
         setPopupContent(null);  //close pop-up
     }
 
@@ -47,15 +60,16 @@ function TechnicianForm({ action, setTechnicians }) {
             <form className={styles.container} onSubmit={handleSubmit}>
                 <div className={styles.fullName}>
                     <label htmlFor='fullName'>שם מלא</label>
-                    <Input id='fullName' name="fullName" placeholder="שם מלא" />
+                    <Input id='fullName' name="fullName" placeholder="שם מלא" value={technician?.fullName} />
+
                 </div>
                 <div className={styles.id}>
                     <label htmlFor='idNum'>מספר זהות</label>
-                    <Input id='idNum' name="idNum" placeholder="מספר זהות" />
+                    <Input id='idNum' name="idNum" placeholder="מספר זהות" value={technician?.idNum} />
                 </div>
                 <div className={styles.phoneNumber}>
                     <label htmlFor='phoneNumber'>מספר טלפון</label>
-                    <Input id='phoneNumber' name="phoneNumber" placeholder="מספר טלפון" />
+                    <Input id='phoneNumber' name="phoneNumber" placeholder="מספר טלפון" value={technician?.phoneNumber} />
                 </div>
 
                 <button className={styles.submit} type="submit">אישור</button>

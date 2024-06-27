@@ -11,18 +11,10 @@ import { IoWarning } from "react-icons/io5";
 
 function TechnicianRow({ index, technician, setTechnicians }) {
 
-    function getTechniciansList() {
-        apiReq({ url: "/technician", method: "GET" })
-            .then(res => {
-                console.log("res: ", res);
-                setTechnicians(res)
-            })
-    }
-
     const { setPopupContent } = useContext(PopupContext);
 
     const editTechnician = () => {
-        setPopupContent(<TechnicianForm action={"edit"}/>)
+        setPopupContent(<TechnicianForm technician={technician} setTechnicians={setTechnicians}/>)
     }
 
     const onCancel = () => {
@@ -32,8 +24,8 @@ function TechnicianRow({ index, technician, setTechnicians }) {
     const onOK = () => {
         
         //apireq
-        //.then => delete from array technicians
         //.then => api delete - from table
+        //.then => delete from array technicians - client
             //
         //finally => setPopupContent(null);
         apiReq({ url: `/technician/${technician.idNum}`, method: "DELETE" })
@@ -50,8 +42,6 @@ function TechnicianRow({ index, technician, setTechnicians }) {
 
     const deleteTechnician = () => {
         setPopupContent(<Confirm messageType={<IoWarning />} text={`האם אתה בטוח שברצונך למחוק את הטכנאי ${technician.fullName}?`} onOK={onOK} onCancel={onCancel} />)
-        // לקרוא לפונ' Confirm
-        // האם אתה בטוח שברצונך למחוק?
     }
 
     return (<div className={styles.row}>
