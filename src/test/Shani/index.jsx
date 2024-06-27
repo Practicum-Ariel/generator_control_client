@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import styles from './style.module.css'
 import { apiReq } from '../../helpers/apiReq'
+import TechnicianTable from "../../components/TechnicianTable"
 
 
 // creator: Shani
@@ -11,9 +12,9 @@ export default function Shani() {
     const fetchData = async () => {
       try {
         const responseData = await apiReq({ url: '/test' });
-        console.log('Response data:', responseData); // כאן אני מטפלת בתשובה של הבקשה במקרה של הצלחה
+        console.log('Response data:', responseData);
       } catch (error) {
-        console.error('Error fetching data:', error.message); //  כאן אני מטפלת בשגיאה במקרה של כישלון הבקשה
+        console.error('Error fetching data:', error.message);
       }
     };
 
@@ -23,6 +24,7 @@ export default function Shani() {
   return (
     <div className={styles.Shani}>
       Shani
+      <TechnicianTable />
     </div>
   )
 }
