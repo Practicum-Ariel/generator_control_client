@@ -2,8 +2,6 @@ import styles from './style.module.css'
 import useApi from '../../hooks/useApi'
 import Loader from '../../components/Loader'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { NavLink } from 'react-router-dom'
 import { FaRegEye, FaRegTrashAlt, FaRegEdit } from 'react-icons/fa'
 
 // Instructions to use GenericTable:
@@ -87,7 +85,7 @@ function GenericTable({ tableName, columns, rows, onEdit, onDetails, onDelete })
             {columns?.map((col) =>
               <th key={col.accessor}>{col.header}</th>
             )}
-            <th>Actions</th>
+            <th>פעולות</th>
           </tr>
         </thead>
         <tbody>
@@ -98,10 +96,10 @@ function GenericTable({ tableName, columns, rows, onEdit, onDetails, onDelete })
                   {handleTd(row, col)}
                 </td>
               )}
-              <td>
-                <button onClick={() => onEdit(row)}><FaRegEdit /></button>
-                <button onClick={() => onDetails(row)}><FaRegEye /></button>
-                <button onClick={() => onDelete(row)}><FaRegTrashAlt /></button>
+              <td className={styles.actions}>
+                <button className={styles.btnEdit} onClick={() => onEdit(row)}><FaRegEdit /></button>
+                <button className={styles.btnDetails} onClick={() => onDetails(row)}><FaRegEye /></button>
+                <button className={styles.btnDelete} onClick={() => onDelete(row)}><FaRegTrashAlt /></button>
               </td>
             </tr>)}
         </tbody>

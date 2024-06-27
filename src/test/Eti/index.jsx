@@ -2,6 +2,7 @@ import styles from './style.module.css'
 import useApi from '../../hooks/useApi'
 import Loader from '../../components/Loader'
 import { useState, useEffect } from 'react'
+import GenericTable from '../../pages/GenericTable'
 import axios from 'axios'
 import { NavLink } from 'react-router-dom'
 import { FaRegEye, FaRegTrashAlt, FaRegEdit } from 'react-icons/fa'
@@ -67,45 +68,45 @@ export default function MotherComponent() { // the component that call GenericTa
 
 // creator: Eti
 // props: { title: string }
-function GenericTable({ tableName, columns, rows, onEdit, onDetails, onDelete }) {
-  const handleTd = (row, col) => {
-    if (col.accessor.includes('.')) {
-      const first = col.accessor.split('.')[0]
-      if (!row[first]) return ''
-      const second = col.accessor.split('.')[1]
-      return row[first][second]
-    }
-    return row[col.accessor]
-  }
+// function GenericTable({ tableName, columns, rows, onEdit, onDetails, onDelete }) {
+//   const handleTd = (row, col) => {
+//     if (col.accessor.includes('.')) {
+//       const first = col.accessor.split('.')[0]
+//       if (!row[first]) return ''
+//       const second = col.accessor.split('.')[1]
+//       return row[first][second]
+//     }
+//     return row[col.accessor]
+//   }
   
-  return (
-    <section className={styles.genericTable}>
-      <h1>{tableName}</h1>
-      <table>
-        <thead>
-          <tr>
-            {columns?.map((col) =>
-              <th key={col.accessor}>{col.header}</th>
-            )}
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows?.map((row) =>
-            <tr key={row._id}>
-              {columns?.map((col) =>
-                <td key={col.accessor}>
-                  {handleTd(row, col)}
-                </td>
-              )}
-              <td>
-                <button onClick={() => onEdit(row)}><FaRegEdit /></button>
-                <button onClick={() => onDetails(row)}><FaRegEye /></button>
-                <button onClick={() => onDelete(row)}><FaRegTrashAlt /></button>
-              </td>
-            </tr>)}
-        </tbody>
-      </table>
-    </section>
-  )
-}
+//   return (
+//     <section className={styles.genericTable}>
+//       <h1>{tableName}</h1>
+//       <table>
+//         <thead>
+//           <tr>
+//             {columns?.map((col) =>
+//               <th key={col.accessor}>{col.header}</th>
+//             )}
+//             <th>Actions</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {rows?.map((row) =>
+//             <tr key={row._id}>
+//               {columns?.map((col) =>
+//                 <td key={col.accessor}>
+//                   {handleTd(row, col)}
+//                 </td>
+//               )}
+//               <td>
+//                 <button onClick={() => onEdit(row)}><FaRegEdit /></button>
+//                 <button onClick={() => onDetails(row)}><FaRegEye /></button>
+//                 <button onClick={() => onDelete(row)}><FaRegTrashAlt /></button>
+//               </td>
+//             </tr>)}
+//         </tbody>
+//       </table>
+//     </section>
+//   )
+// }
