@@ -6,6 +6,7 @@ import { apiReq } from '../../helpers/apiReq';
 import { useLogin } from '../../hooks/useLogin';
 import useAuthContext from '../../helpers/useAuthContext';
 import { useLogout } from '../../hooks/useLogout';
+import Loader from '../Loader';
 
 
 export default function TechnicianLogin() {
@@ -27,7 +28,9 @@ export default function TechnicianLogin() {
         await login(idNum, password);
 
     }
-
+    if(loading && !user) return <Loader/>
+    
+    debugger
     return (
         <>
         {user && (<h1>ברוך הבא {user.name} <button onClick={logout}>logout</button></h1>
@@ -57,3 +60,5 @@ export default function TechnicianLogin() {
         </>
     )
 }
+
+
