@@ -1,13 +1,13 @@
 .canvasContainer{
-     display: flex;
-    flex-direction: row; 
+     /* display: flex; */
+    /* flex-direction: row;  */
      /* justify-content: space-evenly; */
-    gap: 0 1rem;
+    /* gap: 0 1rem; */
     
     
     /* margin: 0 auto;    */
 }
- .graph1{
+ /* .graph1{
   width: 20vw;
   height: 40vh;
  }
@@ -15,5 +15,5 @@
     display: flex;
     flex-direction: column;
     gap:5px
-  }
+  } */
 

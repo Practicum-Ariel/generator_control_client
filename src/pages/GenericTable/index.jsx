@@ -2,8 +2,6 @@ import styles from './style.module.css'
 import useApi from '../../hooks/useApi'
 import Loader from '../../components/Loader'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { NavLink } from 'react-router-dom'
 import { FaRegEye, FaRegTrashAlt, FaRegEdit } from 'react-icons/fa'
 
 // Instructions to use GenericTable:
@@ -66,7 +64,6 @@ export default function MotherComponent() { // the component that call GenericTa
 }
 
 // creator: Eti
-// props: { title: string }
 function GenericTable({ tableName, columns, rows, onEdit, onDetails, onDelete }) {
   return (
     <section className={styles.genericTable}>

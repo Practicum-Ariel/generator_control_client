@@ -1,7 +1,7 @@
 .box{
-    border: 2px solid blue;
+    border: 1px solid rgba(160, 160, 160, 0.756);
     width: fit-content;
-    padding: 3px;
+    padding: 8px;
     border-radius: 5px;
     
 }
@@ -19,4 +19,5 @@
     border: none;
     background-color: transparent;
     border-radius: 5px;
+    cursor: pointer;
 }

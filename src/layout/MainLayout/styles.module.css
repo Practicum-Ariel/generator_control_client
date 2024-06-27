@@ -1,12 +1,10 @@
-.main_layout{
-         display: grid;
-    grid-template-columns: auto 1fr;
-     /* height: 100vh;  */
-
-
+.main_layout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  /* height: 100vh;  */
 }
-.main_content{
-    height: 100vh;
-    width: 100%;
-    background-color: #eee;
+.main_content {
+  height: 100vh;
+  width: 100%;
+  background-color: #eee;
 }

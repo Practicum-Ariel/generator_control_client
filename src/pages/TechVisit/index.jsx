@@ -5,7 +5,7 @@ import styles from './style.module.css';
 
 
 
-export default function Hodaya({techId, genId = "667a8c00e30b38c5dad90562"}) {
+export default function TechVisit({techId, genId = "667a8c00e30b38c5dad90562"}) {
 
   const visitTypes = ["יומי", "שבועי", "חודשי", "כללי"]
 
