@@ -68,63 +68,6 @@ function AllGenerators() {
       </div>
       <div className={styles.genList}>
         {data?.map(gen => <div key={gen._id} className={styles.gen}>
-          <OpenOptions icon={<HiOutlineDotsHorizontal />} options={[
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}},
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}},
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}},
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}}]}/>
-          <input type="checkbox" checked={checked.includes(gen._id)} onChange={() => handleChange(gen._id)} />
-          <Link to={`/generator/${gen.name}`} className={styles.link}>
-            <h2>{gen.name}</h2>
-            <h4>{gen.location}</h4>
-            <h5 className={styles.status} style={{ color: getColor(gen.status) }}>{gen.status}</h5>
-            <img src='/public/images/Indicator_clock.jpg' alt="Indicator_clock" />
-          </Link>
-        </div>)}
-
-
-        {data?.map(gen => <div key={gen._id} className={styles.gen}>
-          <OpenOptions icon={<HiOutlineDotsHorizontal />} options={[
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}},
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}},
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}},
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}}]}/>
-          <input type="checkbox" checked={checked.includes(gen._id)} onChange={() => handleChange(gen._id)} />
-          <Link to={`/generator/${gen.name}`} className={styles.link}>
-            <h2>{gen.name}</h2>
-            <h4>{gen.location}</h4>
-            <h5 className={styles.status} style={{ color: getColor(gen.status) }}>{gen.status}</h5>
-            <img src='/public/images/Indicator_clock.jpg' alt="Indicator_clock" />
-          </Link>
-        </div>)}
-        {data?.map(gen => <div key={gen._id} className={styles.gen}>
-          <OpenOptions icon={<MdOutlineExpandMore />}/>
-          <input type="checkbox" checked={checked.includes(gen._id)} onChange={() => handleChange(gen._id)} />
-          <Link to={`/generator/${gen.name}`} className={styles.link}>
-            <h2>{gen.name}</h2>
-            <h4>{gen.location}</h4>
-            <h5 className={styles.status} style={{ color: getColor(gen.status) }}>{gen.status}</h5>
-            <img src='/public/images/Indicator_clock.jpg' alt="Indicator_clock" />
-          </Link>
-        </div>)}{data?.map(gen => <div key={gen._id} className={styles.gen}>
-          <OpenOptions icon={<HiOutlineDotsHorizontal />} options={[
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}},
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}},
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}},
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}}]}/>
-          <input type="checkbox" checked={checked.includes(gen._id)} onChange={() => handleChange(gen._id)} />
-          <Link to={`/generator/${gen.name}`} className={styles.link}>
-            <h2>{gen.name}</h2>
-            <h4>{gen.location}</h4>
-            <h5 className={styles.status} style={{ color: getColor(gen.status) }}>{gen.status}</h5>
-            <img src='/public/images/Indicator_clock.jpg' alt="Indicator_clock" />
-          </Link>
-        </div>)}{data?.map(gen => <div key={gen._id} className={styles.gen}>
-          <OpenOptions icon={<HiOutlineDotsHorizontal />} options={[
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}},
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}},
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}},
-            {icon: <MdDelete />, text: "delete", func: () => {console.log("delete")}}]}/>
           <input type="checkbox" checked={checked.includes(gen._id)} onChange={() => handleChange(gen._id)} />
           <Link to={`/generator/${gen.name}`} className={styles.link}>
             <h2>{gen.name}</h2>
