@@ -20,7 +20,7 @@
 
 .box menu button {
     cursor: pointer;
-    width: 100%;
+    /* width: 100%; */
     padding: 7px 7px;
     border: none;
     background-color: transparent;
