@@ -9,7 +9,7 @@ import { apiReq } from "../helpers/apiReq";
  * @param {Object | undefined} params the request params, default is empty object
  * @returns data, loading, error
  */
-function useApi(url, method = "GET", body = null, params = {}) {
+function useApi(url, method = "GET", body = {}, params = {}) {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();

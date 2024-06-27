@@ -11,12 +11,14 @@ import MainLayout from "../MainLayout";
 import PopupProvider from "../Popup/PopupProvider";
 import ComparePage from "../../components/ComparePage";
 import {createContext, useState} from "react";
+import WelcomePage from "../../pages/WelcomePage";
 
 const routes = [
   {path: "example", element: <Example />},
   {
     element: <MainLayout />,
     children: [
+    {index:true, element: <WelcomePage />},
       {path: "generators/all", element: <AllGenerators />},
       {path: "generator/new", element: <AddGenerator />},
       {path: "generator/:id", element: <SingleGenerator />},

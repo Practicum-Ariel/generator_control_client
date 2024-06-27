@@ -1,0 +1,31 @@
+.addTestGraph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid blue;
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+}
+
+.add {
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
+}
+
+.graph {
+    width: 30%;
+}
+
+.main {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.emtyMain {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

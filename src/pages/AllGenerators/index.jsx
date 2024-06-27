@@ -51,7 +51,7 @@ function AllGenerators() {
 
 
   if (loading) return <Loader />
-  if (error) return error
+  if (error) return <>{error || "error"}</>
 
   return (
     <div className={styles.allGen}>

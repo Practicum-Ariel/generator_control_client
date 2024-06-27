@@ -7,7 +7,9 @@ function MainLayout() {
   return (
     <div className={styles.main_layout}>
       <MainNavigator />
-      <Outlet />
+      <main className={styles.main_content}>
+        <Outlet />
+      </main>
     </div>
   );
 }
