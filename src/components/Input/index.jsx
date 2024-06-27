@@ -1,9 +1,9 @@
 import styles from './style.module.css'
 
-export default function Input({ name,...props}) {
+export default function Input({ name, value ,...props}) {
 
     return (
-        <input name={name} className={styles.inp} {...props}/>
+        <input name={name} className={styles.inp} defaultValue={value} {...props}/>
     )
 }
 
