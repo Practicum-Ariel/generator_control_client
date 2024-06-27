@@ -1,5 +1,6 @@
 import styles from "./style.module.css";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,6 +13,7 @@ import {
 } from "chart.js";
 import { Scatter } from "react-chartjs-2";
 import { GrPowerReset } from "react-icons/gr";
+import everage from "../LineGraph/everage";
 
 ChartJS.register(
   CategoryScale,
@@ -23,46 +25,30 @@ ChartJS.register(
   Legend
 );
 
-const points = [
-  { x: 0, y: 242 },
-  { x: 10, y: 940 },
-  { x: 20, y: 604 },
-  { x: 31, y: 456 },
-  { x: 40, y: 78 },
-  { x: 50, y: 321 },
-  { x: 60, y: 890 },
-  { x: 70, y: 456 },
-  { x: 87, y: 123 },
-  { x: 90, y: 654 },
-  { x: 100, y: 234 },
-  { x: 110, y: 567 },
-  { x: 120, y: 432 },
-  { x: 130, y: 678 },
-  { x: 140, y: 543 },
-  { x: 150, y: 987 },
-  { x: 160, y: 789 },
-  { x: 170, y: 567 },
-  { x: 180, y: 234 },
-  { x: 190, y: 345 },
-];
 
 
 export default function PointsGraph({ data }) {
-  // console.log("datadat", data);
+  const chartRef = useRef(null);
+  const [tempdata, setTempdata] = useState([]);
+
+  useEffect(() => {
+    setTempdata(everage({ data }))
+  }, [data]);
   const handleResetZoom = () => {
+    
     if (chartRef.current) {
       chartRef.current.resetZoom();
     }
-    
+
   };
   const handleManualZoomOut = () => {
-    
-    if (chartRef.current.getZoomLevel() ==1){
-      setTempdata (everage({data}))
+    console.log(chartRef.current.getZoomLevel());
+    if (chartRef.current.getZoomLevel() <= 1) {
+      return setTempdata(everage({ data }))
     }
     if (chartRef.current) {
       try {
-        chartRef.current.zoom(0.9); // Zoom in by 10%
+        chartRef.current.zoom(0.9);
       } catch (error) {
         console.error("Zoom In Error:", error);
       }
@@ -72,12 +58,13 @@ export default function PointsGraph({ data }) {
   };
 
   function handleManualZoomIn() {
-    if (chartRef.current.getZoomLevel() ==1){
+    console.log(chartRef.current.getZoomLevel());
+    if (chartRef.current.getZoomLevel() == 1) {
       setTempdata(data);
     }
-    
+
     setTempdata(data);
-  
+
     if (chartRef.current) {
       try {
         chartRef.current.zoom(1.1); // Zoom in by 10%
@@ -97,16 +84,26 @@ export default function PointsGraph({ data }) {
     stacked: false,
     plugins: {
       legend: {
-        display: false, // Hide the legend
+        display: false,
       },
       title: {
         display: true,
-        text: 'חריגות טמפטורה', // Set your title here
+        text: 'חריגות טמפטורה',
+      },
+      zoom: {
+        zoom: {
+          mode: "x",
+        },
+        pan: {
+          enabled: true,
+          mode: "x",
+        },
       },
     },
     scales: {
       x: {
         type: "category",
+        labels: tempdata.length > 0 ? tempdata[0].points.map((d) => d.x) : [],
         position: "bottom",
         grid: {
           display: false,
@@ -128,18 +125,9 @@ export default function PointsGraph({ data }) {
       },
     },
   };
-  const graph = {
-    datasets: [
-      {
-        data: points,
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-        yAxisID: "y",
-      },
-    ],
-  };
+
   const formattedData = {
-    datasets: data.map((sens) => ({
+    datasets: tempdata.map((sens) => ({
       data: sens.points,
       borderColor: sens.color,
       borderWidth: 2, // Thin lines
@@ -150,9 +138,11 @@ export default function PointsGraph({ data }) {
     })),
   };
   return <div className={styles.chartContainer}>
-  <Scatter options={options} data={formattedData} />
-  <button className={styles.resetButton} onClick={handleResetZoom}><GrPowerReset /></button>
-  <button className={styles.plusButton} onClick={handleManualZoomIn}>+</button>
-  <button className={styles.minusButton} onClick={handleManualZoomOut}>-</button>
-</div>
+    <Scatter ref={chartRef} options={options} data={formattedData} />
+    <div className={styles.bottomButtons}>
+      <button className={styles.resetButton} onClick={handleResetZoom}><GrPowerReset /></button>
+      <button className={styles.plusButton} onClick={handleManualZoomIn}>+</button>
+      <button className={styles.minusButton} onClick={handleManualZoomOut}>-</button>
+    </div>
+  </div>
 }

@@ -1,41 +1,61 @@
-.canvasContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  flex-direction: row;
-  /* justify-content: space-evenly; */
-  gap: 0 1rem;
-
-  /* margin: 0 auto;    */
-}
 .sensorType {
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding: 10px ;
+  padding-left: 0px;
 }
-.chartContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
+
+
 .changegraphbutton {
   background: none;
-  border: none; 
-    
-  font: inherit; 
-  color: inherit; 
-  cursor: pointer; 
-  outline: none; 
-  height: 90px;
-  width: 90px;
+  border: 10px solid rgba(128, 128, 128, 0.484);
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  height: 42px;
+  /* width: 42px; */
+  
+
+  color: var(--button-not-active-text-color);
+  background-color: var(--button-not-active-background-color);
+  border: var(--button-not-active-border);
+
 }
-.selctor{
+.changegraphbutton:hover{
+  color: var(--active-button-text-color);
+  background-color: var(--active-button-text-background-color);
+  border: var(--active-button-border);
+  border-radius: var(--active-button-border-radius);
+  box-shadow: var(--active-button-box-shadow);
+}
+
+.selctor {
   padding: 10px;
 }
-.sensorBox{
+
+.sensorBox {
   padding: 20px;
 }
-.graph1{
+
+.graph1 {
   display: flex;
-      flex-direction: column;
-      height: 100vh;
+  flex-direction: column;
+  height: 100vh;
+  /* color: rgb(204, 255, 0); */
+}
+
+
+
+
+.SensorsCharts {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+}
+
+.selectors {
+  display: flex;
+  gap: 3rem;
+  padding: .5rem;
+  flex-direction: column;
 }

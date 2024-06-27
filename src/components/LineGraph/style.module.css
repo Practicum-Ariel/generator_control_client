@@ -1,33 +1,83 @@
-.plusButton{
+.plusButton {
     background: none;
-    border: none; 
-      
-    font: inherit; 
-    color: inherit; 
-    cursor: pointer; 
-    outline: none; 
+    border: 10px solid rgba(128, 128, 128, 0.484);
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+    height: 42px;
+    /* width: 42px; */
+
+
+    color: var(--button-not-active-text-color);
+    background-color: var(--button-not-active-background-color);
+    border: var(--button-not-active-border);
+    background: none;
+    border: none;
+
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
     height: 30px;
     width: 30px;
 }
-.minusButton{
+.plusButton:hover{
+    color: var(--active-button-text-color);
+    background-color: var(--active-button-text-background-color);
+    border: var(--active-button-border);
+    border-radius: var(--active-button-border-radius);
+    box-shadow: var(--active-button-box-shadow);
+}
+.minusButton {
     background: none;
-    border: none; 
-      
-    font: inherit; 
-    color: inherit; 
-    cursor: pointer; 
-    outline: none; 
+    border: 10px solid rgba(128, 128, 128, 0.484);
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+    height: 42px;
+    /* width: 42px; */
+
+
+    color: var(--button-not-active-text-color);
+    background-color: var(--button-not-active-background-color);
+    border: var(--button-not-active-border);
+    background: none;
+    border: none;
+
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
     height: 30px;
     width: 30px;
 }
-.resetButton{
+
+.minusButton:hover {
+
+    color: var(--active-button-text-color);
+    background-color: var(--active-button-text-background-color);
+    border: var(--active-button-border);
+    border-radius: var(--active-button-border-radius);
+    box-shadow: var(--active-button-box-shadow);
+}
+
+.bottomButtons {
+    display: flex;
+    gap: 10px;
+}
+
+.resetButton {
     background: none;
-    border: none; 
-      
-    font: inherit; 
-    color: inherit; 
-    cursor: pointer; 
-    outline: none; 
+    border: none;
+    border: 1px solid black;
+    border-radius: 5px; 
+
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
     height: 30px;
     width: 30px;
 }

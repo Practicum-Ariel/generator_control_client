@@ -32,13 +32,13 @@ const LineGraph = ({ data }) => {
   const chartRef = useRef(null);
 
   useEffect(() => {
-    setTempdata (everage({data}))
+    setTempdata(everage({ data }))
   }, [data]);
 
   const handleManualZoomOut = () => {
-    
-    if (chartRef.current.getZoomLevel() ==1){
-      setTempdata (everage({data}))
+
+    if (chartRef.current.getZoomLevel() == 1) {
+      return setTempdata(everage({ data }))
     }
     if (chartRef.current) {
       try {
@@ -52,12 +52,12 @@ const LineGraph = ({ data }) => {
   };
 
   function handleManualZoomIn() {
-    if (chartRef.current.getZoomLevel() ==1){
+    if (chartRef.current.getZoomLevel() == 1) {
       setTempdata(data);
     }
-    
+
     setTempdata(data);
-  
+
     if (chartRef.current) {
       try {
         chartRef.current.zoom(1.1); // Zoom in by 10%
@@ -73,7 +73,7 @@ const LineGraph = ({ data }) => {
     if (chartRef.current) {
       chartRef.current.resetZoom();
     }
-    
+
   };
 
   const options = {
@@ -96,7 +96,7 @@ const LineGraph = ({ data }) => {
         },
       },
     },
-    
+
     scales: {
       x: {
         type: "category",
@@ -107,7 +107,7 @@ const LineGraph = ({ data }) => {
       },
       y: {
         type: "linear",
-        min: 0, // Minimum value for y-axis
+        min: 0,
         max: 100,
         ticks: {
           stepSize: 20,
@@ -134,9 +134,11 @@ const LineGraph = ({ data }) => {
   return (
     <div className={styles.chartContainer}>
       <Line ref={chartRef} data={formattedData} options={options} />
-      <button className={styles.resetButton} onClick={handleResetZoom}><GrPowerReset /></button>
-      <button className={styles.plusButton} onClick={handleManualZoomIn}>+</button>
-      <button className={styles.minusButton} onClick={handleManualZoomOut}>-</button>
+      <div className={styles.bottomButtons}>
+        <button className={styles.resetButton} onClick={handleResetZoom}><GrPowerReset /></button>
+        <button className={styles.plusButton} onClick={handleManualZoomIn}>+</button>
+        <button className={styles.minusButton} onClick={handleManualZoomOut}>-</button>
+      </div>
     </div>
   );
 };

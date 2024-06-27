@@ -5,8 +5,8 @@
 .selectedRow{
     display: flex;
     align-items: center;
-    gap: 10px;
-    width: 294px;
+    /* gap: 10px; */
+    width: 220px;
 }
 
 .selectedRow button{
