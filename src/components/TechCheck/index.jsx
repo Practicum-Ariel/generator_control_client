@@ -4,7 +4,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaCheck } from "react-icons/fa";
 
 
-//props{fullName, date, check, avatar, content}
+//props{fullName, date, content}
 export default function TechCheck({ fullName, date, content }) {
 
     //extract date and time from  the date props.

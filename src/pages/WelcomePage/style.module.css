@@ -1,0 +1,24 @@
+
+
+.message{
+    padding-top:30px;
+    display: flex;
+    justify-content: center;
+}
+
+.paragraph{
+    text-align: center;
+    padding: 10px;
+}
+
+
+.rightBox{
+    color: white;
+   height: 150px;
+   width:300px;
+   border-radius: 5px;
+   background-color: blue;
+   padding: 20px;
+}
+
+
