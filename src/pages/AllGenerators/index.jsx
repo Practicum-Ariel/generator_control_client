@@ -40,7 +40,7 @@ function AllGenerators() {
     <div className={styles.allGen}>
       <div className={styles.buttons}>
         <div className={styles.box_button}><BoxSensorType setSelected={setStatusBoxType} types={statuses} selected={statusBoxType} /></div>
-        {checked.length == 2 ? <Link to={`/generator/compare?ids=${checked[0]},${checked[1]}`} className={styles.compare_button}>בצע השוואה</Link> : ''}
+        {checked.length == 2 ? <Link to={`/generators/compare?filter=${checked[0]}-${checked[1]}`} className={styles.compare_button}>בצע השוואה</Link> : ''}
       </div>
       <div className={styles.genList}>
         {data?.map(gen => <div key={gen._id} className={styles.gen}>
