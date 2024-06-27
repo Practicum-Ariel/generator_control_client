@@ -67,7 +67,7 @@
 }
 
 .expand {
-  width: 200px;
+  width: 250px;
   transition: width .7s;
   z-index: 1;
 }
