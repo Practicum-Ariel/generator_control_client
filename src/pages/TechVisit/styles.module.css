@@ -1,0 +1,45 @@
+
+.techVisit {
+    padding: 20px;
+  }
+  
+  .alertNextVisit {
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+    justify-content: center;
+    padding: 35px;
+  
+  }
+  
+  .alertNextVisit > span {
+    padding: 15px;
+  }
+  
+  .sortByVisitType {
+    display: flex;
+    flex-direction: row;
+    /* gap: 35px; */
+    justify-content: center;
+    /* padding: 10px 35px; */
+    /* border: 1px black solid; */
+    width: fit-content;
+  }
+  
+  .sortByVisitType .type {
+    padding: 10px 35px;
+    border: 1px black solid;
+  }
+  
+  .sortAndTable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .newVisit {
+    padding: 50px;
+    display: flex;
+    justify-content: flex-end;
+  }
