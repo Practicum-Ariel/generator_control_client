@@ -17,9 +17,6 @@ function MainNavigator() {
   const [expand, setExpand] = useState(false);
 
 
-
-
-
   const links = [
     {
       id: 1,
