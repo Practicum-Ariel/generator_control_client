@@ -11,7 +11,6 @@ function Technicians() {
     const [technicians, setTechnicians] = useState([])
     const { setPopupContent } = useContext(PopupContext);
 
-
     // apiReq method
     // it returns a promise
     function getTechniciansList() {
