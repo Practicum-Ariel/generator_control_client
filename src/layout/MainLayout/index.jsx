@@ -30,18 +30,7 @@ function MainLayout() {
       href: '/generators/all',
       icon: <PiUsersThreeFill />,
     },
-    // {
-    //   id: 3,
-    //   title: 'גנרטור בודד',
-    //   href: '/generator/:id',
-    //   icon: <FaCog />,
-    // },
-    // {
-    //   id: 4,
-    //   title: 'טופס טכנאי',
-    //   href: '/tech-check/form',
-    //   icon: <GiAutoRepair />,
-    // },
+
     { id: 5, title: 'התראות', href: '/notifications', icon: <MdCrisisAlert /> },
     // { id: 6, title: 'התחברות', href: '/login', icon: <RiUserSettingsLine /> },
   ];

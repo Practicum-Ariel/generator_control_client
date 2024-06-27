@@ -12,7 +12,7 @@ import PopupProvider from "../Popup/PopupProvider";
 import ComparePage from "../../components/ComparePage";
 import {createContext, useState} from "react";
 import WelcomePage from "../../pages/WelcomePage";
-import GenLayout from '../GenLayout';
+// import GenLayout from '../GenLayout';
 
 const routes = [
   { path: 'example', element: <Example /> },
@@ -20,10 +20,7 @@ const routes = [
     element: <MainLayout />,
     children: [
       { index: true, element: <WelcomePage /> },
-      {
-        path: 'generators/all',
-        element: <AllGenerators />,
-      },
+      { path: 'generators/all', element: <AllGenerators /> },
       { path: 'generator/new', element: <AddGenerator /> },
       { path: 'generator/:id', element: <SingleGenerator /> },
       { path: 'tech-check/form', element: <TechnicianCheckForm /> },
