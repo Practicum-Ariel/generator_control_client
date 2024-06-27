@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import style from "./style.module.css";
 import LineGraph from "../LineGraph";
 
-export default function index({textOnGraph}) {
+export default function index() {
 //   const fakeData = [];
-    const fakeData = [{graphTyp: [], senerioId: ""},2,2];
+    const [fakeData,setFakeData] = useState([{graphTyp: [], senerio:"bla"},2,2]);
   const data = [
     {
       name: "ממוצע",
@@ -59,7 +59,7 @@ export default function index({textOnGraph}) {
             return (
               <div className={style.graph}>
                 <LineGraph data={data} />
-                <p>{textOnGraph}</p>
+                <p>{v.senerio}</p>
               </div>
             );
           })}
