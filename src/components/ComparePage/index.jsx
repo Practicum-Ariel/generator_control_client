@@ -1,107 +1,102 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
-import {useParams, useSearchParams} from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
+import BoxSensorType from "../BoxSensorType";
 export default function index() {
+  const [selectors, setSelectors] = useState({ time: "", senser: "" });
+  let [searchParams, setSearchParams] = useSearchParams();
+
   const fakeData = [
     {
-      sensorsName: "bla bla",
-      generator1: {value: "12", status: "warning"},
-      generator2: {value: "12", status: "succcess"},
+      compareName: "טמפ'-ממוצע- נורמלי",
+      generator1: { value: "89", status: "warning" },
+      generator2: { value: "70", status: "succcess" },
     },
     {
-      sensorsName: "bla bla",
-      generator1: {value: "12", status: "succcess"},
-      generator2: {value: "12", status: "danger"},
+      compareName: "טמפ'-ממוצע- קל",
+      generator1: { value: "80", status: "succcess" },
+      generator2: { value: "87", status: "danger" },
     },
     {
-      sensorsName: "bla bla",
-      generator1: {value: "12", status: "danger"},
-      generator2: {value: "12", status: "succcess"},
+      compareName: "bla bla",
+      generator1: { value: "12", status: "danger" },
+      generator2: { value: "12", status: "succcess" },
     },
     {
-      sensorsName: "bla bla",
-      generator1: {value: "12", status: "warning"},
-      generator2: {value: "12", status: "warning"},
+      compareName: "bla bla",
+      generator1: { value: "12", status: "warning" },
+      generator2: { value: "12", status: "warning" },
     },
     {
-      sensorsName: "bla bla",
-      generator1: {value: "12", status: "succcess"},
-      generator2: {value: "12", status: "warning"},
+      compareName: "bla bla",
+      generator1: { value: "12", status: "succcess" },
+      generator2: { value: "12", status: "warning" },
     },
     {
-      sensorsName: "bla bla",
-      generator1: {value: "12", status: "danger"},
-      generator2: {value: "12", status: "danger"},
+      compareName: "bla bla",
+      generator1: { value: "12", status: "danger" },
+      generator2: { value: "12", status: "danger" },
     },
     {
-      sensorsName: "bla bla",
-      generator1: {value: "12", status: "succcess"},
-      generator2: {value: "12", status: "succcess"},
+      compareName: "bla bla",
+      generator1: { value: "12", status: "succcess" },
+      generator2: { value: "12", status: "succcess" },
     },
     {
-      sensorsName: "bla bla",
-      generator1: {value: "12", status: "danger"},
-      generator2: {value: "12", status: "succcess"},
+      compareName: "bla bla",
+      generator1: { value: "12", status: "danger" },
+      generator2: { value: "12", status: "succcess" },
     },
     {
-      sensorsName: "bla bla",
-      generator1: {value: "12", status: "succcess"},
-      generator2: {value: "12", status: "warning"},
+      compareName: "bla bla",
+      generator1: { value: "12", status: "succcess" },
+      generator2: { value: "12", status: "warning" },
     },
     {
-      sensorsName: "bla bla",
-      generator1: {value: "12", status: "succcess"},
-      generator2: {value: "12", status: "warning"},
+      compareName: "bla bla",
+      generator1: { value: "12", status: "succcess" },
+      generator2: { value: "12", status: "warning" },
     },
     {
-      sensorsName: "bla bla",
-      generator1: {value: "12", status: "succcess"},
-      generator2: {value: "12", status: "warning"},
+      compareName: "bla bla",
+      generator1: { value: "12", status: "succcess" },
+      generator2: { value: "12", status: "warning" },
     },
     {
-      sensorsName: "bla bla",
-      generator1: {value: "12", status: "danger"},
-      generator2: {value: "12", status: "succcess"},
+      compareName: "bla bla",
+      generator1: { value: "12", status: "danger" },
+      generator2: { value: "12", status: "succcess" },
     },
   ];
-  let [searchParams, setSearchParams] = useSearchParams();
+
   useEffect(() => {
-    setSearchParams({filter: "jgcdktu-khfuy"});
+
+    // חילוץ פרמטרים ושמירת המזהים בסטייס
+
+    // ביצוע בקשה עם מספרי הגנרטורים עם איזה חיישנים
+    // המידע מכל בקשה שחוזר לשים בסטייס יעודי
+    // 
   }, []);
   const value = searchParams.get("filter");
   const genertors = value.split("-");
-  
-  const [selectors, setSelectors] = useState({time: "", senser: ""});
   console.log(selectors);
   useEffect(() => {
-// לבצע את הבקשה לסינון מהשרת
-console.log(`?time=${selectors.time}&senser=${selectors.senser}&`);
+    // לבצע את הבקשה לסינון מהשרת
+    console.log(`?time=${selectors.time}&senser=${selectors.senser}&`);
 
-}, [selectors]);
-//  TO DO // STRINGRFY //ַַַַ&QWERY
+  }, [selectors]);
+  //  TO DO // STRINGRFY //ַַַַ&QWERY
   return (
     <div className={style.main}>
-        <h1>השוואת גנרטורים</h1>
+      <h1>השוואת גנרטורים</h1>
       <div className={style.selectors}>
-        <select
-          onChange={(e) => setSelectors({...selectors, senser: e.target.value})}
-        >
+        <select onChange={(e) => setSelectors({ ...selectors, senser: e.target.value })}        >
           <option>הכל</option>
           {fakeData.map((v) => (
-            <option>{v.sensorsName}</option>
+            <option>{v.compareName}</option>
           ))}
         </select>
-        <select
-          onChange={(e) => setSelectors({...selectors, time: e.target.value})}
-        >
-          <option>ראשון</option>
-          <option>שני</option>
-          <option>שלישי</option>
-          <option>רביעי</option>
-          <option>חמישי</option>
-          <option>שישי</option>
-          <option>שבת</option>
-        </select>
+        <BoxSensorType setSelected={(e) => setSelectors({ ...selectors, time: e.target.value })} types={[{text:"יום",value :"day"},{text:"שבוע",value :"week"},{text:"חודש",value :"month"}]} selected={"day"} />
       </div>
       <table>
         <thead>
@@ -119,7 +114,7 @@ console.log(`?time=${selectors.time}&senser=${selectors.senser}&`);
           {fakeData.map((v, i) => {
             return (
               <tr>
-                <td className={style.sensors}>{v.sensorsName}</td>
+                <td className={style.sensors}>{v.compareName}</td>
                 <td
                   className={`${style.compare} ${style[v.generator1.status]}`}
                 >

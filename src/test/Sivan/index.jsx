@@ -1,4 +1,5 @@
 import SensorsCharts from "../../components/SensorsCharts";
+
 import styles from "./style.module.css";
 
 
@@ -9,6 +10,7 @@ const Sivan = () => {
     
     <div className={styles.chartContainer}>
       <SensorsCharts />
+      
     </div>
   );
 };
