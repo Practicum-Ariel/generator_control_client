@@ -1,19 +1,74 @@
 .main_nav {
    position: relative;
   background: #1c376f;
-  padding: 1rem 0rem;
+  padding: 1rem 0rem 1rem .8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-   justify-content: space-between;
-   transition: width .5s ease-in-out;
+      /* gap: 1rem; */
+   /* justify-content: space-between; */
+   transition: width .7s ;
 
+}
+
+.curved_edge{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: .8rem;
+    border-radius: 0 .8rem .8rem 0;
+    background-color: #eee;
+}
+
+.main_nav span>svg {
+      font-size: 1rem;
+}
+
+/* .curved_edge{
+  height: inherit;
+  width: 2rem;
+} */
+
+.main_nav > .burger{
+    font-size: .5rem;
+    position: relative;
+    top: 10px;
+    border-radius: 1rem 0 0 1rem;
+    background: #1c376f;
+    padding: 0.4rem 0.4rem;
+}
+
+.main_nav > .burger >svg{
+       display: block;
+       font-size: 1.5rem;
+}
+
+
+.main_nav > ul {
+    display: flex;
+    flex-grow: 1;
+    gap: 1.5rem;
+    width: -webkit-fill-available;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main_nav > img {
+  width: 70%;
+  max-width: 150px;
+  height: auto;
+}
+
+.main_nav > span > svg {
+  font-size: 2rem;
+  color: #ffffff;
 }
 
 .expand {
   width: 200px;
-  transition: width .5s;
+  transition: width .7s;
   z-index: 1;
 }
 
@@ -26,43 +81,14 @@
         margin-right: 1.5rem;
 }
 
-.main_nav > ul {
-    display: flex;
-    gap: 1rem;
-    width: -webkit-fill-available;
-    justify-content: space-between;
-    flex-direction: column;
-}
-
-.main_nav > img {
-  width: 90%;
-  max-width: 100px;
-  height: auto;
-}
-
-/* .main_nav > span {
-  width: 100%;
-  text-align: center;
+/* .expand a li span.tooltiptext {
+  display: none;
 } */
-.main_nav > span > svg {
-  font-size: 2rem;
-  color: #ffffff;
-}
 
-.main_nav > .burger{
-    translate: -95%;
-    position: absolute;
-    top: 10px;
-    left: 0;
-    border-radius: 1rem 0 0 1rem;
-    background: #1c376f;
-    padding: 0.4rem 0.4rem;
-}
 
-.main_nav > .burger >svg{
-       display: block;
-       font-size: 1.5rem;
-}
+
+
+
 
 
 
