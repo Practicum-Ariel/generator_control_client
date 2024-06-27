@@ -7,17 +7,22 @@
 }
 
 .compare {
-    height: 30px;
+    display: flex;
+    gap: 1rem;
+    height: 40px;
+    width: 100%;
     padding: 0 30px;
+    justify-content: center;
 }
 
 .compare_button {
-    width: 80px;
     background-color: var(--secondary-color-dark);
     color: var(--options-button-text-color);
     text-align: center;
     border-radius: 5px;
     padding: 2px;
+    height: 30px;
+    align-self: center;
 }
 
 .genList {
@@ -28,13 +33,17 @@
 .gen {
     background-color: var(--secondary-color-dark);
     color: var(--options-button-text-color);
-    width: 200px;
-    height: 230px;
+    width: 230px;
+    height: 260px;
     display: flex;
     flex-direction: column;
     /* gap: 1rem; */
     border-radius: 10px;
     padding: 0.5rem;
+}
+
+.gen h3 {
+    color: var(--options-button-text-color);
 }
 
 .gen input {

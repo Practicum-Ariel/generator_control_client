@@ -6,6 +6,7 @@ import Loader from '../../components/Loader';
 import AlertComponent from '../../components/AlertComponent';
 import BoxSensorType from '../../components/BoxSensorType';
 import SensorsCharts from '../../components/SensorsCharts';
+import TechCheckList from '../../components/TechCheckList';
 import ScaleLive from '../ScaleLive'
 
 // creator: Shahar
@@ -14,7 +15,7 @@ function SingleGenerator() {
   let nav = useNavigate()
   let { id } = useParams();
   const [insightBoxType, setInsightBoxType] = useState('all')
-  const [graphsBoxType, setGraphsBoxType] = useState('history')
+  const [graphsBoxType, setGraphsBoxType] = useState('live')
 
   let statuses = ['success', 'warning', 'danger']
 
@@ -63,24 +64,26 @@ function SingleGenerator() {
   //   based_on_data: ['Normal temperature range is 70-90°C.', 'The temperature readings were 75, 90, 80, and 81°C, which are within the normal range.', 'Proper thermal conditions indicate good cooling system performance and adequate ventilation.']
   // }]
 
-  const insightTypes = [{ text: "הכל", value: 'all' }, { text: "קל", value: 'succcess' }, { text: "בינוני", value: 'warning' }, { text: "קריטי", value: 'danger' }];
+  const insightTypes = [{ text: "הכל", value: 'all' }, { text: "קל", value: 'success' }, { text: "בינוני", value: 'warning' }, { text: "קריטי", value: 'danger' }];
   const graphsTypes = [{ text: "מידע בזמן אמת", value: 'live' }, { text: "היסטוריה", value: 'history' }];
-
-  // #### finish fake data ####
 
   const handleChange = (e) => {
     console.log(e.target.value);
     nav(`/generator/${e.target.value}`)
   }
 
-  const { data, loading, error } = useApi('/generator/all-gen')
+  const { data, loading : loadingAll, error } = useApi('/generator/all-gen')
   const { data: insights, loading: loadingInsightes } = useApi('/aiapiserver')
 
-  if (loading) return <Loader />
-  if (loadingInsightes) return <Loader />
+  if (loadingAll || loadingInsightes) return <Loader />
+  console.log(data, insights);
+  // if (loadingInsightes) return <Loader />
   if (error) return error
-
+  
   let currentGen = data?.find(gen => gen.name == id)
+  // const { data : currentGen, loading} = useApi(`/generator/:${id}`)
+  console.log(currentGen);
+  // if (loading) return <Loader />
 
   return (<>
     <div className={styles.grid_container}>
@@ -101,13 +104,11 @@ function SingleGenerator() {
           <BoxSensorType setSelected={setInsightBoxType} types={insightTypes} selected={insightBoxType} />
         </div>
         <div className={styles.all_insights}>
-          {/* <AlertComponent status={'danger'} title={'קריטי'} context={'הקירור בחריגות דלק, יש להחליף סנן ראשי במנוע. הקירור בחריגות דלק, יש להחליף סנן ראשי במנוע. הקירור בחריגות דלק, יש להחליף'} />
-          <AlertComponent status={'succcess'} title={'הערה'} context={'האיזור חם'} />
-          <AlertComponent status={'warning'} title={'לשים לב'} context={'הגנרטור מתחמם'} />
-          <AlertComponent status={'danger'} title={'קריטי'} context={'הקירור בחריגות דלק, יש להחליף סנן ראשי במנוע'} />
-          <AlertComponent status={'warning'} title={'לשים לב'} context={'רעידות מתחזקות'} />
-          <AlertComponent status={'succcess'} title={'אזהרה'} context={''} /> */}
-          {insights?.map(ins => <AlertComponent id={ins._id} status={statuses[ins.level_risk - 1]} title={ins.fault_name} description={ins.fault_description} context={ins.insight} treatments={ins.treatments} reasons={ins.based_on_data} />)}
+          {insightBoxType == 'all' ?
+            insights?.map(ins => <AlertComponent {...ins} status={statuses[ins.level_risk - 1]} key={ins._id}/>)
+            :
+            insights?.filter(ins => insightBoxType == statuses[ins.level_risk - 1]).map(ins => <AlertComponent {...ins} status={statuses[ins.level_risk - 1]} key={ins._id}/>)}
+          <button className={styles.all_insights_but} >לכל התובנות</button>
         </div>
       </div>
       <div className={styles.switch_box}>
@@ -117,6 +118,10 @@ function SingleGenerator() {
       </div>
       <div className={styles.charts}>
         {graphsBoxType == 'live' ? <ScaleLive /> : <SensorsCharts />}
+      </div>
+      <div className={styles.last_treatments}>
+      <h3>טיפולים אחרונים</h3>
+      {/* {<TechCheckList />} */}
       </div>
     </div>
   </>

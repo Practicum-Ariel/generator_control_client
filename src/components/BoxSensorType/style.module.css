@@ -15,9 +15,10 @@
     box-shadow: var(--active-button-box-shadow);
 }
 .box menu button{
-    padding: 2px 7px;
+    padding: 7px 7px;
     border: none;
     background-color: transparent;
     border-radius: 5px;
     cursor: pointer;
+    color: #1c376f;
 }
