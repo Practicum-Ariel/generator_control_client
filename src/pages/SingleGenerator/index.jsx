@@ -90,7 +90,7 @@ function SingleGenerator() {
       <div className={styles.gen_details}>
         <h3>גנרטור {id}</h3>
         <div>{currentGen?.location}</div>
-        <div>מזהה : {id}</div>
+        <div> <strong> מזהה :</strong>  {id} </div>
         <div className={styles.select}>
           <div>גנרטור</div>
           <select name="chooseGen" id="chooseGen" defaultValue={id} onChange={handleChange}>

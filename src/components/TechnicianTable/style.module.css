@@ -1,42 +1,44 @@
 .container {
   margin: 20px;
-  
-  form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"],
-  select {
-    padding: 8px;
-    font-size: 14px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
 
-th, td {
+}
+
+.container form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.container input[type="text"],
+select {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.container button:hover {
+  background-color: #0056b3;
+}
+
+.container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.container th, td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
@@ -45,7 +47,7 @@ th, td {
 th {
   background-color: #f2f2f2;
 }
-.profileImage {
+.container .profileImage {
   width: 30px;
   height: 30px;
   border-radius: 50%;

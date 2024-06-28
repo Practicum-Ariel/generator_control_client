@@ -1,0 +1,53 @@
+.main {
+    padding: 2rem;
+
+    width: 100%;
+    height: 100%;
+    /* background-color: ; */
+}
+
+.button {
+    margin: 1rem 1rem 0 0;
+    width: 6rem;
+    height: 2rem;
+}
+
+.AllGraphs {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.theChosen {
+    border: 2.5px solid greenyellow;
+}
+
+.img {
+    width: 100%;
+    height: 15rem;
+    background-color: #fff;
+}
+
+.graphs {
+    /* padding: 1px; */
+    width: 18rem;
+    max-height: 22rem;
+    /* overflow-y:scroll ; */
+}
+
+.graphs p {
+    display: flex;
+    max-height: 4rem;
+    align-items: center;
+    justify-content: center;
+}
+.buttonAdd{
+    margin: 1rem 1rem 0 0;
+    width: 6rem;
+    height: 2rem;
+    position: fixed;
+    bottom: 1rem;
+    left:1.5rem ;   
+}

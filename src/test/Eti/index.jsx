@@ -2,6 +2,7 @@ import styles from './style.module.css'
 import useApi from '../../hooks/useApi'
 import Loader from '../../components/Loader'
 import { useState, useEffect } from 'react'
+import GenericTable from '../../pages/GenericTable'
 import axios from 'axios'
 import { NavLink } from 'react-router-dom'
 import { FaRegEye, FaRegTrashAlt, FaRegEdit } from 'react-icons/fa'
@@ -27,15 +28,15 @@ import { FaRegEye, FaRegTrashAlt, FaRegEdit } from 'react-icons/fa'
 // example below: 
 
 export default function MotherComponent() { // the component that call GenericTable
-  const { data = [], loading, error } = useApi('/technician')
+  const { data = [], loading, error } = useApi('/visit')
   const [columns, setColumns] = useState([])
   const [rows, setRows] = useState([])
   const [tableName, setTableName] = useState('')
 
   useEffect(() => {
-    setTableName('טכנאים')
+    setTableName('היסטוריית בדיקות')
 
-    const columns = [{ header: 'מזהה', accessor: 'index' }, { header: 'שם', accessor: 'fullName' }, { header: 'טלפון', accessor: 'phoneNumber' },]
+    const columns = [{ header: 'מזהה', accessor: 'index' }, { header: 'תאריך', accessor: 'date' }, {header: 'הערה', accessor: 'text'}, { header: 'שם טכנאי', accessor: 'techId.fullName' }, { header: 'נייד', accessor: 'techId.phoneNumber' }, { header: 'תזמון', accessor: 'type' }]
 
     setColumns(columns)
 
@@ -67,35 +68,45 @@ export default function MotherComponent() { // the component that call GenericTa
 
 // creator: Eti
 // props: { title: string }
-function GenericTable({ tableName, columns, rows, onEdit, onDetails, onDelete }) {
-  return (
-    <section className={styles.genericTable}>
-      <h1>{tableName}</h1>
-      <table>
-        <thead>
-          <tr>
-            {columns?.map((col) =>
-              <th key={col.accessor}>{col.header}</th>
-            )}
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows?.map((row) =>
-            <tr key={row._id}>
-              {columns?.map((col) =>
-                <td key={col.accessor}>
-                  {row[col.accessor]}
-                </td>
-              )}
-              <td>
-                <button onClick={() => onEdit(row)}><FaRegEdit /></button>
-                <button onClick={() => onDetails(row)}><FaRegEye /></button>
-                <button onClick={() => onDelete(row)}><FaRegTrashAlt /></button>
-              </td>
-            </tr>)}
-        </tbody>
-      </table>
-    </section>
-  )
-}
+// function GenericTable({ tableName, columns, rows, onEdit, onDetails, onDelete }) {
+//   const handleTd = (row, col) => {
+//     if (col.accessor.includes('.')) {
+//       const first = col.accessor.split('.')[0]
+//       if (!row[first]) return ''
+//       const second = col.accessor.split('.')[1]
+//       return row[first][second]
+//     }
+//     return row[col.accessor]
+//   }
+  
+//   return (
+//     <section className={styles.genericTable}>
+//       <h1>{tableName}</h1>
+//       <table>
+//         <thead>
+//           <tr>
+//             {columns?.map((col) =>
+//               <th key={col.accessor}>{col.header}</th>
+//             )}
+//             <th>Actions</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {rows?.map((row) =>
+//             <tr key={row._id}>
+//               {columns?.map((col) =>
+//                 <td key={col.accessor}>
+//                   {handleTd(row, col)}
+//                 </td>
+//               )}
+//               <td>
+//                 <button onClick={() => onEdit(row)}><FaRegEdit /></button>
+//                 <button onClick={() => onDetails(row)}><FaRegEye /></button>
+//                 <button onClick={() => onDelete(row)}><FaRegTrashAlt /></button>
+//               </td>
+//             </tr>)}
+//         </tbody>
+//       </table>
+//     </section>
+//   )
+// }

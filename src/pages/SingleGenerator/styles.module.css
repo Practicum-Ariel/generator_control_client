@@ -40,7 +40,7 @@
     gap: 1rem;
     padding: 20px 0;
     height: 100vh;
-    grid-template-rows: 30px 30px 300px 1fr;
+    grid-template-rows: 90px 30px 300px 1fr;
     grid-template-columns: 70% 29%;
 }
 
@@ -50,6 +50,7 @@
 
 .select {
     display: flex;
+    align-items: center;
     gap: 0.5rem;
 }
 

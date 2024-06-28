@@ -1,5 +1,5 @@
 .types {
-    /* padding: 0 40px; */
+    padding:40px 0;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -20,7 +20,7 @@
 }
 
 .types .sensorByType .scaleChart {
-    background-color: white;
+    /* background-color: transparent; */
     padding: 10px;
     border-radius: 18px;
     /* opacity: 0.5; */
