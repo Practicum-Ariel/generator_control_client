@@ -26,7 +26,7 @@ export default function PopUpSimulator({ testGraphs, setTestGraph }) {
     const updateSound = value => updateData("sound", value)
 
     const sendData = () => {
-        if (!scenario.time || scenario.sound || !scenario.temperature || scenario.vibration)
+        if (!scenario.time || !scenario.sound || !scenario.temperature || !scenario.vibration)
             console.log("")
         setPopupContent(<NextComponent setTestGraph={setTestGraph} testGraphs={testGraphs} scenario={scenario} />)
     }
