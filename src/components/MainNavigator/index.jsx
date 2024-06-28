@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { CgProfile } from 'react-icons/cg';
 import MainNavLi from '../MainNavLi';
@@ -8,8 +8,9 @@ function MainNavigator({ paths }) {
   const [links, setLinks] = useState(paths || []);
   const [expand, setExpand] = useState(false);
 
+  console.log(links);
+
   const handleExpand = () => {
-    // expand = !expand;
     setExpand(!expand);
     console.log(expand);
   };

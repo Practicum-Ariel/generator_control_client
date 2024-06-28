@@ -2,6 +2,7 @@ import TechCheck from '../../components/TechCheck';
 import TechCheckList from '../../components/TechCheckList';
 import useApi from '../../hooks/useApi';
 import MainLayout from '../../layout/MainLayout';
+import TechVisit from '../../pages/TechVisit';
 import styles from './style.module.css';
 
 // creator: Shmuel
@@ -17,7 +18,8 @@ export default function Shmuel() {
 
   return (
     <div className={styles.Shmuel}>
-      <TechVisitrForm />
+      {/* <TechVisitrForm /> */}
+      <TechVisit />
       {/* <MainLayout /> */}
       {/* {data} */}
       {/* <button>useApi</button> */}

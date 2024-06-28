@@ -3,8 +3,7 @@ import styles from './styles.module.css';
 import { NavLink } from 'react-router-dom';
 
 function MainNavLi({ liData, expand }) {
-  console.log(expand);
-  console.log(liData.href);
+
   return (
     <NavLink
       to={liData.href}

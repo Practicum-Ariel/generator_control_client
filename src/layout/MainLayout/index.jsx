@@ -27,17 +27,15 @@ function MainLayout() {
     {
       id: 2,
       title: 'כלל הגנרטורים',
-      href: '/generators/all',
+      href: '/generators',
       icon: <PiUsersThreeFill />,
     },
-
     { id: 5, title: 'התראות', href: '/notifications', icon: <MdCrisisAlert /> },
-    // { id: 6, title: 'התחברות', href: '/login', icon: <RiUserSettingsLine /> },
   ];
   return (
-    <div className={styles.main_layout}>
+    <div className='main_layout'>
       <MainNavigator paths={links} />
-      <main className={styles.main_content}>
+      <main className='main_content'>
         <Outlet />
       </main>
     </div>
