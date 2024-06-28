@@ -11,14 +11,46 @@
     padding: 10px;
 }
 
+.boxes{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
 
 .rightBox{
     color: white;
    height: 150px;
-   width:300px;
+   width:350px;
    border-radius: 5px;
    background-color: blue;
-   padding: 20px;
+   
+}
+
+.leftBox{
+    color: white;
+    height: 150px;
+    width:350px;
+    border-radius: 5px;
+    background-color: green;
+    
+}
+
+
+li h3{
+    padding: 10px;;
+}
+
+li p{
+    padding: 7px;
+}
+
+.generator{
+   display: flex;
+   justify-content: center;
+    color: blue;
+    padding-top:20px;
+    font-size: small;
 }
 
 

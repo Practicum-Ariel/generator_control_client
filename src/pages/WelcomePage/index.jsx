@@ -14,14 +14,28 @@ export default function WelcomePage() {
           <br></br>
           הגנרטורים,להשתמש בסימולטור לניתוח ולתפעול,ולצפות בנתונים בזמן אמת מכל החיישנים.</p>
       </div>
-      <div className={styles.boxes}>
-        <div className={styles.rightBox}>
+      <ul className={styles.boxes}>
+        <li className={styles.rightBox}><a href="/">
           <h3>סימולטור גנרטורים</h3>
-        </div>
-        <div className={styles.leftBox}>
+          <p>השתמש בסימולטור כדי לנתח ולשפר את
+            <br></br>
+            ביצועי הגנרטורים באופן בטוח וללא השפעה<br></br> על המערכת האמיתית.
+          </p>
+        </a>
+        </li>
+        <li className={styles.leftBox}><a href="/">
+          <h3>תצוגת חיישנים בזמן אמת</h3>
+          <p>ראה נתונים דינמיים מעכל החיישנים בזמן אמת,
+            <br></br>
+            תוך כדי פעולת הגנרטורים,לניטור מדויק
+            <br></br>
+            ולזיהוי בעיות מהיר במערכת.
+          </p>
+        </a>
+        </li>
+      </ul>
 
-        </div>
-      </div>
+      <a className={styles.generator} href="/">צפה בכל הגנרטורים</a>
     </div>
   )
 }
