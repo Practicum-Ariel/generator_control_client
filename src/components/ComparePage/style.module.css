@@ -1,21 +1,37 @@
 .main {
     width: 100%;
     padding: 0 7px;
-      display: flex;
+    display: flex;
     /* justify-content: center; */
     align-items: center;
     flex-direction: column;
+    max-height: 100vh;
+    overflow: auto;
+
+    th{
+        color: #000;
+    }
+
 }
-.h1{
-    /* margin: auto; */
-    /* display: flex;
+
+.h1 {
+    /* margin: auto;
+    display: flex;
     justify-content: center; */
 }
-.selectors{
-    /* width: 100%; */
+
+
+.selectors {
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
+    padding: 1rem 0;
+    align-items: center;
+    &>div{
+        width: fit-content;
+    }
 }
+
 .sensors {
     padding: 0 7px;
     width: 23vw;
@@ -23,30 +39,48 @@
     /* height: 100vh; */
     background-color: rgb(225, 224, 222);
 }
-.sensorscolor{
+
+.sensors p {
+    
+    /* direction: rtl; */
+    text-align: center;
+}
+
+.sensorscolor {
     padding: 0 7px;
     background-color: rgb(225, 224, 222);
 }
 
 .compare {
+
     padding: 0 7px;
     width: 38.5vw;
     height: 7.6vh;
     /* background-color: aquamarine; */
 }
+
+.selectors select{
+    padding: .4rem .7rem;
+    border-radius: 5px;
+    border: 1px solid #eeeeee;
+}
+
 .warning {
     width: 38.5vw;
     height: 7.6vh;
-    background-color: rgb(254, 221, 5);
+    /* background-color: rgb(254, 221, 5); */
+    background-color: rgb(225, 224, 222);
     /* border-color: rgb(228, 199, 10); */
 }
 
 .succcess {
     /* border-color: #14AC07; */
-    background-color: #1adf08;
+    /* background-color: #1adf08; */
+    background-color: rgb(225, 224, 222);
 }
+
 
 .danger {
     /* border-color: #de0064; */
-    background-color: #FF0073;
+    background-color: #be090963;
 }
