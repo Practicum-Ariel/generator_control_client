@@ -3,7 +3,7 @@ import Input from '../Input'
 import InputPassword from '../InputPassword'
 import { Link } from "react-router-dom";
 import { apiReq } from '../../helpers/apiReq';
-import { useLogin } from '../../hooks/useLogin';
+import { useAuth } from '../../hooks/useAuth';
 import useAuthContext from '../../helpers/useAuthContext';
 import { useLogout } from '../../hooks/useLogout';
 import Loader from '../Loader';
@@ -11,16 +11,20 @@ import Loader from '../Loader';
 
 export default function TechnicianLogin() {
     const {logout} = useLogout();
-    const { login, error, loading } = useLogin();
+    const { login, error, loading } = useAuth();
     const {user} = useAuthContext();
     const handleSubmit = async(e)=> {
         e.preventDefault(); //מרענן את הדף. מונע את זה.
         const formData = new FormData(e.target);
         const idNum = formData.get("userName")
         const password = formData.get("password")
-        //change
         apiReq({url: "/auth/login", method: "POST", data: {idNum, password}})
-        .then(res => console.log(res))
+        .then(res =>{}
+            // save  user in context
+            // save token in local storage
+            // nav to dashboard
+        )
+        .catch(err => console.error(err))
 
         const credetials = {idNum , password}
         console.log(credetials);
@@ -30,7 +34,7 @@ export default function TechnicianLogin() {
     }
     if(loading && !user) return <Loader/>
     
-    debugger
+    
     return (
         <>
         {user && (<h1>ברוך הבא {user.name} <button onClick={logout}>logout</button></h1>

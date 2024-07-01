@@ -69,7 +69,8 @@ body {
   --active-button-text-background-color: #ffffff;
   --active-button-border-radius: 8px;
   --active-button-border: none;
-  --active-button-box-shadow: 0px 8px 10px -9px rgb(0, 0, 0);
+  --active-button-box-shadow: 0px 4px 4px 0px #00000040;
+
 
   /* button not active */
   --button-not-active-text-color: rgba(0, 0, 0, 0.7);

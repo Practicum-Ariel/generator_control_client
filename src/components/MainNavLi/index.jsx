@@ -18,7 +18,7 @@ function MainNavLi({ liData, expand }) {
           {expand ? liData.title : ''}
         </div>
 
-        <span class={styles.tooltiptext}>{liData.title}</span>
+        <span className={styles.tooltiptext}>{liData.title}</span>
       </li>
     </NavLink>
   );

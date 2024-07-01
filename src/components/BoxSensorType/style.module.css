@@ -1,0 +1,23 @@
+.box{
+    border: 2px solid rgb(75, 75, 237);
+    width: fit-content;
+    padding: 3px;
+    border-radius: 5px;
+    
+}
+.box menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.selected{
+    box-shadow: var(--active-button-box-shadow);
+}
+.box menu button{
+    padding: 2px 7px;
+    border: none;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+}

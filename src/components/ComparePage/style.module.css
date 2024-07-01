@@ -1,0 +1,52 @@
+.main {
+    width: 100%;
+    padding: 0 7px;
+      display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+.h1{
+    /* margin: auto; */
+    /* display: flex;
+    justify-content: center; */
+}
+.selectors{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.sensors {
+    padding: 0 7px;
+    width: 23vw;
+    height: 7.6vh;
+    /* height: 100vh; */
+    background-color: rgb(225, 224, 222);
+}
+.sensorscolor{
+    padding: 0 7px;
+    background-color: rgb(225, 224, 222);
+}
+
+.compare {
+    padding: 0 7px;
+    width: 38.5vw;
+    height: 7.6vh;
+    /* background-color: aquamarine; */
+}
+.warning {
+    width: 38.5vw;
+    height: 7.6vh;
+    background-color: rgb(254, 221, 5);
+    /* border-color: rgb(228, 199, 10); */
+}
+
+.succcess {
+    /* border-color: #14AC07; */
+    background-color: #1adf08;
+}
+
+.danger {
+    /* border-color: #de0064; */
+    background-color: #FF0073;
+}

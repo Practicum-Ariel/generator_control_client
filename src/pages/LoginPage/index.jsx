@@ -1,7 +1,10 @@
 import React from 'react';
+import TechnicianLogin from '../../components/TechnicianLogin';
 
 function LoginPage() {
-  return <form>LoginPage</form>;
+  return <div>
+    <TechnicianLogin />
+  </div>
 }
 
 export default LoginPage;

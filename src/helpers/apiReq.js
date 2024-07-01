@@ -10,7 +10,7 @@ const apiClient = axios.create({
   });
 
 // פונקציה גנרית לביצוע בקשות
-export const apiReq = async ({ url, method = 'GET', data = null, params = {}, headers }) => {
+export const apiReq = async ({ url, method = 'GET', data, params = {} }) => {
     if (!url) {
         console.warn('No URL provided for the request');
         return ''; // במידה ואין כלום מחזיר סטרינג ריק
@@ -24,7 +24,6 @@ export const apiReq = async ({ url, method = 'GET', data = null, params = {}, he
         method,
         data,
         params,
-        headers
       });
   
       return response.data;
