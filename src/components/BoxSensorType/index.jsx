@@ -10,10 +10,12 @@ export default function BoxSensorType({ setSelected, types, selected }) {
     return (
         <div className={styles.box}>
             <menu>
-                {types.map(type => <button className={selected === type.value ? styles.selected : ''}
+                {types.map(type => {
+                    const gen_status = type.value
+                    return <button className={`${styles[gen_status]} ${selected === type.value ? styles.selected : ''}`}
                     onClick={(e) => handleSelected(e, type)}>
                     {type.text}
-                </button>)}
+                </button>})}
             </menu>
         </div>
     )

@@ -9,9 +9,9 @@
 .buttons {
     display: flex;
     gap: 30rem;
-    height: 50px;
+    /* height: 50px; */
     width: 100%;
-    padding: 0 30px;
+    /* padding: 0 30px; */
     justify-content: start;
 }
 

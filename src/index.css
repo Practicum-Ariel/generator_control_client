@@ -84,6 +84,12 @@ body {
 
   /* navBar */
   --navBar-background-color: #062B59;
+
+  /* sensor-anomaly */
+  --sensor-anomaly-normal: rgb(0, 184, 0);
+  --sensor-anomaly-mild: rgb(253, 182, 0);
+  --sensor-anomaly-moderate: rgb(254, 101, 0);
+  --sensor-anomaly-severe: red;
 }
 
 svg {

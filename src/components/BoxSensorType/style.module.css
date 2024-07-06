@@ -18,13 +18,29 @@
     box-shadow: var(--active-button-box-shadow);
 }
 
-.box menu button {
+button {
     cursor: pointer;
     /* width: 100%; */
-    padding: 7px 7px;
+    padding: 12px 20px;
     border: none;
     background-color: transparent;
     border-radius: 5px;
     cursor: pointer;
     color: #1c376f;
+}
+
+button:hover {
+    box-shadow: var(--active-button-box-shadow);
+}
+
+button.available {
+    color: var(--sensor-anomaly-normal);
+}
+
+button.repair {
+    color: var(--sensor-anomaly-mild);
+}
+
+button.off {
+    color: var(--sensor-anomaly-severe);
 }
