@@ -33,14 +33,18 @@ button:hover {
     box-shadow: var(--active-button-box-shadow);
 }
 
-button.available {
+button.proper {
     color: var(--sensor-anomaly-normal);
 }
 
-button.repair {
+button.anomaly {
     color: var(--sensor-anomaly-mild);
 }
 
-button.off {
+button.error {
     color: var(--sensor-anomaly-severe);
+}
+
+button.disconnected {
+    color: gray;
 }

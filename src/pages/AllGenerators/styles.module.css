@@ -19,7 +19,7 @@
     width: 400px;
 }
 
-.compare_button {
+/* .compare_button {
     background-color: inherit;
     color: var(--secondary-color-dark);
     box-shadow: var(--active-button-box-shadow);
@@ -31,7 +31,7 @@
     height: 50px;
     line-height: 50px;
     align-self: center;
-}
+} */
 
 .genList {
     display: flex;
@@ -58,22 +58,31 @@
     align-items: center;
 }
 
+.compare_btn {
+    cursor: pointer;
+    font-size: 1.7rem;
+}
+
 .gen_status {
     height: 15px;
     width: 15px;
     border-radius: 50%;
 }
 
-.gen_status.available {
+.gen_status.proper {
     background-color: var(--sensor-anomaly-normal);
 }
 
-.gen_status.repair {
+.gen_status.anomaly {
     background-color: var(--sensor-anomaly-mild);
 }
 
-.gen_status.off {
+.gen_status.error {
     background-color: var(--sensor-anomaly-severe);
+}
+
+.gen_status.disconnected {
+    background-color: gray;
 }
 
 .gen_header {

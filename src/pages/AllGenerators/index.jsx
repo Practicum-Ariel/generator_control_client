@@ -6,13 +6,14 @@ import Loader from '../../components/Loader'
 import { useState } from 'react'
 import BoxSensorType from '../../components/BoxSensorType'
 import capitalizeFirstLetter from '../../helpers/utilFunctions'
+import { MdCompareArrows } from "react-icons/md";
 
 // creator: Shahar
 
 function AllGenerators() {
   const [checked, setChecked] = useState([])
-  const [statusBoxType, setStatusBoxType] = useState('')
-  const statuses = [{ text: "הכל", value: '' }, { text: "פעיל", value: 'available' }, { text: "בתיקון", value: 'repair' }, { text: "מושבת", value: 'off' }]
+  const [statusBoxType, setStatusBoxType] = useState('all')
+  const statuses = [{ text: "הכל", value: 'all' }, { text: "תקין", value: 'proper' }, { text: "אנומליה", value: 'anomaly' }, { text: "תקלה", value: 'error' }, { text: "לא מחובר", value: 'disconnected' }]
 
   const { data, loading, error } = useApi(`/generator/all-gen?status=${statusBoxType}`)
 
@@ -50,12 +51,8 @@ function AllGenerators() {
   }
 
   const handleChange = (id) => {
-    if (checked.includes(id))
-      setChecked(checked.filter(v => v != id)) // remove id from array
-    else if (checked.length < 2)
-      setChecked([...checked, id])
+    if (checked.length < 2) setChecked([...checked, id])
   }
-
 
   if (loading) return <Loader />
   if (error) return <>{error || "error"}</>
@@ -70,7 +67,7 @@ function AllGenerators() {
         {data?.map(gen =>
           <div key={gen._id} className={styles.gen}>
             <div className={styles.gen_top}>
-              <input type="checkbox" checked={checked.includes(gen._id)} onChange={() => handleChange(gen._id)} />
+              <MdCompareArrows className={styles.compare_btn} onClick={() => handleChange(gen._id)} title='compare generator'/>
               <div className={`${styles.gen_status} ${styles[gen.status]}`} />
             </div>
             <Link to={`/generator/${gen.name}`} className={styles.link}>
