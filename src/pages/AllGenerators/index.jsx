@@ -1,21 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './styles.module.css'
 import { Link } from 'react-router-dom'
 import useApi from '../../hooks/useApi'
 import Loader from '../../components/Loader'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import BoxSensorType from '../../components/BoxSensorType'
 import capitalizeFirstLetter from '../../helpers/utilFunctions'
-import { MdCompareArrows } from "react-icons/md";
+import { MdCompareArrows } from "react-icons/md"
 
 // creator: Shahar
 
-function AllGenerators() {
+export default function AllGenerators() {
+  const [generators, setGenerators] = useState([])
+  const [filteredGens, setFilteredGens] = useState([])
   const [checked, setChecked] = useState([])
   const [statusBoxType, setStatusBoxType] = useState('all')
+  
   const statuses = [{ text: "הכל", value: 'all' }, { text: "תקין", value: 'proper' }, { text: "אנומליה", value: 'anomaly' }, { text: "תקלה", value: 'error' }, { text: "לא מחובר", value: 'disconnected' }]
+  
+  let { data, loading, error } = useApi(`/generator/all-gen`)
+  // const { data, loading, error } = useApi(`/generator/all-gen?status=${statusBoxType}`)
 
-  const { data, loading, error } = useApi(`/generator/all-gen?status=${statusBoxType}`)
+
+  // useEffect(() => { // i call the api directly because i can't use useApi (hook) inside inner function of the component 
+  //   axios.get(`http://localhost:3000/api//generator/all-gen`).then(res => setGenerators(res.data))
+  // }, [])
+
+  useEffect(() => {
+    setGenerators(data)
+    setFilteredGens(data)
+  }, [data])
 
   const sensorAnomalies = {
     temp: {
@@ -54,20 +68,27 @@ function AllGenerators() {
     if (checked.length < 2) setChecked([...checked, id])
   }
 
+  const handleFilter = (e, filter) => {
+    e.preventDefault()
+    setFilteredGens(filter === 'all' ? generators : generators.filter(gen => gen.status === filter))
+  }
+
   if (loading) return <Loader />
-  if (error) return <>{error || "error"}</>
+  if (error) return error
 
   return (
     <div className={styles.allGen}>
       <div className={styles.buttons}>
-        <div className={styles.box_button}><BoxSensorType setSelected={setStatusBoxType} types={statuses} selected={statusBoxType} /></div>
+        <div className={styles.box_button}>
+          <BoxSensorType handleFilter={handleFilter} types={statuses} selected={statusBoxType} />
+        </div>
         {checked.length == 2 ? <Link to={`/generators/compare?filter=${checked[0]}-${checked[1]}`} className={styles.compare_button}>בצע השוואה</Link> : ''}
       </div>
       <div className={styles.genList}>
-        {data?.map(gen =>
+        {filteredGens?.map(gen =>
           <div key={gen._id} className={styles.gen}>
             <div className={styles.gen_top}>
-              <MdCompareArrows className={styles.compare_btn} onClick={() => handleChange(gen._id)} title='compare generator'/>
+              <MdCompareArrows className={styles.compare_btn} onClick={() => handleChange(gen._id)} title='compare generator' />
               <div className={`${styles.gen_status} ${styles[gen.status]}`} />
             </div>
             <Link to={`/generator/${gen.name}`} className={styles.link}>
@@ -75,7 +96,7 @@ function AllGenerators() {
                 <span>{gen.name}</span>
                 <span>{gen.location}</span>
               </div>
-              {gen.status === 'available' &&
+              {(gen.status === 'proper' || gen.status === 'anomaly') &&
                 <div className={styles.sensor_avgs}>
                   {Object.keys(sensorAnomalies).map(sa =>
                     <div className={styles.sensor_type} key={sa}>{capitalizeFirstLetter(sa)}
@@ -83,7 +104,7 @@ function AllGenerators() {
                       </div>
                     </div>)}
                 </div>}
-              {gen.status !== 'available' &&
+              {(gen.status !== 'proper' && gen.status !== 'anomaly') &&
                 <div className={styles.last_update}>
                   <span>Last Update</span>
                   <span>{formatTime(gen.lastUpdate)}</span>
@@ -94,5 +115,3 @@ function AllGenerators() {
     </div>
   )
 }
-
-export default AllGenerators

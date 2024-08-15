@@ -14,6 +14,7 @@ import { createContext, useState } from "react"
 import WelcomePage from "../../pages/WelcomePage"
 import AddTestGraph from "../../components/AddTestGraph"
 
+
 const routes = [
   { path: 'example', element: <Example /> },
   {
@@ -40,8 +41,8 @@ const router = createBrowserRouter(routes)
 export const toastify = createContext('')
 
 export default function MainRoutes() {
-
   const [toshow, setToshow] = useState(true)
+
   return (
     <toastify.Provider
       value={{
