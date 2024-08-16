@@ -1,11 +1,15 @@
 .main_nav {
-   position: relative;
+  /* chande position, left need to be right, widht, height */
+   /* position: relative; */
+   position: fixed;
+   left: 0;
   background: #1c376f;
   padding: 1rem 0rem 1rem .8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
+  height: 100vh;
       /* gap: 1rem; */
    /* justify-content: space-between; */
    transition: width .7s ;
@@ -14,11 +18,13 @@
 
 .curved_edge{
     position: absolute;
-    left: 0;
+    /* change left right and border radius */
+    /* left: 0; */
+    right: 0; 
     top: 0;
     height: 100%;
     width: .8rem;
-    border-radius: 0 .8rem .8rem 0;
+    /* border-radius: 0 .8rem .8rem 0; */
     background-color: #eee;
 }
 
@@ -33,11 +39,16 @@
 
 .main_nav > .burger{
     font-size: .5rem;
+    /* change position right and border-radius top was 10 */
     position: relative;
-    top: 10px;
-    border-radius: 1rem 0 0 1rem;
+    /* position: absolute; */
+    /* right: -1rem; */
+    top: 20px;
+    /* border-radius: 1rem 0 0 1rem; */
+    border-radius: 0 1rem 1rem 0;
     background: #1c376f;
     padding: 0.4rem 0.4rem;
+    
 }
 
 .main_nav > .burger >svg{

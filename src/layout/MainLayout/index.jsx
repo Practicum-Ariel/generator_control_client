@@ -48,7 +48,9 @@ function MainLayout() {
   ];
   return (
     <div className={styles.main_layout}>
+      <div className={styles.side_bar}>
       <MainNavigator paths={links} />
+      </div>
       <main className={styles.main_content}>
         <Outlet />
       </main>

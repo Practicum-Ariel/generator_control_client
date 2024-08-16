@@ -1,9 +1,17 @@
 .main_layout {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "main_content side_bar";
   /* height: 100vh;  */
 }
+
+.side_bar{
+  grid-area: side_bar;
+  height: 100vh;
+}
+
 .main_content {
+  grid-area: main_content;
   height: 100vh;
   width: 100%;
   background-color: #eee;
