@@ -38,6 +38,7 @@
     border-radius: 1rem 0 0 1rem;
     background: #1c376f;
     padding: 0.4rem 0.4rem;
+    cursor: pointer;
 }
 
 .main_nav > .burger >svg{
@@ -59,6 +60,7 @@
   width: 70%;
   max-width: 150px;
   height: auto;
+  cursor: pointer;
 }
 
 .main_nav > span > svg {

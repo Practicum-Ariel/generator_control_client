@@ -1,5 +1,5 @@
 .box{
-    border: 1px solid rgba(160, 160, 160, 0.756);
+    border: 1px solid rgb(203, 203, 203);
     /* width: fit-content; */
     padding: 8px;
     width: 100%;
@@ -18,13 +18,33 @@
     box-shadow: var(--active-button-box-shadow);
 }
 
-.box menu button {
+button {
     cursor: pointer;
     /* width: 100%; */
-    padding: 7px 7px;
+    padding: 12px 20px;
     border: none;
     background-color: transparent;
     border-radius: 5px;
     cursor: pointer;
     color: #1c376f;
+}
+
+button:hover {
+    box-shadow: var(--active-button-box-shadow);
+}
+
+button.proper {
+    color: var(--sensor-anomaly-normal);
+}
+
+button.anomaly {
+    color: var(--sensor-anomaly-mild);
+}
+
+button.error {
+    color: var(--sensor-anomaly-severe);
+}
+
+button.disconnected {
+    color: gray;
 }

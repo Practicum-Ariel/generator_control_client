@@ -20,7 +20,7 @@ function MainNavLi({ liData, expand }) {
         </div>
         {!expand ? (
           <span
-            class={`${expand ? styles.tooltip_hidden : styles.tooltip_show}`}>
+            className={`${expand ? styles.tooltip_hidden : styles.tooltip_show}`}>
             {liData.title}
           </span>
         ) : (
