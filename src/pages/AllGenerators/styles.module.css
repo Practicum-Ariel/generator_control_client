@@ -1,5 +1,5 @@
 .allGen {
-    height: 100vh;
+    /* min-height: 100vh; */
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@
 }
 
 .box_button{
-    width: 400px;
+    width: fit-content;
 }
 
 /* .compare_button {
@@ -35,6 +35,8 @@
 
 .genList {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 2rem;
 }
 

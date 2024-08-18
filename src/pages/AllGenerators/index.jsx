@@ -71,6 +71,7 @@ export default function AllGenerators() {
   const handleFilter = (e, filter) => {
     e.preventDefault()
     setFilteredGens(filter === 'all' ? generators : generators.filter(gen => gen.status === filter))
+    setStatusBoxType(filter)
   }
 
   if (loading) return <Loader />
