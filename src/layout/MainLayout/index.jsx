@@ -27,7 +27,7 @@ function MainLayout() {
     // },
     {
       id: 2,
-      title: 'כלל הגנרטורים',
+      title: 'All Generators',
       href: '/generators/all',
       icon: <GiPowerGenerator  />,
     },
@@ -40,7 +40,7 @@ function MainLayout() {
     // { id: 5, title: 'התראות', href: '/notifications', icon: <MdCrisisAlert /> },
     {
       id: 6,
-      title: 'סימולטור',
+      title: 'Simulator',
       href: '/test/graph',
       icon: <BsGraphUpArrow />,
     },
