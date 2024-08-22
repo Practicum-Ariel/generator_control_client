@@ -1,66 +1,118 @@
-import React from 'react';
+import React, { useEffect } from 'react'
 import styles from './styles.module.css'
 import { Link } from 'react-router-dom'
 import useApi from '../../hooks/useApi'
 import Loader from '../../components/Loader'
-import { useState } from 'react'
-import BoxSensorType from '../../components/BoxSensorType';
-
-
+import { useState, useContext } from 'react'
+import BoxSensorType from '../../components/BoxSensorType'
+import capitalizeFirstLetter from '../../helpers/utilFunctions'
+import { MdCompareArrows } from "react-icons/md"
 
 // creator: Shahar
 
-function AllGenerators() {
+export default function AllGenerators() {
+  const [generators, setGenerators] = useState([])
+  const [filteredGens, setFilteredGens] = useState([])
+  const [checked, setChecked] = useState([])
+  const [statusBoxType, setStatusBoxType] = useState('all')
+  
+  const statuses = [{ text: "הכל", value: 'all' }, { text: "תקין", value: 'proper' }, { text: "אנומליה", value: 'anomaly' }, { text: "תקלה", value: 'error' }, { text: "לא מחובר", value: 'disconnected' }]
+  
+  let { data, loading, error } = useApi(`/generator/all-gen`)
+  // const { data, loading, error } = useApi(`/generator/all-gen?status=${statusBoxType}`)
 
-  const getColor = (status) => {
-    let color = ''
-    status === 'available' ? color = 'green' :
-      status === 'repair' ? color = 'orange' : color = 'red'
-    return color
+
+  // useEffect(() => { // i call the api directly because i can't use useApi (hook) inside inner function of the component 
+  //   axios.get(`http://localhost:3000/api//generator/all-gen`).then(res => setGenerators(res.data))
+  // }, [])
+
+  useEffect(() => {
+    setGenerators(data)
+    setFilteredGens(data)
+  }, [data])
+
+  const sensorAnomalies = {
+    temp: {
+      normal: [70, 90],
+      mild: [90, 100],
+      moderate: [10, 110],
+      severe: [110, Infinity]
+    },
+    vib: {
+      normal: [0, 10],
+      mild: [10, 15],
+      moderate: [15, 20],
+      severe: [20, Infinity]
+    },
+    sound: {
+      normal: [60, 70],
+      mild: [70, 75],
+      moderate: [75, 80],
+      severe: [80, Infinity]
+    }
   }
 
-  const [checked, setChecked] = useState([]);
-  const [statusBoxType, setStatusBoxType] = useState('')
-  const statuses = [{ text: "הכל", value: '' }, { text: "פעיל", value: 'available' }, { text: "בתיקון", value: 'repair' }, { text: "מושבת", value: 'off' }];
+  const roundNum = (num) => Math.ceil(num)
 
-  const { data, loading, error } = useApi(`/generator/all-gen?status=${statusBoxType}`)
+  const getBadgeColor = (sensorType, sensorAvg) => {
+    if (!sensorAvg) return
+    return Object.keys(sensorAnomalies[sensorType]).find(key => sensorAvg > sensorAnomalies[sensorType][key][0] && sensorAvg < sensorAnomalies[sensorType][key][1])
+  }
+
+  const formatTime = (date) => {
+    date = new Date(date)
+    return `${date.getHours()}:${date.getMinutes()}  ${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
+  }
 
   const handleChange = (id) => {
-    if (checked.includes(id))
-      setChecked(checked.filter(v => v != id)); // remove id from array
-    else if (checked.length < 2)
-      setChecked([...checked, id])
-  };
+    if (checked.length < 2) setChecked([...checked, id])
+  }
 
+  const handleFilter = (e, filter) => {
+    e.preventDefault()
+    setFilteredGens(filter === 'all' ? generators : generators.filter(gen => gen.status === filter))
+    setStatusBoxType(filter)
+  }
 
   if (loading) return <Loader />
-  if (error) return <>{error || "error"}</>
+  if (error) return error
 
   return (
     <div className={styles.allGen}>
       <div className={styles.buttons}>
-        <div className={styles.box_button}><BoxSensorType setSelected={setStatusBoxType} types={statuses} selected={statusBoxType} /></div>
+        <div className={styles.box_button}>
+          <BoxSensorType handleFilter={handleFilter} types={statuses} selected={statusBoxType} />
+        </div>
         {checked.length == 2 ? <Link to={`/generators/compare?filter=${checked[0]}-${checked[1]}`} className={styles.compare_button}>בצע השוואה</Link> : ''}
       </div>
       <div className={styles.genList}>
-        {data?.map(gen => <div key={gen._id} className={styles.gen}>
-          <input type="checkbox" checked={checked.includes(gen._id)} onChange={() => handleChange(gen._id)} />
-          <Link to={`/generator/${gen.name}`} className={styles.link}>
-            <h1>{gen.name}</h1>
-            <h4>{gen.location}</h4>
-            <h5 className={styles.status} style={{ color: getColor(gen.status) }}>{gen.status}</h5>
-            {gen.status == 'available' &&
-              <>
-                <h5>{gen.message ?? <u>'Avg'</u>}</h5>
-                {gen.tempAvg && <h5>temperature: {gen.tempAvg}</h5>}
-                {gen.vibAvg && <h5>vibrtion: {gen.vibAvg}</h5>}
-                {gen.soundAvg && <h5>sound: {gen.soundAvg}</h5>}
-              </>}
-          </Link>
-        </div>)}
+        {filteredGens?.map(gen =>
+          <div key={gen._id} className={styles.gen}>
+            <div className={styles.gen_top}>
+              <MdCompareArrows className={styles.compare_btn} onClick={() => handleChange(gen._id)} title='compare generator' />
+              <div className={`${styles.gen_status} ${styles[gen.status]}`} />
+            </div>
+            <Link to={`/generator/${gen.name}`} className={styles.link}>
+              <div className={styles.gen_header}>
+                <span>{gen.name}</span>
+                <span>{gen.location}</span>
+              </div>
+              {(gen.status === 'proper' || gen.status === 'anomaly') &&
+                <div className={styles.sensor_avgs}>
+                  {Object.keys(sensorAnomalies).map(sa =>
+                    <div className={styles.sensor_type} key={sa}>{capitalizeFirstLetter(sa)}
+                      <div className={`${styles.avg_badge} ${styles[getBadgeColor(sa, gen[`${sa}Avg`])]}`}>{gen[`${sa}Avg`] ? roundNum(gen[`${sa}Avg`]) : '-'}
+                      </div>
+                    </div>)}
+                </div>}
+              {(gen.status !== 'proper' && gen.status !== 'anomaly') &&
+                <div className={styles.last_update}>
+                  <span>Last Update</span>
+                  <span>{formatTime(gen.lastUpdate)}</span>
+                </div>}
+            </Link>
+          </div>)}
       </div>
     </div>
   )
 }
-
-export default AllGenerators;

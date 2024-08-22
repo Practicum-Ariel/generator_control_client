@@ -38,9 +38,10 @@
   box-shadow: 5px 4px 7px -4px rgb(59 59 59);
   border-radius: 0.3rem;
 }
-/* .main_nav_li:hover .tooltip_show {
+/* show in hover the titles        */
+.main_nav_li:hover .tooltip_show {
   visibility: visible;
-} */
+}
 .main_nav_li:hover .tooltip_hidden {
   visibility: visible;
 }

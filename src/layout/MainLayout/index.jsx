@@ -19,17 +19,17 @@ import { BsGraphUpArrow } from 'react-icons/bs';
 
 function MainLayout() {
   const links = [
-    {
-      id: 1,
-      title: 'דף הבית',
-      href: '/',
-      icon: <FaCogs />,
-    },
+    // {
+    //   id: 1,
+    //   title: 'דף הבית',
+    //   href: '/',
+    //   icon: <FaCogs />,
+    // },
     {
       id: 2,
       title: 'כלל הגנרטורים',
       href: '/generators/all',
-      icon: <PiUsersThreeFill />,
+      icon: <GiPowerGenerator  />,
     },
     // {
     //   id: 3,
@@ -37,10 +37,10 @@ function MainLayout() {
     //   href: '/generator/:id',
     //   icon: <FaCog />,
     // },
-    { id: 5, title: 'התראות', href: '/notifications', icon: <MdCrisisAlert /> },
+    // { id: 5, title: 'התראות', href: '/notifications', icon: <MdCrisisAlert /> },
     {
       id: 6,
-      title: 'test graphs',
+      title: 'סימולטור',
       href: '/test/graph',
       icon: <BsGraphUpArrow />,
     },
