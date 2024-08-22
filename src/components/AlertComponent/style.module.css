@@ -8,6 +8,11 @@
     font-size: 14px;
 }
 
+.buttons {
+    display: flex;
+    gap: 0.3rem;
+}
+
 .but {
     margin: 0;
     background-color: var(--options-button-background-color);
@@ -28,11 +33,11 @@
 
 .context {
     font-weight: 500;
-    display: inline-block;
-    width: 180px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* display: inline-block; */
+    /* width: 180px; */
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
 }
 
 ::-webkit-scrollbar {
