@@ -6,6 +6,7 @@ import Loader from '../../components/Loader'
 import { useState, useContext } from 'react'
 import BoxSensorType from '../../components/BoxSensorType'
 import capitalizeFirstLetter from '../../helpers/utilFunctions'
+import AlertComponent from '../../components/AlertComponent';
 import { MdCompareArrows } from "react-icons/md"
 
 // creator: Shahar
@@ -15,10 +16,12 @@ export default function AllGenerators() {
   const [filteredGens, setFilteredGens] = useState([])
   const [checked, setChecked] = useState([])
   const [statusBoxType, setStatusBoxType] = useState('all')
-  
+
   const statuses = [{ text: "הכל", value: 'all' }, { text: "תקין", value: 'proper' }, { text: "אנומליה", value: 'anomaly' }, { text: "תקלה", value: 'error' }, { text: "לא מחובר", value: 'disconnected' }]
-  
+  const insightStatuses = ['success', 'warning', 'danger']
+
   let { data, loading, error } = useApi(`/generator/all-gen`)
+  const { data: insights, loading: loadingInsightes } = useApi('/aiapiserver')
   // const { data, loading, error } = useApi(`/generator/all-gen?status=${statusBoxType}`)
 
 
@@ -74,11 +77,11 @@ export default function AllGenerators() {
     setStatusBoxType(filter)
   }
 
-  if (loading) return <Loader />
+  if (loading || loadingInsightes) return <Loader />
   if (error) return error
 
   return (
-    <div className={styles.allGen}>
+    <div className={styles.grid_container}>
       <div className={styles.buttons}>
         <div className={styles.box_button}>
           <BoxSensorType handleFilter={handleFilter} types={statuses} selected={statusBoxType} />
@@ -112,6 +115,20 @@ export default function AllGenerators() {
                 </div>}
             </Link>
           </div>)}
+      </div>
+      <div className={styles.insights}>
+        <div className={styles.header}>
+          <h3>AI Insights</h3>
+          <a href="">All Insights</a>
+        </div>
+        <div className={styles.all_insights}>
+          {insights?.filter(ins => new Date(ins.updatedAt) > new Date(new Date(). getTime() - 7 * 24 * 60 * 60 * 1000))
+          // .filter(ins => ins.updatedAt > new Date(new Date(). getTime() - 7 * 24 * 60 * 60 * 1000))
+          .map(ins => {
+            let genIncludeInsightList = generators?.filter(gen => gen.insights?.includes(ins._id))
+            return <AlertComponent {...ins} status={insightStatuses[ins.level_risk - 1]} key={ins._id} genList={genIncludeInsightList?.map(gen => gen.name)} />
+          })}
+        </div>
       </div>
     </div>
   )

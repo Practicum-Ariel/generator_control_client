@@ -1,12 +1,31 @@
-.sensorType {
+.SensorsCharts {
+  display: grid;
+  grid-template-areas:
+        'sensorType sensorType'
+        'selectors graph';
+  grid-template-columns: 25% 70%;
+  grid-template-rows: 60px 1fr;
+  height: 100%;
+}
+
+.selectors {
+  grid-area: selectors;
   display: flex;
-  justify-content: center;
-  padding: 10px ;
-  padding-left: 0px;
+  gap: 3rem;
+  padding: .5rem;
+  flex-direction: column;
+  height: 200px;
+}
+
+.sensorType {
+  grid-area: sensorType;
+  width: 40%;
+  justify-self: center;
 }
 
 
 .changegraphbutton {
+  grid-area: changegraphbutton;
   background: none;
   border: 10px solid rgba(128, 128, 128, 0.484);
   font: inherit;
@@ -30,32 +49,14 @@
   box-shadow: var(--active-button-box-shadow);
 }
 
-.selctor {
-  padding: 10px;
-}
-
 .sensorBox {
   padding: 20px;
 }
 
 .graph1 {
+  grid-area: graph;
   display: flex;
   flex-direction: column;
   height: 100vh;
   /* color: rgb(204, 255, 0); */
-}
-
-
-
-
-.SensorsCharts {
-  display: grid;
-  grid-template-columns: 250px 1fr;
-}
-
-.selectors {
-  display: flex;
-  gap: 3rem;
-  padding: .5rem;
-  flex-direction: column;
 }

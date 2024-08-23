@@ -11,7 +11,7 @@ export default function ScaleLive({ generatorId = "6678464e815884d6e23a4542" }) 
   const [socket, setSocket] = useState(socketIO)
   const [genSensorsData, setgenSensorsData] = useState({})
   const { data = [], loading, error } = useApi(`/generator/${generatorId}/sensors`)
-  console.log({ data, loading, error });
+  
   const dict = {
     "temperature": "טמפרטורה",
     "vibration": "ויברציות",

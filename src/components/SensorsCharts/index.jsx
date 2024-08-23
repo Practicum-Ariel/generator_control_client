@@ -14,18 +14,16 @@ const types = [
   { text: "קול", value: "sound" },
 ];
 
-export default function SensorsCharts({
-  generatorId = "6678464e815884d6e23a4542",
-}) {
+export default function SensorsCharts({ generatorId, display = 'all' }) {
   const [showPointsGraph, setShowPointsGraph] = useState(true);
   const [sensor, setSensor] = useState({});
   const [colors, setColors] = useState({});
   const [time, setTime] = useState("day");
   const [selected, setSelected] = useState("temperature");
   const [colorsensor, setcolorsensor] = useState({});
-  const { data, loading, error } = useApi(
-    `/generator/6678464e815884d6e23a4542/data?time=${time}&sensor_type=${selected}`
-  );
+
+  const { data, loading, error } = useApi(`/generator/${generatorId}/data?time=${time}&sensor_type=${selected}`);
+
   function getRandomColor() {
     const letters = '0123456789ABCDEF';
     let color = '#';
@@ -34,8 +32,6 @@ export default function SensorsCharts({
     }
     return color;
   }
-
-  console.log(colorsensor);
 
   useEffect(() => {
     if (data?.length) {
@@ -59,7 +55,9 @@ export default function SensorsCharts({
       );
     }
   }, [loading]);
+
   console.log("sensor", sensor);
+
   function timeform(isoString) {
     const date = new Date(isoString);
     const hour = date.getHours();
@@ -92,16 +90,17 @@ export default function SensorsCharts({
 
   return (
     <div className={styles.SensorsCharts}>
+      <div className={styles.sensorType}>
+        <BoxSensorType setSelected={setSelected} selected={selected} types={types} />
+      </div>
       <div className={styles.selectors}>
-        <div className={styles.sensortype}>
-          <BoxSensorType setSelected={setSelected} selected={selected} types={types} />
-        </div>
-        <SensorCheckbox colorsensor={colorsensor} sensor={sensor} setSensor={setSensor} />
-
-        <button className={styles.changegraphbutton} onClick={handleChangeGraph}          >
-          חריגות טמפטורה/חיישני טמפרטורה על ציר הזמן 
-        </button>
-        <SelectRange time={time} setTime={setTime} />
+        {display == 'all' ? <>
+          <SensorCheckbox colorsensor={colorsensor} sensor={sensor} setSensor={setSensor} />
+          <button className={styles.changegraphbutton} onClick={handleChangeGraph}          >
+            חריגות טמפטורה/חיישני טמפרטורה על ציר הזמן
+          </button>
+          <SelectRange time={time} setTime={setTime} />
+        </> : <></>}
       </div>
 
       {loading ? (<Loader />) : error ? (<div>Error</div>) : (
