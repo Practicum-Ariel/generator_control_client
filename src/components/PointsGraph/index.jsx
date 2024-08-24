@@ -88,7 +88,7 @@ export default function PointsGraph({ data }) {
       },
       title: {
         display: true,
-        text: 'חריגות טמפטורה',
+        text: 'Temperature Exceptions',
       },
       zoom: {
         zoom: {

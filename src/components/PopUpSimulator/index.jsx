@@ -45,7 +45,7 @@ export default function PopUpSimulator({ fakeData, setFakeData }) {
                     <BoxSensorType selected={scenario.time} setSelected={updateTime} types={timeOptions} />
                 </div>
                 <div className={styles.box}>
-                    <label> חיישן טמפרטורה</label>
+                    <label> Temperature Sensor</label>
                     <BoxSensorType selected={scenario.temperature} setSelected={updateTemperature} types={scenarioOption} />
                 </div>
                 <div className={styles.box}>

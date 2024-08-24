@@ -9,9 +9,9 @@ import styles from "./style.module.css";
 import SelectRange from "../selectRange";
 
 const types = [
-  { text: "טמפרטורה", value: "temperature" },
-  { text: "ויברציה", value: "vibration" },
-  { text: "קול", value: "sound" },
+  { text: "Temperature", value: "temperature" },
+  { text: "Vibration", value: "vibration" },
+  { text: "Sound", value: "sound" },
 ];
 
 export default function SensorsCharts({ generatorId, display = 'all' }) {

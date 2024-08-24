@@ -1,6 +1,6 @@
 .container {
     height: 100%;
-    direction: rtl;
+    /* direction: rtl; */
     align-items: center;
     background-color: white;
     border-radius: 8px;

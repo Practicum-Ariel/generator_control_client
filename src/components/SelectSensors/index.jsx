@@ -6,8 +6,8 @@ export default function SelectSensors({ arraySensors, sensors, setSensors, nameB
 
     const [show, setShow] = useState(false)
     const newSensorsArray = arraySensors.reduce((prev, current, temp, array) => {
-        if (current.includes('t') && (!prev.find((value) => value.name === 'טמפרטורה')))
-            return [...prev, { name: "טמפרטורה", sensors: array.filter(v => v.includes('t')) }]
+        if (current.includes('t') && (!prev.find((value) => value.name === 'Temperature')))
+            return [...prev, { name: "Temperature", sensors: array.filter(v => v.includes('t')) }]
         else if (current.includes('v') && (!prev.find((value) => value.name === 'רעידות')))
             return [...prev, { name: "רעידות", sensors: array.filter(v => v.includes('v')) }]
         else if (current.includes('s') && (!prev.find((value) => value.name === 'קול')))
