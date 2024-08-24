@@ -17,7 +17,7 @@ export default function AllGenerators() {
   const [checked, setChecked] = useState([])
   const [statusBoxType, setStatusBoxType] = useState('all')
 
-  const statuses = [{ text: "הכל", value: 'all' }, { text: "תקין", value: 'proper' }, { text: "אנומליה", value: 'anomaly' }, { text: "תקלה", value: 'error' }, { text: "לא מחובר", value: 'disconnected' }]
+  const statuses = [{ text: "All", value: 'all' }, { text: "Proper", value: 'proper' }, { text: "Anomaly", value: 'anomaly' }, { text: "Error", value: 'error' }, { text: "Disconnected", value: 'disconnected' }]
   const insightStatuses = ['success', 'warning', 'danger']
 
   let { data, loading, error } = useApi(`/generator/all-gen`)
@@ -86,7 +86,7 @@ export default function AllGenerators() {
         <div className={styles.box_button}>
           <BoxSensorType handleFilter={handleFilter} types={statuses} selected={statusBoxType} />
         </div>
-        {checked.length == 2 ? <Link to={`/generators/compare?filter=${checked[0]}-${checked[1]}`} className={styles.compare_button}>בצע השוואה</Link> : ''}
+        {checked.length == 2 ? <Link to={`/generators/compare?filter=${checked[0]}-${checked[1]}`} className={styles.compare_button}>Compare Generators</Link> : ''}
       </div>
       <div className={styles.genList}>
         {filteredGens?.map(gen =>
