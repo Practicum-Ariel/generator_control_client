@@ -16,6 +16,9 @@ import { PiUsersThreeFill } from 'react-icons/pi';
 
 import { MdOutlineSettingsSuggest } from 'react-icons/md';
 import { BsGraphUpArrow } from 'react-icons/bs';
+import { FiAlertTriangle } from "react-icons/fi";
+import { LuNewspaper } from "react-icons/lu";
+import { IoSettingsOutline } from "react-icons/io5";
 
 function MainLayout() {
   const links = [
@@ -44,6 +47,24 @@ function MainLayout() {
       href: '/test/graph',
       icon: <BsGraphUpArrow />,
     },
+    {
+      id: 7,
+      title: 'Alerts',
+      href: '/',
+      icon: <FiAlertTriangle />,
+    },
+    {
+      id: 8,
+      title: 'Reports',
+      href: '/22',
+      icon: <LuNewspaper />,
+    },
+    {
+      id: 9,
+      title: 'Settings',
+      href: '/33',
+      icon: <IoSettingsOutline />,
+    }
     // { id: 6, title: 'התחברות', href: '/login', icon: <RiUserSettingsLine /> },
   ];
   return (

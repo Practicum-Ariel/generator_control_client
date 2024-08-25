@@ -20,6 +20,10 @@
     justify-content: start;
 }
 
+.search{
+    width: fit-content;
+}
+
 .box_button {
     width: fit-content;
 }

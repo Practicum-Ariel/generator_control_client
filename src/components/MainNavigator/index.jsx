@@ -21,13 +21,14 @@ function MainNavigator({ paths }) {
       <nav className={`${styles.main_nav} ${expand ? styles.expand : ''}`}>
         <div className={styles.curved_edge}></div>
         <img src='/images/logo.svg' alt='IAF-logo' onClick={() => nav('/')}/>
-        <span className={styles.burger}>
+        {/* dont need that */}
+        {/* <span className={styles.burger}>
           {expand ? (
             <FaChevronRight onClick={handleExpand} />
           ) : (
             <FaChevronLeft onClick={handleExpand} />
           )}
-        </span>
+        </span> */}
         <ul>
           {links &&
             links.map((li) => (
