@@ -8,12 +8,14 @@ import BoxSensorType from '../../components/BoxSensorType'
 import capitalizeFirstLetter from '../../helpers/utilFunctions'
 import AlertComponent from '../../components/AlertComponent';
 import { MdCompareArrows } from "react-icons/md"
+import Search from '../../components/Search'
 
 // creator: Shahar
 
 export default function AllGenerators() {
   const [generators, setGenerators] = useState([])
   const [filteredGens, setFilteredGens] = useState([])
+  const [search, setSearch] = useState("")
   const [checked, setChecked] = useState([])
   const [statusBoxType, setStatusBoxType] = useState('all')
 
@@ -28,6 +30,8 @@ export default function AllGenerators() {
   // useEffect(() => { // i call the api directly because i can't use useApi (hook) inside inner function of the component 
   //   axios.get(`http://localhost:3000/api//generator/all-gen`).then(res => setGenerators(res.data))
   // }, [])
+  console.log(generators)
+  console.log(filteredGens)
 
   useEffect(() => {
     setGenerators(data)
@@ -77,13 +81,22 @@ export default function AllGenerators() {
     setStatusBoxType(filter)
   }
 
+  const handleSearch = (e)=>{
+    setSearch(e.target.value.toLowerCase())
+    // filteredGens.filter(gen => gen.name.includes(1,search) || generators.filter(gen => gen.location.includes(1,search)))
+  }
+  
   if (loading || loadingInsightes) return <Loader />
   if (error) return error
 
   return (
     <div className={styles.grid_container}>
       <div className={styles.buttons}>
+        {/* <div className={styles.search}>
+          <Search onInput={handleSearch}/>
+        </div> */}
         <div className={styles.box_button}>
+          {/* <Search onInput={handleSearch}/> */}
           <BoxSensorType handleFilter={handleFilter} types={statuses} selected={statusBoxType} />
         </div>
         {checked.length == 2 ? <Link to={`/generators/compare?filter=${checked[0]}-${checked[1]}`} className={styles.compare_button}>Compare Generators</Link> : ''}
