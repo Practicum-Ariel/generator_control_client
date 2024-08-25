@@ -12,11 +12,11 @@ export default function ScaleLive({ generatorId = "6678464e815884d6e23a4542" }) 
   const [genSensorsData, setgenSensorsData] = useState({})
   const { data = [], loading, error } = useApi(`/generator/${generatorId}/sensors`)
   
-  const dict = {
-    "temperature": "טמפרטורה",
-    "vibration": "ויברציות",
-    "sound": "קול"
-  }
+  // const dict = {
+  //   "temperature": "טמפרטורה",
+  //   "vibration": "ויברציות",
+  //   "sound": "קול"
+  // }
 
   useEffect(() => {
     setSocket(io('http://localhost:3000'))
@@ -64,7 +64,7 @@ export default function ScaleLive({ generatorId = "6678464e815884d6e23a4542" }) 
       {sensors.map((s, i) => {
         return (
           <div key={i}>
-            <h3 className={styles.title}>{dict[Object.keys(s)]}</h3>
+            <h3 className={styles.title}>{Object.keys(s)}</h3>
             <div className={styles.sensorByType}>
               {s[Object.keys(s)].map((n, index) => {
                 const {

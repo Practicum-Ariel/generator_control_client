@@ -80,8 +80,8 @@ function SingleGenerator() {
     <div className={styles.grid_container}>
       <div className={styles.insights}>
         <div className={styles.header}>
-          <h3>תובנות Ai</h3>
-          <a href="">לפירוט</a>
+          <h3>Ai Insights</h3>
+          <a href="">More Details</a>
         </div>
         <div className={styles.all_insights}>
           {currentGen?.insights.map(ins => <AlertComponent {...ins} status={statuses[ins.level_risk - 1]} key={ins._id} />)}
@@ -89,8 +89,8 @@ function SingleGenerator() {
       </div>
       <div className={styles.live}>
         <div className={styles.header}>
-          <h3>תצוגת Live</h3>
-          <a href="">לפירוט</a>
+          <h3>Live Display</h3>
+          <a href="">More Details</a>
         </div>
         <div className={styles.live_chart}>
           {<ScaleLive generatorId={currentGen._id} />}
@@ -98,8 +98,8 @@ function SingleGenerator() {
       </div>
       <div className={styles.history}>
         <div className={styles.header}>
-          <h3>תצוגת היסטוריה</h3>
-          <a href="">לפירוט</a>
+          <h3>History Display</h3>
+          <a href="">More Details</a>
         </div>
         <div className={styles.hist_chart}>
           {<SensorsCharts generatorId={currentGen._id} display={'al'}/>}
@@ -107,8 +107,8 @@ function SingleGenerator() {
       </div>
       <div className={styles.last_treatments}>
         <div className={styles.header}>
-          <h3>טיפולים אחרונים</h3>
-          <a href="">לפירוט</a>
+          <h3>Last Treatments</h3>
+          <a href="">More Details</a>
         </div>
         {/* {<TechCheckList />} */}
       </div>

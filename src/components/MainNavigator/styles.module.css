@@ -1,8 +1,8 @@
 .main_nav {
   /* chande position, left need to be right, widht, height */
    /* position: relative; */
-   position: fixed;
-   left: 0;
+   /* position: fixed;
+   left: 0; */
   background: #1c376f;
   padding: 1rem 0rem 1rem .8rem;
   display: flex;
