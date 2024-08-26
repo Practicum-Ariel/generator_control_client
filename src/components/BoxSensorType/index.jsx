@@ -1,6 +1,6 @@
 import styles from './style.module.css'
 
-export default function BoxSensorType({ handleFilter, types, selected }) {
+export default function BoxSensorType({ handleFilter, types, selected, name }) {
 
     // const handleSelected = (e, type) => {
     //     e.preventDefault()
@@ -12,7 +12,7 @@ export default function BoxSensorType({ handleFilter, types, selected }) {
             <menu>
                 {types.map(type => {
                     return <button className={`${styles[type.value]} ${selected === type.value ? styles.selected : ''}`}
-                        onClick={(e) => handleFilter(e, type.value)} key={type.value}>
+                        onClick={(e) => handleFilter(e, type.value, name)} key={type.value}>
                         {type.text}
                     </button>
                 })}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./style.module.css";
-import { MdOutlineArrowLeft } from "react-icons/md";
+import { MdOutlineArrowRight } from "react-icons/md";
 import { TiArrowSortedDown } from "react-icons/ti";
 import TechVisitForm from "../TechVisitForm";
 import { useNavigate } from "react-router-dom";
@@ -11,13 +11,12 @@ export default function index({ _id, insight, fault_name, fault_description, tre
 
   return (
     // statuses[status] ?
-    <div
-      className={`${styles.main} ${styles[status]} `}
-      onClick={() => setIsClose(!isClose)}>
-      <div className={styles.title}>
-        {isClose ? <MdOutlineArrowLeft /> : <TiArrowSortedDown />}
-        {fault_name}
-        <div className={styles.context}>: {genList}</div>
+    <div className={styles.main}>
+      <div className={styles.title}>  
+        {isClose ? <MdOutlineArrowRight /> : <TiArrowSortedDown />}
+        <div className={styles.gen} onClick={() => nav(`/generator/${genList[0]}`)}>{genList}</div>
+        <div className={styles.context} onClick={() => setIsClose(!isClose)}>: {fault_name}</div>
+        <div className={`${styles.alert_status} ${styles[status]}`} />
       </div>
 
       {!isClose && (
