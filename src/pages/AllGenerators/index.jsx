@@ -68,7 +68,7 @@ export default function AllGenerators() {
 
   const formatTime = (date) => {
     date = new Date(date)
-    return `${date.getHours()}:${date.getMinutes()}  ${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
+    return `${`${date.getHours()}`.padStart(2, '0')}:${`${date.getMinutes()}`.padStart(2, '0')}  ${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
   }
 
   const handleChange = (id) => {
