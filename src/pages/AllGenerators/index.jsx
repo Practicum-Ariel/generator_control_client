@@ -17,10 +17,12 @@ export default function AllGenerators() {
   const [filteredGens, setFilteredGens] = useState([])
   const [search, setSearch] = useState("")
   const [checked, setChecked] = useState([])
-  const [statusBoxType, setStatusBoxType] = useState('all')
+  const [generatorStatusBoxType, setGeneratorStatusBoxType] = useState('all')
+  const [alertsStatusBoxType, setAlertsStatusBoxType] = useState('all')
 
-  const statuses = [{ text: "All", value: 'all' }, { text: "Proper", value: 'proper' }, { text: "Anomaly", value: 'anomaly' }, { text: "Error", value: 'error' }, { text: "Disconnected", value: 'disconnected' }]
-  const insightStatuses = ['success', 'warning', 'danger']
+  const generatorStatuses = [{ text: "All", value: 'all' }, { text: "Proper", value: 'proper' }, { text: "Anomaly", value: 'anomaly' }, { text: "Error", value: 'error' }, { text: "Disconnected", value: 'disconnected' }]
+  const alertsStatuses = [{ text: "All", value: 'all' }, { text: "AI Insights", value: 'AiInsights' }, { text: "Limit crosser", value: 'limitCrosser' }]
+  const insightStatuses = ['mild', 'moderate', 'severe']
 
   let { data, loading, error } = useApi(`/generator/all-gen`)
   const { data: insights, loading: loadingInsightes } = useApi('/aiapiserver')
@@ -75,72 +77,85 @@ export default function AllGenerators() {
     if (checked.length < 2) setChecked([...checked, id])
   }
 
-  const handleFilter = (e, filter) => {
+  const handleFilter = (e, filter, name) => {
     e.preventDefault()
-    setFilteredGens(filter === 'all' ? generators : generators.filter(gen => gen.status === filter))
-    setStatusBoxType(filter)
+    if (name === 'gen') {
+      setFilteredGens(filter === 'all' ? generators : generators.filter(gen => gen.status === filter))
+      setGeneratorStatusBoxType(filter)
+    }
+    else {
+      setAlertsStatusBoxType(filter)
+    }
   }
 
-  const handleSearch = (e)=>{
+  const handleSearch = (e) => {
     setSearch(e.target.value.toLowerCase())
     // filteredGens.filter(gen => gen.name.includes(1,search) || generators.filter(gen => gen.location.includes(1,search)))
   }
-  
+
   if (loading || loadingInsightes) return <Loader />
   if (error) return error
 
   return (
     <div className={styles.grid_container}>
-      <div className={styles.buttons}>
-        {/* <div className={styles.search}>
+      <div className={styles.generatorArea}>
+        <div className={styles.buttons}>
+          {/* <div className={styles.search}>
           <Search onInput={handleSearch}/>
         </div> */}
-        <div className={styles.box_button}>
-          {/* <Search onInput={handleSearch}/> */}
-          <BoxSensorType handleFilter={handleFilter} types={statuses} selected={statusBoxType} />
+          <div className={styles.box_button}>
+            {/* <Search onInput={handleSearch}/> */}
+            <BoxSensorType handleFilter={handleFilter} types={generatorStatuses} selected={generatorStatusBoxType} name={'gen'} />
+          </div>
+          {checked.length == 2 ? <Link to={`/generators/compare?filter=${checked[0]}-${checked[1]}`} className={styles.compare_button}>Compare Generators</Link> : ''}
         </div>
-        {checked.length == 2 ? <Link to={`/generators/compare?filter=${checked[0]}-${checked[1]}`} className={styles.compare_button}>Compare Generators</Link> : ''}
-      </div>
-      <div className={styles.genList}>
-        {filteredGens?.map(gen =>
-          <div key={gen._id} className={styles.gen}>
-            <div className={styles.gen_top}>
-              <MdCompareArrows className={styles.compare_btn} onClick={() => handleChange(gen._id)} title='compare generator' />
-              <div className={`${styles.gen_status} ${styles[gen.status]}`} />
-            </div>
-            <Link to={`/generator/${gen.name}`} className={styles.link}>
-              <div className={styles.gen_header}>
-                <span>{gen.name}</span>
-                <span>{gen.location}</span>
+        <div className={styles.genList}>
+          {filteredGens?.map(gen =>
+            <div key={gen._id} className={styles.gen}>
+              <div className={styles.gen_top}>
+                <MdCompareArrows className={styles.compare_btn} onClick={() => handleChange(gen._id)} title='compare generator' />
+                <div className={`${styles.gen_status} ${styles[gen.status]}`} />
               </div>
-              {(gen.status === 'proper' || gen.status === 'anomaly') &&
-                <div className={styles.sensor_avgs}>
-                  {Object.keys(sensorAnomalies).map(sa =>
-                    <div className={styles.sensor_type} key={sa}>{capitalizeFirstLetter(sa)}
-                      <div className={`${styles.avg_badge} ${styles[getBadgeColor(sa, gen[`${sa}Avg`])]}`}>{gen[`${sa}Avg`] ? roundNum(gen[`${sa}Avg`]) : '-'}
-                      </div>
-                    </div>)}
-                </div>}
-              {(gen.status !== 'proper' && gen.status !== 'anomaly') &&
-                <div className={styles.last_update}>
-                  <span>Last Update</span>
-                  <span>{formatTime(gen.lastUpdate)}</span>
-                </div>}
-            </Link>
-          </div>)}
-      </div>
-      <div className={styles.insights}>
-        <div className={styles.header}>
-          <h3>AI Insights</h3>
-          <a href="">All Insights</a>
+              <Link to={`/generator/${gen.name}`} className={styles.link}>
+                <div className={styles.gen_header}>
+                  <span>{gen.name}</span>
+                  <span>{gen.location}</span>
+                </div>
+                {(gen.status === 'proper' || gen.status === 'anomaly') &&
+                  <div className={styles.sensor_avgs}>
+                    {Object.keys(sensorAnomalies).map(sa =>
+                      <div className={styles.sensor_type} key={sa}>{capitalizeFirstLetter(sa)}
+                        <div className={`${styles.avg_badge} ${styles[getBadgeColor(sa, gen[`${sa}Avg`])]}`}>{gen[`${sa}Avg`] ? roundNum(gen[`${sa}Avg`]) : '-'}
+                        </div>
+                      </div>)}
+                  </div>}
+                {(gen.status !== 'proper' && gen.status !== 'anomaly') &&
+                  <div className={styles.last_update}>
+                    <span>Last Update</span>
+                    <span>{formatTime(gen.lastUpdate)}</span>
+                  </div>}
+              </Link>
+            </div>)}
         </div>
-        <div className={styles.all_insights}>
-          {insights?.filter(ins => new Date(ins.updatedAt) > new Date(new Date(). getTime() - 7 * 24 * 60 * 60 * 1000))
-          // .filter(ins => ins.updatedAt > new Date(new Date(). getTime() - 7 * 24 * 60 * 60 * 1000))
-          .map(ins => {
-            let genIncludeInsightList = generators?.filter(gen => gen.insights?.includes(ins._id))
-            return <AlertComponent {...ins} status={insightStatuses[ins.level_risk - 1]} key={ins._id} genList={genIncludeInsightList?.map(gen => gen.name)} />
-          })}
+      </div>
+      <div className={styles.alerts}>
+        <div className={styles.box_button}>
+          <BoxSensorType handleFilter={handleFilter} types={alertsStatuses} selected={alertsStatusBoxType} name={'alert'} />
+          {/* <h3>AI Insights</h3>  */}
+        </div>
+        <div className={styles.content}>
+          {/* {alertsStatusBoxType === 'AiInsights' ? */}
+            <div className={styles.insights}>
+              <a href="">All Insights</a>
+              {insights?.filter(ins => new Date(ins.updatedAt) > new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000))
+                .map(ins => {
+                  let genIncludeInsightList = generators?.filter(gen => gen.insights?.includes(ins._id))
+                  return <AlertComponent {...ins} status={insightStatuses[ins.level_risk - 1]} key={ins._id} genList={genIncludeInsightList?.map(gen => gen.name)} />
+                })}
+            </div>
+            {/* :
+            <div className={styles.limit}>
+            </div>} */}
         </div>
       </div>
     </div>
