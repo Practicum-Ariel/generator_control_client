@@ -1,6 +1,5 @@
 .grid_container {
     height: 100vh;
-    padding: 1rem;
     display: grid;
     grid-template-areas:
         'generatorArea alerts';

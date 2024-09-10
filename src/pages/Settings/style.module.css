@@ -1,0 +1,28 @@
+.mainNav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgb(203, 203, 203);
+    padding: 8px;
+    border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
+    width: fit-content;
+}
+
+.mainNav li {
+    cursor: pointer;
+    /* width: 100%; */
+    padding: 12px 20px;
+    border-radius: 5px;
+    color: #0844bb;
+    font-weight: 500;
+}
+
+.mainNav li:hover {
+    box-shadow: var(--active-button-box-shadow);
+}
+
+.mainNav li:has(a.active) {
+    box-shadow: var(--active-button-box-shadow);
+}

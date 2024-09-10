@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './style.module.css'
-//import axios from 'axios';
 import { apiReq } from '../../helpers/apiReq';
 
-function AddGenerator() {
-
-
+export default function AddMachine() {
   const [sensorsList, setSensorsList] = useState([
     {name: "t1", id: "1234"},
     {name: "t2", id: "2234"},
@@ -60,7 +57,7 @@ function AddGenerator() {
   }
 
   return <form className={styles.newGenForm} onSubmit={handleSubmit}>
-    AddGenerator
+    AddMachine
     <div className={styles.formRow}>
       <label>
         <h2>שם</h2>
@@ -102,5 +99,3 @@ function AddGenerator() {
     </div>
   </form>;
 }
-
-export default AddGenerator;

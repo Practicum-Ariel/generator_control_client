@@ -1,4 +1,4 @@
-import AddGenerator from '../../pages/AddGenerator'
+import AddMachine from '../../pages/AddMachine'
 import styles from './style.module.css'
 
 
@@ -8,7 +8,7 @@ export default function Natan() {
   return (
      <div className={styles.natan}>
         Natan
-        <AddGenerator/>
+        <AddMachine/>
     </div>
   )
 }
