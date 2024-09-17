@@ -31,7 +31,7 @@ function MainLayout() {
     {
       id: 2,
       title: 'All Generators',
-      href: '/generators/all',
+      href: '/generators',
       icon: <GiPowerGenerator  />,
     },
     // {
@@ -62,7 +62,7 @@ function MainLayout() {
     {
       id: 9,
       title: 'Settings',
-      href: '/33',
+      href: '/settings/new-machine',
       icon: <IoSettingsOutline />,
     }
     // { id: 6, title: 'התחברות', href: '/login', icon: <RiUserSettingsLine /> },
