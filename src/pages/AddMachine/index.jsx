@@ -1,101 +1,71 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import styles from './style.module.css'
-import { apiReq } from '../../helpers/apiReq';
 
 export default function AddMachine() {
-  const [sensorsList, setSensorsList] = useState([
-    {name: "t1", id: "1234"},
-    {name: "t2", id: "2234"},
-    {name: "t3", id: "3234"},
-    {name: "t4", id: "4234"},
-    {name: "t5", id: "5234"},
-    {name: "t6", id: "6234"},
-    {name: "t7", id: "7234"},
-    {name: "t8", id: "8234"},
-    {name: "t9", id: "9234"},
-    {name: "t10", id: "1134"},
-    {name: "t11", id: "1334"},
-    {name: "t12", id: "1434"},
-  ])//{sensor name, senosr id, optionally - type}
+  const [machine, setMachine] = useState({
+    name: '',
+    model: '',
+    serialNumber: '',
+    location: '',
+    relatedSensors: []
+  })
 
-  const [name, setName] = useState('');
-  const [location, setLocation] = useState('');
-  const [selectedSensors, setSelectedSensors] = useState([])
+  const textInputs = [
+    { id: 'name', labelText: 'Name' },
+    { id: 'model', labelText: 'Model' },
+    { id: 'serialNumber', labelText: 'Serial No.' },
+    { id: 'location', labelText: 'Location' },
+  ]
 
-  //const sensorsListUrl = ""
-  const addGenUrl = "http://localhost:3000/api/gen"
+  const relatedSensors = [
+    { id: 'temperature', labelText: 'Temperature' },
+    { id: 'sound', labelText: 'Sound' },
+    { id: 'vibration', labelText: 'Vibration' },
+  ]
 
-  useEffect(() => {
-    //axios.get(sensorsListUrl).then(res => setSensorsList(res.data))
-    //apiReq({})
-  },[])
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    console.log(selectedSensors)
-    //const result = apiReq({url: addGenUrl, method:  "POST", data: {name, location, sensors: selectedSensors} })
-    apiReq({url: addGenUrl, method:  "POST", data: {name, location, sensorsIds: selectedSensors} })
-    .then(res => console.log(res))
-    
-
-    // console.log({
-    //   name,
-    //   location,
-    //   sensors: selectedSensors,
-    // });
-    // const formData = new FormData(e.target)
-    // const objFormData = Object.fromEntries(formData)
-  }
-
-  const handleSensorChange = (sensorId) => {
-    if (selectedSensors.includes(sensorId)) {
-      setSelectedSensors(selectedSensors.filter((id) => id !== sensorId));
-    } else {
-      setSelectedSensors([...selectedSensors, sensorId]);
+  const handleInput = (target, inputId) => {
+    switch (target.type) {
+      case 'text':
+        setMachine(prev => ({ ...prev, [inputId]: target.value }))
+      case 'checkbox':
+        setMachine(prev => {
+          if (target.checked) return {...prev, relatedSensors: [...prev.relatedSensors, inputId]}
+          else return {...prev, relatedSensors: prev.relatedSensors.filter(rs => rs !== inputId)}
+        })
+      default:
+        break
     }
   }
 
-  return <form className={styles.newGenForm} onSubmit={handleSubmit}>
-    AddMachine
-    <div className={styles.formRow}>
-      <label>
-        <h2>שם</h2>
-        <input type="text" name='nameInput' onChange={(e) => setName(e.target.value)}/>
-      </label>
-    </div>
-    <div className={styles.formRow}>
-      <label>
-          <h2>מיקום</h2>
-          <input type="text" name='locationInput' onChange={(e) => setLocation(e.target.value)}/>
-      </label>
-    </div>
-    <div className={styles.formRow}>
-      <h2>סנסורים</h2>
-      <div className={styles.formRow}>
-        {sensorsList.map(s => 
-          <div key={s.id}  className={styles.sensorSelect}>
-            <label>
-              <input 
-                type="checkbox" 
-                value={s.id} 
-                checked={selectedSensors.includes(s.id)}
-                onChange={() => handleSensorChange(s.id)}
-              />
-              {s.name}
-            </label>
-          </div>)
-        }
-      </div>
-    </div>
-    <div className={styles.selectedRow}>
-        <h2>נבחרו</h2>
-      <div className={styles.selected}>
-        {selectedSensors.map(s => s + " ")}
-      </div>
-    </div>
-    <div className={styles.btnRow}>
-      <button type="submit">אישור</button>
-    </div>
-  </form>;
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(machine)
+  }
+
+  return (
+    <section className={styles.add_machine_container}>
+      <form className={styles.add_machine_form} onSubmit={handleSubmit}>
+        <section className={styles.text_inputs}>
+          {textInputs.map(ti =>
+            <div className={styles.machine_input} key={ti.id}>
+              <label htmlFor={ti.id}>{ti.labelText}</label>
+              <input type="text" name={ti.id} id={ti.id} value={machine[ti.id]} onInput={(e) => handleInput(e.target, ti.id)} />
+            </div>
+          )}
+        </section>
+
+        <section className={styles.related_sensors}>
+          <p>Related sensors</p>
+          {relatedSensors.map(rs =>
+            <div className={styles.machine_input} key={rs.id}>
+              <input type="checkbox" name={rs.id} id={rs.id} onClick={(e) => handleInput(e.target, rs.id)} />
+              <label htmlFor={rs.id}>{rs.labelText}</label>
+            </div>
+          )}
+        </section>
+
+        <button className={styles.submit_btn} type="submit">Add machine</button>
+      </form>
+    </section>
+  )
 }
