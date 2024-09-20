@@ -1,22 +1,76 @@
-.newGenForm{
-    width: 100%;
-    height: calc(100vh - 20px);
-    background-color: #eee;
+.add-machine-container {
+    background-color: darkblue;
 }
 
-.formRow{
+.add_machine_form {
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 40%;
+}
+
+.text_inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.machine_input {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 280px;
+    margin-block-end: 1rem;
+    margin-inline-end: 1rem;
 }
 
-.selectedRow{
-    display: flex;
-    
+.machine_input > input {
+    padding: 0.625rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    background-color: #f9fafb;
+    border: 1px solid #d0d0d0;
+    color: var(--secondary-color-dark)
 }
 
-.selected{
-    flex-grow: 1;
+label {
+    color: var(--secondary-color-dark);
+}
+
+.related_sensors {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+}
+
+.related_sensors p {
+    color: var(--secondary-color-dark);
+    font-weight: 700;
+    margin-block-end: 1rem;
+}
+
+.related_sensors .machine_input {
+    justify-content: start;
+}
+
+.machine_input input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+}
+
+.submit_btn {
+    cursor: pointer;
+    padding: 0.625rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: var(--secondary-color-dark);
+    color: #fff;
+    width: 150px;
+    font-size: 1rem;
+}
+
+.submit_btn:hover {
+    background-color: #0844bb;
 }
