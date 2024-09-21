@@ -202,7 +202,7 @@ img {
     justify-content: center;
 } */
 
-.insights {
+.insights, .limit {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
