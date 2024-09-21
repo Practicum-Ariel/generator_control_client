@@ -20,7 +20,7 @@ export default function index({ type, _id, insight, fault_name, fault_descriptio
       </div>
 
       {!isClose && (
-        type === 'insight' ?
+        type != 'insight' ?
         <div>
           { `הערך התקין הוא, הערך הקיים הוא ${value}`}
         </div>
