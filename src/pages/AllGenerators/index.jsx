@@ -25,6 +25,7 @@ export default function AllGenerators() {
   const insightStatuses = ['mild', 'moderate', 'severe']
 
   let { data, loading, error } = useApi(`/generator/all-gen`)
+  let { data: alerts, loading: loadingAlerts } = useApi(`/alert`)
   const { data: insights, loading: loadingInsightes } = useApi('/aiapiserver')
   // const { data, loading, error } = useApi(`/generator/all-gen?status=${statusBoxType}`)
 
@@ -93,7 +94,24 @@ export default function AllGenerators() {
     // filteredGens.filter(gen => gen.name.includes(1,search) || generators.filter(gen => gen.location.includes(1,search)))
   }
 
-  if (loading || loadingInsightes) return <Loader />
+  const allAlertsFunc = () => {
+    let updateInsights = insights?.filter(ins => new Date(ins.updatedAt) > new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000))
+    let updateAlerts = alerts?.filter(alert => new Date(alert.updatedAt) > new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000))
+    let allAlerts = []
+    for (let ins of updateInsights) {
+      let gen = generators?.find(gen => gen.insights?.includes(ins._id));
+      
+      allAlerts[gen?.name] = (ins)
+    }
+
+    for(let alert of updateAlerts) {
+      allAlerts[alert.genId] = (alert)
+    }
+    console.log('allAlerts: ', allAlerts);
+    return allAlerts
+  }
+
+  if (loading || loadingInsightes || loadingAlerts) return <Loader />
   if (error) return error
 
   return (
@@ -144,18 +162,21 @@ export default function AllGenerators() {
           {/* <h3>AI Insights</h3>  */}
         </div>
         <div className={styles.content}>
-          {/* {alertsStatusBoxType === 'AiInsights' ? */}
-            <div className={styles.insights}>
-              <a href="">All Insights</a>
-              {insights?.filter(ins => new Date(ins.updatedAt) > new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000))
-                .map(ins => {
-                  let genIncludeInsightList = generators?.filter(gen => gen.insights?.includes(ins._id))
-                  return <AlertComponent {...ins} status={insightStatuses[ins.level_risk - 1]} key={ins._id} genList={genIncludeInsightList?.map(gen => gen.name)} />
-                })}
-            </div>
-            {/* :
-            <div className={styles.limit}>
-            </div>} */}
+          {alertsStatusBoxType === 'AiInsights' ?
+          <div className={styles.insights}>
+            <a href="">All Insights</a>
+            {/* {allAlertsFunc().map(alert => <AlertComponent {...alert} type={'alert'} status={alert.anomaly} key={alert._id} gen={alert.genId} />)} */}
+            {insights?.filter(ins => new Date(ins.updatedAt) > new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000))
+              .map(ins => {
+                let genIncludeInsightList = generators?.filter(gen => gen.insights?.includes(ins._id))
+                return <AlertComponent {...ins} type={'insight'} status={insightStatuses[ins.level_risk - 1]} key={ins._id} gen={genIncludeInsightList[0].name} />
+              })}
+          </div>
+          :
+          <div className={styles.limit}>
+            {alerts?.filter(alert => new Date(alert.updatedAt) > new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000))
+              .map(alert => <AlertComponent {...alert} type={'alert'} status={alert.anomaly} key={alert._id} gen={alert.genId} />)}
+          </div>}
         </div>
       </div>
     </div>

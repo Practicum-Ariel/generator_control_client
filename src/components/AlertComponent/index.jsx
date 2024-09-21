@@ -5,7 +5,7 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import TechVisitForm from "../TechVisitForm";
 import { useNavigate } from "react-router-dom";
 
-export default function index({ _id, insight, fault_name, fault_description, treatments, based_on_data, status, genList }) {
+export default function index({ type, _id, insight, fault_name, fault_description, treatments, based_on_data, status, gen, value, sensor, anomaly }) {
   const [isClose, setIsClose] = useState(true);
   let nav = useNavigate();
 
@@ -14,12 +14,17 @@ export default function index({ _id, insight, fault_name, fault_description, tre
     <div className={styles.main}>
       <div className={styles.title}>  
         {isClose ? <MdOutlineArrowRight /> : <TiArrowSortedDown />}
-        <div className={styles.gen} onClick={() => nav(`/generator/${genList[0]}`)}>{genList}</div>
-        <div className={styles.context} onClick={() => setIsClose(!isClose)}>: {fault_name}</div>
+        <div className={styles.gen} onClick={() => nav(`/generator/${gen}`)}>{gen}</div>
+        <div className={styles.context} onClick={() => setIsClose(!isClose)}>: {type === 'insight' ? fault_name : anomaly}</div>
         <div className={`${styles.alert_status} ${styles[status]}`} />
       </div>
 
       {!isClose && (
+        type != 'insight' ?
+        <div>
+          { `הערך התקין הוא, הערך הקיים הוא ${value}`}
+        </div>
+        :
         <>
           <div className="">{fault_description}</div>
           <div className="">{insight}</div>
@@ -31,7 +36,7 @@ export default function index({ _id, insight, fault_name, fault_description, tre
             <button onClick={() => nav('/tech-check/form', { state: { treatments: treatments, insightId: _id } })} className={styles.but}>
               Open Treatment
             </button>
-            <button onClick={() => nav(`/generator/${genList[0]}`)} className={styles.but}>
+            <button onClick={() => nav(`/generator/${gen[0]}`)} className={styles.but}>
               Pass to generator
             </button>
           </div>
