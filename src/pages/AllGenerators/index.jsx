@@ -16,6 +16,7 @@ export default function AllGenerators() {
   const [generators, setGenerators] = useState([])
   const [filteredGens, setFilteredGens] = useState([])
   const [search, setSearch] = useState("")
+  const [filterSearch, setFilterSearch] = useState([])
   const [checked, setChecked] = useState([])
   const [statusBoxType, setStatusBoxType] = useState('all')
 
@@ -25,17 +26,19 @@ export default function AllGenerators() {
   let { data, loading, error } = useApi(`/generator/all-gen`)
   const { data: insights, loading: loadingInsightes } = useApi('/aiapiserver')
   // const { data, loading, error } = useApi(`/generator/all-gen?status=${statusBoxType}`)
+  
 
 
   // useEffect(() => { // i call the api directly because i can't use useApi (hook) inside inner function of the component 
   //   axios.get(`http://localhost:3000/api//generator/all-gen`).then(res => setGenerators(res.data))
   // }, [])
   console.log(generators)
-  console.log(filteredGens)
+  // console.log(filteredGens)
 
   useEffect(() => {
     setGenerators(data)
     setFilteredGens(data)
+    setFilterSearch(data)
   }, [data])
 
   const sensorAnomalies = {
@@ -82,9 +85,12 @@ export default function AllGenerators() {
   }
 
   const handleSearch = (e)=>{
-    setSearch(e.target.value.toLowerCase())
-    // filteredGens.filter(gen => gen.name.includes(1,search) || generators.filter(gen => gen.location.includes(1,search)))
+    setSearch(e.target.value)
+    
   }
+  console.log(search)
+  console.log(filteredGens)
+  
   
   if (loading || loadingInsightes) return <Loader />
   if (error) return error
@@ -92,17 +98,17 @@ export default function AllGenerators() {
   return (
     <div className={styles.grid_container}>
       <div className={styles.buttons}>
-        {/* <div className={styles.search}>
-          <Search onInput={handleSearch}/>
-        </div> */}
         <div className={styles.box_button}>
           {/* <Search onInput={handleSearch}/> */}
           <BoxSensorType handleFilter={handleFilter} types={statuses} selected={statusBoxType} />
         </div>
+        <div className={styles.search}>
+          <Search onInput={handleSearch}/>
+        </div>
         {checked.length == 2 ? <Link to={`/generators/compare?filter=${checked[0]}-${checked[1]}`} className={styles.compare_button}>Compare Generators</Link> : ''}
       </div>
       <div className={styles.genList}>
-        {filteredGens?.map(gen =>
+        {filteredGens?.filter(g => g.name.includes(search,0)).map(gen => 
           <div key={gen._id} className={styles.gen}>
             <div className={styles.gen_top}>
               <MdCompareArrows className={styles.compare_btn} onClick={() => handleChange(gen._id)} title='compare generator' />

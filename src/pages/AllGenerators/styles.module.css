@@ -18,10 +18,18 @@
     width: 100%;
     /* padding: 0 30px; */
     justify-content: start;
+    gap: 100px;
 }
 
 .search{
-    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 5px;
+    width: 100%;
+    left: 20px;
+    
 }
 
 .box_button {
